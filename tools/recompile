@@ -1,0 +1,4 @@
+#!/bin/sh
+cd ~/.emacs.d || exit 1
+exec emacs -batch --quick --eval "(byte-recompile-directory \"$1\" 0 t)"
+
