@@ -57,8 +57,9 @@
         (:name yasnippet-bundle :type elpa)))
 
 (setq ysl-packages
-      (append
-       '(el-get switch-window vkill google-maps nxhtml xcscope cssh virtualenv slime ecb)
+      (append '(el-get switch-window vkill google-maps nxhtml
+                       xcscope cssh virtualenv slime ecb
+                       google-c-style)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)

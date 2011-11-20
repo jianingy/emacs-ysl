@@ -1,5 +1,5 @@
 (require 'ysl-init)
-
+(require 'org-location-google-maps)
 ;; set tool path {{
 (setq user-local-lib (concat user-home-dir "/local/lib"))
 (defvar ysl/org-pygment-path
