@@ -17,7 +17,8 @@
 (defun compile-ruby ()
   "Use compile to run ruby programs"
   (interactive)
-  (compile (concat "/usr/bin/ruby '" (buffer-file-name) "'")))
+  (compile (concat "/usr/bin/ruby '" (buffer-file-name) "'"))
+  (switch-window))
 
 ;; }}
 
