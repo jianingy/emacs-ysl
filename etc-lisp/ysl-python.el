@@ -10,7 +10,7 @@
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
 (add-hook 'python-mode-hook
           '(lambda () (progn
-                        (unless (eq buffer-file-name nil) (flymake-mode))
+;                        (unless (eq buffer-file-name nil) (flymake-mode))
                         (set (make-local-variable 'py-indent-offset) 4)
                         (set (make-local-variable 'py-smart-indentation) nil)
                         (set (make-local-variable 'indent-tabs-mode) nil)
@@ -35,17 +35,14 @@
 
                         ;; Initialize Rope
                         (setq ropemacs-enable-shortcuts nil)
-                       ;(setq ropemacs-local-prefix "C-c C-p")
-                        (pymacs-load "ropemacs" "rope-")
-                        (ac-ropemacs-setup)
-                        (ropemacs-mode t)
-
+                        (setq ropemacs-local-prefix "C-c C-p")
                         ;; Stops from erroring if there's a syntax err
                         (setq ropemacs-codeassist-maxfixes 3)
                         (setq ropemacs-guess-project t)
                         (setq ropemacs-enable-autoimport t)
                         (setq ropemacs-confirm-saving 'nil)
 
+                        (ac-ropemacs-setup)
 
                         (set (make-local-variable 'ac-sources)
                              (append ac-sources '(ac-source-yasnippet
@@ -111,7 +108,7 @@
 
 (defun ac-ropemacs-setup ()
   (ac-ropemacs-require)
-  ;(setq ac-sources (append (list 'ac-source-ropemacs) ac-sources))
+  (setq ac-sources (append (list 'ac-source-ropemacs) ac-sources))
   (setq ac-omni-completion-sources '(("\\." ac-source-ropemacs))))
 
 (defvar ac-source-rope

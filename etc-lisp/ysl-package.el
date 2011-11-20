@@ -63,6 +63,6 @@
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
-(el-get 'wait)
+;(el-get 'wait)
 
 (provide 'ysl-package)
