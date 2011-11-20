@@ -33,9 +33,8 @@
 
 ;; setup flymake {{
 (setq flymake-extension-use-showtip t)
-(setq flymake-allowed-file-name-mask
+(setq flymake-allowed-file-name-masks
       (list
-       ;;    '("\\.html?\\'" flymake-xml-init)
        '("\\.py\\'" flymake-pyflakes-init)
        '("\\.p[ml]\\'" flymake-perl-init)))
 ;; }}
