@@ -30,6 +30,12 @@
         (:name highlight-parentheses :type elpa)
         (:name htmlize :type elpa)
         (:name inf-ruby :type elpa)
+		(:name nxhtml
+		 :type emacsmirror
+		 :description "An addon for Emacs mainly for web development."
+		 :build
+		 (list (concat el-get-emacs " -batch -q -no-site-file -L . -l nxhtmlmaint.el -f nxhtmlmaint-start-byte-compilation"))
+		 :load "autostart.el")
         (:name org :type elpa)
         (:name pymacs :type elpa)
         (:name python-mode :type elpa)
@@ -54,7 +60,7 @@
         (:name yasnippet-bundle :type elpa)))
 
 (setq ysl-packages
-      (append '(el-get switch-window vkill google-maps nxhtml
+      (append '(el-get switch-window vkill google-maps
                        xcscope cssh virtualenv slime ecb
 					   color-theme color-theme-tango color-theme-ir-black
                        google-c-style)
