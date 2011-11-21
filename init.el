@@ -39,6 +39,7 @@
  '(display-time-24hr-format t)
  '(display-time-day-and-date t)
  '(display-time-mode t)
+ '(ecb-layout-window-sizes (quote (("leftright2" (ecb-directories-buffer-name 0.18357487922705315 . 0.6379310344827587) (ecb-sources-buffer-name 0.18357487922705315 . 0.3448275862068966) (ecb-methods-buffer-name 0.19806763285024154 . 0.6379310344827587) (ecb-history-buffer-name 0.19806763285024154 . 0.3448275862068966)))))
  '(ecb-options-version "2.40")
  '(inhibit-startup-screen t)
  '(scroll-bar-mode nil)
@@ -51,4 +52,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-hide ((t (:background "#2e3436" :foreground "#2e3436"))))
- '(tabbar-default ((t (:weight thin :height 80 :family "PF Tempesta Seven")))))
+ '(tabbar-default ((t (:weight thin :height 60 :family "PF Tempesta Seven")))))
