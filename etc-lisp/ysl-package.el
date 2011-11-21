@@ -22,9 +22,6 @@
         (:name ruby-compilation :type elpa)
         (:name ahg :type elpa)
         (:name auto-complete :type elpa)
-        (:name color-theme :type elpa)
-        (:name color-theme-tango :type elpa)
-        (:name color-theme-ir-black :type elpa)
         (:name css-mode :type elpa)
         (:name flymake-cursor :type elpa)
         (:name flymake-jslint :type elpa)
@@ -59,6 +56,7 @@
 (setq ysl-packages
       (append '(el-get switch-window vkill google-maps nxhtml
                        xcscope cssh virtualenv slime ecb
+					   color-theme color-theme-tango color-theme-ir-black
                        google-c-style)
        (mapcar 'el-get-source-name el-get-sources)))
 
