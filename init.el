@@ -16,6 +16,7 @@
 (require 'ysl-mail)
 (require 'ysl-shell)
 (require 'ysl-coding)
+(require 'ysl-ess)
 (require 'ysl-org-mode)
 (require 'ysl-erc)
 (require 'ysl-keybindings)

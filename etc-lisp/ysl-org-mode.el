@@ -137,8 +137,10 @@ Skips capture tasks."
 ;; should be 'required' after setup {{
 (require 'org-install)
 (require 'org-habit)
+(require 'org-R)
 (require 'ob-pygment)
 (require 'ob-twopi)
+(require 'ob-R)
 ;; }}}
 
 
