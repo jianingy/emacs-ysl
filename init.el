@@ -21,6 +21,7 @@
 (require 'ysl-erc)
 (require 'ysl-keybindings)
 (require 'ysl-frame-size)
+(require 'ysl-mode-line)
 
 ;; start emacs server {{
 (require 'server)
