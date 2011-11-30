@@ -61,8 +61,9 @@
 
 (setq ysl-packages
       (append '(el-get switch-window vkill google-maps
-                       xcscope cssh virtualenv slime ecb ess
+                       xcscope cssh virtualenv slime ecb ess crontab-mode
 					   color-theme color-theme-tango color-theme-ir-black
+					   org2blog 
                        google-c-style)
        (mapcar 'el-get-source-name el-get-sources)))
 
