@@ -102,4 +102,8 @@
         (end (line-end-position arg)))
     (copy-region-as-kill beg end)))
 
+(defun ysl/region-to-checklist (rbegin rend)
+  (interactive "r")
+  (replace-regexp "^\s*" "- [ ] " nil rbegin rend))
+
 (provide 'ysl-extra)
