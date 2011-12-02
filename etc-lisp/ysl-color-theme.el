@@ -1,13 +1,13 @@
 (require 'ysl-init)
 
-(require 'color-theme)
-(add-search-path "themes")
+;; (require 'color-theme)
+;; (add-search-path "themes")
 
 (defun ysl/enable-window-theme ()
   (progn
 
-    (require 'color-theme-tango)
-    (color-theme-tango)
+    (require 'color-theme-zenburn)
+    (color-theme-zenburn)
 
     (custom-set-faces
      '(org-hide (( t (:background "#2e3436" :foreground "#2e3436"))))
@@ -20,7 +20,7 @@
     (set-face-background 'modeline "grey20")
     (set-face-foreground 'modeline "grey70")))
 
-;; INSIPRED BY http://emacs-fu.blogspot.com/2009/03/color-theming.html
+;; ;; INSIPRED BY http://emacs-fu.blogspot.com/2009/03/color-theming.html
 
 (defun ysl/select-color-theme (frame)
 ; must be current local ctheme
@@ -31,10 +31,11 @@
 
 (add-hook 'after-make-frame-functions 'ysl/select-color-theme)
 
-(setq color-theme-is-global nil)
 (if (window-system)
     (ysl/enable-window-theme)
   (ysl/enable-terminal-theme))
+
+(setq color-theme-is-global nil)
 
 
 (provide 'ysl-color-theme)
