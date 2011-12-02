@@ -6,15 +6,13 @@
 (defun ysl/enable-window-theme ()
   (progn
 
-    (require 'color-theme-zenburn)
-    (color-theme-zenburn)
+    (color-theme-tango)
 
     (custom-set-faces
-     '(org-hide (( t (:foreground "#3f3f3f")))))))
+     '(org-hide (( t (:background "#2e3436" :foreground "#2e3436")))))))
 
 (defun ysl/enable-terminal-theme ()
   (progn
-    (require 'color-theme-ir-black)
     (color-theme-ir-black)
     (set-face-background 'modeline "grey20")
     (set-face-foreground 'modeline "grey70")))
