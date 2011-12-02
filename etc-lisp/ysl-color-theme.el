@@ -10,8 +10,7 @@
     (color-theme-zenburn)
 
     (custom-set-faces
-     '(org-hide (( t (:background "#2e3436" :foreground "#2e3436"))))
-     )))
+     '(org-hide (( t (:foreground "#3f3f3f")))))))
 
 (defun ysl/enable-terminal-theme ()
   (progn
