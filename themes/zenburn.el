@@ -251,7 +251,7 @@
      `(minibuffer-prompt ((t (:foreground ,zenburn-yellow))))
      `(Buffer-menu-buffer ((t (:inherit zenburn-primary-1))))
 
-     '(region ((t (:foreground "#71d3b4" :background "#233323"))))
+     '(region ((t (:foreground "#cccccc" :background "#506070"))))
      `(secondary-selection
        ((t (:foreground ,zenburn-fg :background "#506070"))))
 
