@@ -13,7 +13,8 @@
 
 (defun ysl/enable-window-theme-alt ()
   (progn
-    (require 'zenburn-theme)
+    (require 'zenburn)
+    (color-theme-zenburn)
 
     (custom-set-faces
      '(org-hide (( t (:background "#3f3f3f" :foreground "#3f3f3f")))))))
