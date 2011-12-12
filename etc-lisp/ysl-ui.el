@@ -20,6 +20,8 @@
 
 
 
+;; enable iswtchb-mode
+(iswitchb-mode t)
 
 ;;; auto kill buffer with running process {{
 ;(setq kill-buffer-query-functions

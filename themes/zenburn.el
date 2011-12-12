@@ -28,9 +28,9 @@
 
 (defvar zenburn-fg "#dcdccc")
 (defvar zenburn-bg-1 "#282828")
-(defvar zenburn-bg "#3f3f3f")
-(defvar zenburn-bg+1 "#4f4f4f")
-(defvar zenburn-bg+2 "#5f5f5f")
+(defvar zenburn-bg "#212121")
+(defvar zenburn-bg+1 "#313131")
+(defvar zenburn-bg+2 "#414141")
 (defvar zenburn-red+1 "#dca3a3")
 (defvar zenburn-red "#cc9393")
 (defvar zenburn-red-1 "#bc8383")
@@ -420,13 +420,13 @@
      `(eshell-ls-symlink ((t (:foreground ,zenburn-cyan :weight bold))))
 
      `(elscreen-tab-current-screen
-       ((t (:inherit (zenburn-blue default) 
+       ((t (:inherit (zenburn-blue default)
             :box (:line-width 2 :style released-button)))))
      '(elscreen-tab-other-screen
        ((t (:inherit (zenburn-blue-3 zenburn-highlight-damp)))))
      `(elscreen-tab-background
        ((t (:foreground ,zenburn-bg-1 :background ,zenburn-bg-1))))
-     
+
      '(flyspell-duplicate ((t (:inherit zenburn-primary-1))))
      '(flyspell-incorrect ((t (:inherit zenburn-primary-2))))
 
@@ -474,7 +474,7 @@
      `(gnus-group-news-1-empty ((t (:foreground ,zenburn-yellow))))
      `(gnus-group-news-2-empty ((t (:foreground ,zenburn-green+3))))
      `(gnus-group-news-3-empty ((t (:foreground ,zenburn-green+1))))
-     `(gnus-group-news-4-empty ((t (:foreground ,zenburn-blue-2)))) 
+     `(gnus-group-news-4-empty ((t (:foreground ,zenburn-blue-2))))
      `(gnus-group-news-5-empty ((t (:foreground ,zenburn-blue-3))))
      `(gnus-group-news-6-empty ((t (:inherit zenburn-lowlight-1))))
      `(gnus-group-news-low-empty ((t (:inherit zenburn-lowlight-1))))
