@@ -1,7 +1,7 @@
 (require 'ysl-init)
 
-;; (require 'color-theme)
-;; (add-search-path "themes")
+(require 'color-theme)
+(add-search-path "themes")
 
 (defun ysl/enable-window-theme ()
   (progn
@@ -11,8 +11,16 @@
     (custom-set-faces
      '(org-hide (( t (:background "#2e3436" :foreground "#2e3436")))))))
 
+(defun ysl/enable-window-theme-alt ()
+  (progn
+    (require 'zenburn-theme)
+
+    (custom-set-faces
+     '(org-hide (( t (:background "#3f3f3f" :foreground "#3f3f3f")))))))
+
 (defun ysl/enable-terminal-theme ()
   (progn
+	(require 'color-theme-ir-black)
     (color-theme-ir-black)
     (set-face-background 'modeline "grey20")
     (set-face-foreground 'modeline "grey70")))
@@ -23,13 +31,17 @@
 ; must be current local ctheme
   (select-frame frame)
   (if (window-system frame)
-      (ysl/enable-window-theme)
+      (if (eq system-type 'darwin)
+          (ysl/enable-window-theme-alt)
+          (ysl/enable-window-theme))
     (ysl/enable-terminal-theme)))
 
 (add-hook 'after-make-frame-functions 'ysl/select-color-theme)
 
 (if (window-system)
-    (ysl/enable-window-theme)
+    (if (eq system-type 'darwin)
+        (ysl/enable-window-theme-alt)
+      (ysl/enable-window-theme))
   (ysl/enable-terminal-theme))
 
 (setq color-theme-is-global nil)
