@@ -21,7 +21,7 @@
 
 (defun ysl/enable-terminal-theme ()
   (progn
-	(require 'color-theme-ir-black)
+    (require 'color-theme-ir-black)
     (color-theme-ir-black)
     (set-face-background 'modeline "grey20")
     (set-face-foreground 'modeline "grey70")))
@@ -34,7 +34,7 @@
   (if (window-system frame)
       (if (eq system-type 'darwin)
           (ysl/enable-window-theme-alt)
-          (ysl/enable-window-theme))
+          (ysl/enable-window-theme-alt))
     (ysl/enable-terminal-theme)))
 
 (add-hook 'after-make-frame-functions 'ysl/select-color-theme)
@@ -42,7 +42,7 @@
 (if (window-system)
     (if (eq system-type 'darwin)
         (ysl/enable-window-theme-alt)
-      (ysl/enable-window-theme))
+      (ysl/enable-window-theme-alt))
   (ysl/enable-terminal-theme))
 
 (setq color-theme-is-global nil)
