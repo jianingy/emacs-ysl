@@ -2,9 +2,9 @@
 (defvar user-home-dir (getenv "HOME"))
 (defvar conf-root-dir (concat user-home-dir "/.emacs.d"))
 (defvar user-info-file (concat user-home-dir "/.userinfo.el"))
-(if (file-exists-p user-info-file) (load-file user-info-file))
-
+(defvar user-local-file (concat user-home-dir "/.userlocal.el"))
 (add-to-list 'load-path (concat conf-root-dir "/etc-lisp"))
+(if (file-exists-p user-info-file) (load-file user-info-file))
 
 ;; import submodules
 (require 'ysl-init)
@@ -49,9 +49,5 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(visible-bell t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(tabbar-default ((t (:weight thin :height 80 :family "PF Tempesta Seven")))))
+
+(if (file-exists-p user-local-file) (load-file user-local-file))
