@@ -1,11 +1,11 @@
 ;; highlight leading and trailing whitespaces {{
 
 (defface ysl/font-lock-leading-whitespace-face
-  `((t (:background "grey30")))
+  `((t (:background "#1f1f1f")))
   "Face for leading whitespaces")
 
 (defface ysl/font-lock-trailing-whitespace-face
-  `((t (:background "grey30")))
+  `((t (:background "#1f1f1f")))
   "Face for leading whitespaces")
 
 (defun ysl/set-whitespace-detection (mode)
