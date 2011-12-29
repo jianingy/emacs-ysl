@@ -13,11 +13,13 @@
 
 (defun ysl/enable-window-theme-alt ()
   (progn
-    (require 'zenburn)
-    (color-theme-zenburn)
+;    (require 'zenburn)
+;    (color-theme-zenburn)
+    (require 'color-theme-tm)
+    (color-theme-tm)
 
     (custom-set-faces
-     '(org-hide (( t (:background "#212121" :foreground "#212121")))))))
+     '(org-hide (( t (:background "#111" :foreground "#111")))))))
 
 (defun ysl/enable-terminal-theme ()
   (progn
