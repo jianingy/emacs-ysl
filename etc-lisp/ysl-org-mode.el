@@ -38,6 +38,7 @@
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 
 (setq org-confirm-babel-evaluate nil
+      org-export-htmlize-output-type 'css
       org-default-notes-file ysl/default-notes-file
       org-babel-temporary-directory "/tmp/babel" ;; babel directory will be clean up on exit
       org-use-fast-todo-selection t
