@@ -1,0 +1,3 @@
+[submodule "site-lisp/sauron"]
+	path = site-lisp/sauron
+	url = https://github.com/djcb/sauron.git
