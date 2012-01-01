@@ -32,7 +32,7 @@
 
 (setq outline-minor-mode-prefix [(control o)])
 
-(global-set-key [f5] 'ysl/revert-all-buffers) ; F5 刷新全部BUFFER
+(global-set-key [C-f5] 'ysl/revert-all-buffers) ; F5 刷新全部BUFFER
 
 ;; ---- 功能键 - Dirk的按键，感受一下
 ; F1进入shell
@@ -54,4 +54,3 @@
 (global-set-key [C-return] 'kill-buffer-and-window)      ; Kill & Close Current Buffer
 
 (provide 'ysl-keybindings)
-

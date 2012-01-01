@@ -2,7 +2,7 @@
 
 ;; Load CEDET first
 (setq stack-trace-on-error t) ;; emacs24 fix
-(load-file (concat built-in-lisp-dir "/cedet/cedet.elc"))
+; (load-file (locate-library "cedet"))
 ;; Enable EDE (Project Management) features
 (global-ede-mode 1)
 (setq semanticdb-default-save-directory (concat user-home-dir "/.semantic.cache/"))
