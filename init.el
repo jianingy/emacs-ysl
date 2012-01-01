@@ -4,10 +4,10 @@
 (defvar user-info-file (concat user-home-dir "/.userinfo.el"))
 (defvar user-local-file (concat user-home-dir "/.userlocal.el"))
 (add-to-list 'load-path (concat conf-root-dir "/etc-lisp"))
-(if (file-exists-p user-info-file) (load-file user-info-file))
 
 ;; import submodules
 (require 'ysl-init)
+(if (file-exists-p user-info-file) (load-file user-info-file))
 (require 'ysl-package)
 (require 'ysl-color-theme)
 (require 'ysl-ui)
