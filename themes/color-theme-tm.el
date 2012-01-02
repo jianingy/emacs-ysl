@@ -56,7 +56,7 @@
      (left-margin ((t (nil))))
      (mmm-default-submode-face ((t (:background "#111"))))
      (mode-line ((t (:background "#1c1c1c" :foreground "grey70" :box (:line-width 1 :color "#0c0c0c" :style released-button)))))
-     (mode-line-inactive ((t (:inherit mode-line :box (:line-width -1 :color "#333")))))
+     (mode-line-inactive ((t (:inherit mode-line :box (:line-width 1 :color "#111")))))
      (primary-selection ((t (:background "#222"))))
      (region ((t (:background "#4a410d"))))
      (text-cursor ((t (:background "yellow" :foreground "black"))))
