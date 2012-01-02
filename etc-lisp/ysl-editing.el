@@ -42,6 +42,7 @@
 ;; enable ido: InteractivelyDoThings {{
 (require 'ido)
 (ido-mode t)
+(setq ido-max-directory-size 100000)
 ;; }}
 
 ;; enable tramp: Transparent Remote Access, Multiple Protocols {{
@@ -72,4 +73,3 @@
 ;; require word count module
 (require 'wc)
 (provide 'ysl-editing)
-
