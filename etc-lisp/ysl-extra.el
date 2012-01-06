@@ -12,7 +12,7 @@
   "highlight heading or trailing whitespaces and characters over 80th column"
   (font-lock-add-keywords
    mode
-   '(("\t+" (0 'ysl/font-lock-leading-whitespace-face append))
+   '(; ("\t+" (0 'ysl/font-lock-leading-whitespace-face append))
      ("^\s+$" (0 'ysl/font-lock-leading-whitespace-face append))
      ("\s+$" (0 'ysl/font-lock-leading-whitespace-face append))
      ("^.\\{80\\}\\(.+\\)$" (1 'ysl/font-lock-trailing-whitespace-face append)))))
