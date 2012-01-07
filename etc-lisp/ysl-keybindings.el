@@ -55,5 +55,8 @@
 
 (global-set-key [C-f12] 'menu-bar-mode)            ; F12显示／隐藏菜单
 (global-set-key [C-return] 'kill-buffer-and-window)      ; Kill & Close Current Buffer
+(global-set-key "\C-cI" 'bh/punch-in)
+(global-set-key "\C-cO" 'bh/punch-out)
+
 
 (provide 'ysl-keybindings)

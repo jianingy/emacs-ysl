@@ -234,7 +234,7 @@
 
 
 ;; bh functions for punch in and punch out {{
-(setq bh/keep-clock-running nil)
+(defvar bh/keep-clock-running nil)
 
 (defun bh/punch-in (arg)
   "Start continuous clocking and set the default task to the
@@ -324,8 +324,6 @@ as the default task."
         (org-with-point-at pom
           (org-agenda-set-restriction-lock restriction-type)))))))
 
-(global-set-key (kbd "C-c I") 'bh/punch-in)
-(global-set-key (kbd "C-c O") 'bh/punch-out)
 ;; }}
 
 (provide 'ysl-org-mode-gtd)
