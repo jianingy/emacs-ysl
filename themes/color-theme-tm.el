@@ -50,7 +50,7 @@
      (nxml-tag-slash-face ((t (:foreground "#cda869"))))
      (nxml-text-face ((t (:foreground "#ddd"))))
      (gui-element ((t (:background "#0e2231" :foreground "black"))))
-     (highlight ((t (:bold t :slant italic))))
+     (highlight ((t (:bold t :slant italic :box (:line-width 1 :color "sky" :style none)))))
      (highline-face ((t (:background "#4a410d"))))
      (italic ((t (nil))))
      (left-margin ((t (nil))))
