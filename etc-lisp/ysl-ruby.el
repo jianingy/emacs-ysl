@@ -6,7 +6,6 @@
                         (local-set-key"\C-c\C-c" 'compile-ruby)
                         (setq ruby-deep-arglist t)
                         (setq ruby-deep-indent-paren nil)
-                        (setq c-tab-always-indent nil)
                         (require 'inf-ruby)
                         (require 'ruby-compilation)
                         (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))

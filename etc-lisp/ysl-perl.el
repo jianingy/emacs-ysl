@@ -8,8 +8,8 @@
 
 (add-hook 'cperl-mode-hook
 	  '(lambda () (progn
-			(set (make-local-variable 'cperl-indent-level) 2)
-			(set (make-local-variable 'indent-tabs-mode) nil)
+			(setq indent-tabs-mode nil
+                              cperl-indent-level 4)
 			(local-set-key "\C-m" 'newline-and-indent)
 			(local-set-key (kbd "C-c C-c") 'compile-perl)
 			(set (make-local-variable 'compilation-scroll-output) nil)

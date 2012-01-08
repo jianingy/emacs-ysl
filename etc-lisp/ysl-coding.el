@@ -57,4 +57,15 @@
 ;; delete trailing whitespace, hope it's safe
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
+;; nxhtml {{
+(add-hook
+ 'nxml-mode-hook
+ '(lambda ()
+   (local-set-key "\r" 'newline-and-indent)
+   (setq nxml-child-indent 4
+    tab-width 4
+    standard-indent 4
+    indent-tabs-mode nil)))
+;; }}
+
 (provide 'ysl-coding)

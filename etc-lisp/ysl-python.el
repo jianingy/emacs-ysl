@@ -11,9 +11,9 @@
 (add-hook 'python-mode-hook
           '(lambda () (progn
 ;                        (unless (eq buffer-file-name nil) (flymake-mode))
-                        (set (make-local-variable 'py-indent-offset) 4)
-                        (set (make-local-variable 'py-smart-indentation) nil)
-                        (set (make-local-variable 'indent-tabs-mode) nil)
+                        (setq py-indent-offset 4
+                              py-smart-indentation nil
+                              indent-tabs-mode nil)
                         (set (make-local-variable 'compilation-scroll-output) nil)
                         (set (make-local-variable 'virtualenv-workon-starts-python) nil)
                         (local-set-key "\C-m" 'newline-and-indent)

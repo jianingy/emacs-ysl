@@ -1,6 +1,6 @@
 
 (setq
- tab-width 4                         ;; default tab width
+ tab-width 8                         ;; default tab width
  fill-column 78                      ;; default column width
  mouse-yank-at-point t               ;; dont insert at mouse point
  kill-ring-max 128                   ;; size of killing ring
