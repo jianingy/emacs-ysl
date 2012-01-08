@@ -53,6 +53,13 @@
 ;; (global-set-key [C-f10] 'ecb-deactivate)           ; F10关闭ecb
 ;; (global-set-key [C-f11] 'speedbar)                 ; F11打开／关闭speedbar
 
+(global-set-key (kbd "C-c 1") '(lambda () (interactive) (ysl/open-terminal "ansi-term 1")))
+(global-set-key (kbd "C-c 2") '(lambda () (interactive) (ysl/open-terminal "ansi-term 2")))
+(global-set-key (kbd "C-c 3") '(lambda () (interactive) (ysl/open-terminal "ansi-term 3")))
+
+
+
+
 (global-set-key [C-f12] 'menu-bar-mode)            ; F12显示／隐藏菜单
 (global-set-key [C-return] 'kill-buffer-and-window)      ; Kill & Close Current Buffer
 (global-set-key "\C-cI" 'bh/punch-in)
