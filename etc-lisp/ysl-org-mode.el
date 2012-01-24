@@ -116,18 +116,19 @@ Skips capture tasks."
 
 ;;; Babel {{
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-(setq org-babel-load-languages (quote ((emacs-lisp . t)
-                                       (pygment . t)
-                                       (dot . t)
-                                       (twopi . t)
-                                       (ditaa . t)
-                                       (plantuml . t)
-                                       (R . t)
-                                       (python . t)
-                                       (ruby . t)
-                                       (gnuplot . t)
-                                       (clojure . t)
-                                       (sh . t))))
+(org-babel-do-load-languages
+ 'org-babel-load-languages (quote ((emacs-lisp . t)
+                                   (pygment . t)
+                                   (dot . t)
+                                   (twopi . t)
+                                   (ditaa . t)
+                                   (plantuml . t)
+                                   (R . t)
+                                   (python . t)
+                                   (ruby . t)
+                                   (gnuplot . t)
+                                   (clojure . t)
+                                   (sh . t))))
 ;; ditaa generate {{{
 (defun djcb-ditaa-generate ()
   (interactive)
@@ -139,10 +140,8 @@ Skips capture tasks."
 ;; should be 'required' after setup {{
 (require 'org-install)
 (require 'org-habit)
-(require 'org-R)
-(require 'ob-pygment)
 (require 'ob-twopi)
-(require 'ob-R)
+(require 'ob-pygment)
 ;; }}}
 
 
