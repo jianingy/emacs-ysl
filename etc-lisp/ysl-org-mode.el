@@ -117,18 +117,13 @@ Skips capture tasks."
 ;;; Babel {{
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 (org-babel-do-load-languages
- 'org-babel-load-languages (quote ((emacs-lisp . t)
-                                   (pygment . t)
+ 'org-babel-load-languages (quote ((pygment . t)
                                    (dot . t)
                                    (twopi . t)
                                    (ditaa . t)
                                    (plantuml . t)
                                    (R . t)
-                                   (python . t)
-                                   (ruby . t)
-                                   (gnuplot . t)
-                                   (clojure . t)
-                                   (sh . t))))
+                                   (gnuplot . t))))
 ;; ditaa generate {{{
 (defun djcb-ditaa-generate ()
   (interactive)
