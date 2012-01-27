@@ -123,6 +123,7 @@ Skips capture tasks."
                                    (ditaa . t)
                                    (plantuml . t)
                                    (R . t)
+                                   (latex . t)
                                    (gnuplot . t))))
 ;; ditaa generate {{{
 (defun djcb-ditaa-generate ()

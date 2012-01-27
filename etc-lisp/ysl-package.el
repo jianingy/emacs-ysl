@@ -36,7 +36,6 @@
 		 :build
 		 (list (concat el-get-emacs " -batch -q -no-site-file -L . -l nxhtmlmaint.el -f nxhtmlmaint-start-byte-compilation"))
 		 :load "autostart.el")
-        (:name org :type elpa)
         (:name pymacs :type elpa)
         (:name python-mode :type elpa)
         (:name rainbow-mode :type elpa)
@@ -60,12 +59,12 @@
         (:name yasnippet-bundle :type elpa)))
 
 (setq ysl-packages
-      (append '(el-get switch-window vkill google-maps
+      (append '(el-get org-mode switch-window vkill google-maps
                        xcscope cssh virtualenv slime ecb ess crontab-mode
-					   color-theme color-theme-tango color-theme-ir-black
-					   org2blog 
+                       color-theme color-theme-tango color-theme-ir-black
+                       org2blog
                        google-c-style)
-       (mapcar 'el-get-source-name el-get-sources)))
+              (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
 ;(el-get 'wait)
