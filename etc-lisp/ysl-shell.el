@@ -58,4 +58,9 @@ Switch to last recent buffer if current buffer is eshell's"
           (switch-to-buffer full-buffer-name)
         (ansi-term "/bin/bash" term-buffer-name)))))
 
+
+(add-hook 'term-mode-hook
+          '(lambda()
+             (set (make-local-variable 'scroll-margin) 0)))
+
 (provide 'ysl-shell)
