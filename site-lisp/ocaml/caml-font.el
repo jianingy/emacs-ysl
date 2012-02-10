@@ -26,7 +26,7 @@
   (make-face 'caml-font-lock-string-face)
   (set-face-foreground  'caml-font-lock-string-face "DarkGreen")
   (make-face 'caml-font-lock-function-name-face)
-  (set-face-foreground 'caml-font-lock-function-name-face "Blue2")
+  (set-face-foreground 'caml-font-lock-function-name-face "SteelBlue3")
   (make-face 'caml-font-lock-keyword-face)
   (set-face-foreground 'caml-font-lock-keyword-face "purple")
   (caml-make-face-bold 'caml-font-lock-keyword-face)
