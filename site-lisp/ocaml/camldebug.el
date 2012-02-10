@@ -21,7 +21,7 @@
 ;;Disadvantages: gud is not so clean itself, there is little common
 ;;functionality it abstracts (most of the stuff is done in the
 ;;debugger specific parts anyway), and, most seriously, gud sees it
-;;fit to add C-x C-a bindings to the _global_ map, so there would be a
+;;fit to add C-x C-z bindings to the _global_ map, so there would be a
 ;;conflict between camldebug and gdb, for instance. While it's OK to
 ;;assume that a sane person doesn't use gdb and dbx at the same time,
 ;;it's not so OK (IMHO) for gdb and camldebug.
@@ -157,7 +157,7 @@ representation is simply concatenated with the COMMAND."
 		(concat "\C-c" key)
 		(list 'quote fun))
 	  (list 'define-key 'caml-mode-map
-		(concat "\C-x\C-a" key)
+		(concat "\C-x\C-z" key)
 		(list 'quote fun)))))
 
 (def-camldebug "step"	"\C-s"	"Step one event forward.")
@@ -456,7 +456,7 @@ around point."
 ; (define-key camldebug-mode-map "\M-?" 'comint-dynamic-list-completions)
 
 (define-key caml-mode-map "\C-x " 'camldebug-break)
-(define-key caml-mode-map "\C-x\C-ad" 'camldebug)
+(define-key caml-mode-map "\C-x\C-zd" 'camldebug)
 
 
 (defvar current-camldebug-buffer nil)
