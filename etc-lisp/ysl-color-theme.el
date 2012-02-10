@@ -15,11 +15,13 @@
   (progn
 ;    (require 'zenburn)
 ;    (color-theme-zenburn)
-    (require 'color-theme-tm)
-    (color-theme-tm)
-
-    (custom-set-faces
-     '(org-hide (( t (:background "#111" :foreground "#111")))))))
+;    (require 'color-theme-tm)
+;    (color-theme-tm)
+    (require 'color-theme-dotshare)
+    (color-theme-dotshare)
+    ))
+;    (custom-set-faces
+;     '(org-hide (( t (:background "#101010" :foreground "#101010")))))))
 
 (defun ysl/enable-terminal-theme ()
   (progn
