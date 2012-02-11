@@ -10,12 +10,13 @@
 
 ;; font setup function {{
 (defun ysl/set-x-font ()
-  (set-face-attribute 'default nil :font ysl/x-font-en)
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset
-                      ysl/x-font-zh))
-)
+  (if (boundp 'ysl/x-font-en)
+    (set-face-attribute 'default nil :font ysl/x-font-en))
+  (if (boundp 'ysl/x-font-zh)
+    (dolist (charset '(kana han symbol cjk-misc bopomofo))
+      (set-fontset-font (frame-parameter nil 'font)
+                        charset
+                        ysl/x-font-zh))))
 ;; }}
 
 (if window-system
