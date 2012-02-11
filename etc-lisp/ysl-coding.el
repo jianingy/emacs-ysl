@@ -14,6 +14,7 @@
 (require 'ysl-ruby)
 (require 'ysl-elisp)
 (require 'ysl-css)
+(require 'ysl-ocaml)
 ;; (require 'ysl-mmm)
 
 ;; other languages {{
