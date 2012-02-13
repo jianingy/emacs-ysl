@@ -20,7 +20,7 @@
     (require 'color-theme-dotshare)
     (color-theme-dotshare)
     (custom-set-faces
-     '(org-hide (( t (:background "#151515" :foreground "#151515")))))))
+     '(org-hide (( t (:background "#101010" :foreground "#101010")))))))
 
 (defun ysl/enable-terminal-theme ()
   (progn
