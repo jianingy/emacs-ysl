@@ -56,6 +56,7 @@
                :type git
                :url "http://github.com/yoshiki/yaml-mode.git"
                :features yaml-mode)
+
         (:name yasnippet-bundle :type elpa)))
 
 (setq ysl-packages
