@@ -1,3 +1,5 @@
+.RHistory
+abbrev_defs
 server/server
 site-lisp/layout-restore/layout-restore.el
 ede-projects.el
@@ -21,3 +23,4 @@ elpa/*
 el-get/*
 backup-lisp/*
 obsoleted-lisp/*
+mail/*
