@@ -19,53 +19,71 @@
 
 (setq el-get-sources
       '(
-        (:name ruby-compilation :type elpa)
-        (:name ahg :type elpa)
-        (:name auto-complete :type elpa)
-        (:name css-mode :type elpa)
-        (:name flymake-cursor :type elpa)
-        (:name flymake-jslint :type elpa)
-        (:name flymake-ruby :type elpa)
-        (:name flymake-shell :type elpa)
-        (:name highlight-parentheses :type elpa)
-        (:name htmlize :type elpa)
-        (:name inf-ruby :type elpa)
 		(:name nxhtml
 		 :type emacsmirror
 		 :description "An addon for Emacs mainly for web development."
 		 :build
 		 (list (concat el-get-emacs " -batch -q -no-site-file -L . -l nxhtmlmaint.el -f nxhtmlmaint-start-byte-compilation"))
 		 :load "autostart.el")
-        (:name pymacs :type elpa)
-        (:name python-mode :type elpa)
-        (:name rainbow-mode :type elpa)
-        (:name rhtml
-               :type git
-               :url "https://github.com/eschulte/rhtml.git"
-               :features rhtml-mode)
-        (:name ruby-mode :type elpa)
-                                        ;        (:name rvm
-                                        ;               :type git
-                                        ;               :url "http://github.com/djwhitt/rvm.el.git"
-                                        ;               :load "rvm.el"
-                                        ;               :compile ("rvm.el")
-                                        ;               :after (lambda() (rvm-use-default)))
-        (:name session :type elpa)
-        (:name xml-rpc :type elpa)
-        (:name yaml-mode
-               :type git
-               :url "http://github.com/yoshiki/yaml-mode.git"
-               :features yaml-mode)
+;        (:name rhtml
+;               :type git
+;               :url "https://github.com/eschulte/rhtml.git"
+;               :features rhtml-mode)
+		(:name crontab-mode
+			   :description "Mode for editing crontab files"
+			   :type http
+			   :url "http://www.mahalito.net/~harley/elisp/crontab-mode.el")
 
-        (:name yasnippet-bundle :type elpa)))
+		(:name css-mode :type elpa)
+		(:name flymake-cursor :type elpa)
+		(:name flymake-jslint :type elpa)
+		(:name flymake-shell :type elpa)
+        ))
 
-(setq ysl-packages
-      (append '(org-mode switch-window vkill google-maps
-                       xcscope cssh virtualenv slime ecb ess crontab-mode
-                       color-theme color-theme-tango color-theme-ir-black
-                       org2blog
-                       google-c-style)
-              (mapcar 'el-get-source-name el-get-sources)))
+(setq ysl-packages (append '(
+ahg
+anything
+auto-complete
+auto-complete-clang
+auto-complete-css
+auto-complete-emacs-lisp
+auto-complete-ruby
+auto-complete-yasnippet
+color-theme
+color-theme-ir-black
+color-theme-tango
+crontab-mode
+css-mode
+cssh
+ecb
+ess
+flymake-cursor
+flymake-jslint
+flymake-point
+flymake-ruby
+flymake-shell
+google-c-style
+google-maps
+highlight-parentheses
+htmlize
+inf-ruby
+org-mode
+org2blog
+pymacs
+python-mode
+rainbow-mode
+ruby-compilation
+ruby-mode
+session
+slime
+switch-window
+virtualenv
+vkill
+xcscope
+xml-rpc
+yaml-mode
+yasnippet
+)(mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
 ;(el-get 'wait)
