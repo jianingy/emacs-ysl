@@ -13,7 +13,7 @@
 ;; }}
 
 ;; setup el-get {{
-(add-search-path "el-get/el-get")
+(add-search-path "site-lisp/el-get")
 (require 'el-get)
 ;; }}
 
@@ -60,7 +60,7 @@
         (:name yasnippet-bundle :type elpa)))
 
 (setq ysl-packages
-      (append '(el-get org-mode switch-window vkill google-maps
+      (append '(org-mode switch-window vkill google-maps
                        xcscope cssh virtualenv slime ecb ess crontab-mode
                        color-theme color-theme-tango color-theme-ir-black
                        org2blog
