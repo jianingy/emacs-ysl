@@ -73,7 +73,7 @@
                        " " (buffer-file-name)))
     (compile (concat ysl/python-executable " " (buffer-file-name))))
   (switch-window))
-(define-key py-mode-map (kbd "C-c C-c") 'compile-python)
+(define-key python-mode-map (kbd "C-c C-c") 'compile-python)
 ;; }}
 
 
