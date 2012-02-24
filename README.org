@@ -1,3 +1,21 @@
 This is my emacs configurations. Here are some screenshots:
 
 - [[http://img.ly/c9WQ]]
+
+* Installation
+
+First, make sure that you do not have the following files:
+
+- ~/.emacs.d
+- .emacs
+
+Second, clone this repository
+#+begin_src sh
+git clone http://github.com/jianingy/emacs-ysl ~/.emacs.d
+#+end_src
+
+Fianlly, Run the following command ... serveral times ... repeatedly, until all packages been installed successfully.
+#+begin_src sh
+cd ~/.emacs.d
+emacs -batch -q -l init.el
+#+end_src
