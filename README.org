@@ -19,14 +19,14 @@ Second, make sure that you have the following softwares:
 
 Third, clone this repository
 
-#+begin_src sh
+#+begin_example
 git clone http://github.com/jianingy/emacs-ysl ~/.emacs.d
 git submodule init
 git submodule update
-#+end_src
+#+end_example
 
 Fianlly, Run the following command ... serveral times ... repeatedly, until all packages been installed successfully.
-#+begin_src sh
+#+begin_example
 cd ~/.emacs.d
 emacs -batch -q -l init.el
-#+end_src
+#+end_example
