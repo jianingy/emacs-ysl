@@ -9,9 +9,20 @@ First, make sure that you do not have the following files:
 - ~/.emacs.d
 - .emacs
 
-Second, clone this repository
+Second, make sure that you have the following softwares:
+
+- R (remove ess if you don't want to use R)
+- slime
+- svn
+- bzr
+- git
+
+Third, clone this repository
+
 #+begin_src sh
 git clone http://github.com/jianingy/emacs-ysl ~/.emacs.d
+git submodule init
+git submodule update
 #+end_src
 
 Fianlly, Run the following command ... serveral times ... repeatedly, until all packages been installed successfully.
