@@ -25,7 +25,6 @@
 ;               :build
 ;               (list (concat el-get-emacs " -batch -q -no-site-file -L . -l nxhtmlmaint.el -f nxhtmlmaint-start-byte-compilation"))
 ;               :load "autostart.el")
-
         (:name crontab-mode
                :description "Mode for editing crontab files"
                :type http
@@ -35,6 +34,7 @@
         (:name flymake-cursor :type elpa)
         (:name flymake-jslint :type elpa)
         (:name flymake-shell :type elpa)
+        (:name popup :type elpa)
         (:name rainbow-mode :type elpa)
         (:name yasnippet-bundle :type elpa)
         ))
@@ -42,6 +42,7 @@
 (setq ysl-packages (append '(
                              ahg
                              anything
+                             popup
                              auto-complete
                              auto-complete-clang
                              auto-complete-css
@@ -64,10 +65,11 @@
                              flymake-shell
                              google-c-style
                              google-maps
+                             haskell-mode
                              highlight-parentheses
                              htmlize
                              inf-ruby
-							 nxhtml
+                             nxhtml
                              org-mode
                              pymacs
                              python-mode
