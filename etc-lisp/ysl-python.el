@@ -42,7 +42,7 @@
                         (setq ropemacs-enable-autoimport t)
                         (setq ropemacs-confirm-saving 'nil)
 
-;;                        (ac-ropemacs-setup)
+                        (ac-ropemacs-setup)
 
                         (set (make-local-variable 'ac-sources)
                              (append ac-sources '(ac-source-yasnippet
