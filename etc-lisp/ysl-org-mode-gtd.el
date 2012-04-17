@@ -28,17 +28,18 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h!)" "|" "CANCELLED(c@/!)")
-              (sequence "OPEN(O!)" "|" "CLOSED(C!)"))))
+              (sequence "OPEN(O!)" "CHECK(C)" "|" "CLOSED(C!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "lightblue" :weight bold)
+              ("NEXT" :foreground "orange" :weight bold)
               ("STARTED" :foreground "steelblue" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
               ("HOLD" :foreground "magenta" :weight bold)
               ("CANCELLED" :foreground "forest green" :weight bold)
               ("OPEN" :foreground "lightblue" :weight bold)
+              ("CHECK" :foreground "yellow" :weight bold)
               ("CLOSED" :foreground "forest green" :weight bold))))
 
 ;; todo state trigger
@@ -86,6 +87,8 @@
                "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("n" "NEXT" entry (file "~/org/default.org")
                "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
+              ("c" "CHECK" entry (file "~/org/default.org")
+               "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("s" "SOMEDAY" entry (file "~/org/default.org")
                "* SOMEDAY %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("h" "HABIT" entry (file "~/org/default.org")
@@ -146,7 +149,13 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (tags-todo "OPEN"
+                (tags-todo "-REFILE-CANCELLED-MAYBE/!CHECK"
+                           ((org-agenda-overriding-header "Checking Issues")
+                            (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-sorting-strategy
+                             '(effort-up category-keep))))
+                (tags-todo "-REFILE-CANCELLED-MAYBE/!OPEN"
                            ((org-agenda-overriding-header "Opening Issues")
                             (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
                             (org-tags-match-list-sublevels t)
@@ -174,14 +183,14 @@
                 (tags "LEVEL=1+REFILE"
                       ((org-agenda-overriding-header "Notes and Tasks to Refile")
                        (org-agenda-overriding-header "Tasks to Refile")))
-                (tags-todo "-WAITING-CANCELLED/!NEXT|STARTED"
-                           ((org-agenda-overriding-header "Next Tasks")
+                (tags-todo "-WAITING-CANCELLED/!STARTED"
+                           ((org-agenda-overriding-header "Started Tasks")
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (tags-todo "-REFILE-CANCELLED-MAYBE/!-NEXT-STARTED-WAITING"
+                (tags-todo "-REFILE-CANCELLED-MAYBE/!-STARTED-WAITING"
                            ((org-agenda-overriding-header "Recently Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
