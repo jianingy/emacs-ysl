@@ -102,7 +102,7 @@
 
 ;;; Custom agenda command definitions {{{
 (setq org-agenda-custom-commands
-      (quote (("r" "Tasks to Refile" tags "REFILE"
+      (quote (("r" "Tasks to Refile" tags "+REFILE"
                ((org-agenda-overriding-header "Notes and Tasks to Refile")
                 (org-agenda-overriding-header "Tasks to Refile")))
               ("s" "Self Agenda"
@@ -180,33 +180,33 @@
 
               ("a" "Default Agenda"
                ((agenda "" nil)
-                (tags "LEVEL=1+REFILE"
+                (tags "LEVEL=1+REFILE-NOTRACK"
                       ((org-agenda-overriding-header "Notes and Tasks to Refile")
                        (org-agenda-overriding-header "Tasks to Refile")))
-                (tags-todo "-WAITING-CANCELLED/!STARTED"
+                (tags-todo "-WAITING-CANCELLED-NOTRACK/!STARTED"
                            ((org-agenda-overriding-header "Started Tasks")
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (tags-todo "-REFILE-CANCELLED-MAYBE/!-STARTED-WAITING"
+                (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-WAITING"
                            ((org-agenda-overriding-header "Recently Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
-                (tags-todo "+MAYBE-REFILE-CANCELLED/!-NEXT-STARTED-WAITING"
+                (tags-todo "+MAYBE-REFILE-CANCELLED-NOTRACK/!-NEXT-STARTED-WAITING"
                            ((org-agenda-overriding-header "Future Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
-                (todo "WAITING|HOLD"
+                (todo "WAITING-NOTRACK|HOLD"
                       ((org-agenda-overriding-header "Waiting and Postponed tasks")))
-                (tags "-REFILE-PROJECT/"
+                (tags "-REFILE-PROJECT-NOTRACK/"
                       ((org-agenda-overriding-header "Tasks to Archive")
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
                nil))))
