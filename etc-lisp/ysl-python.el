@@ -9,12 +9,7 @@
 (add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-;(defadvice ac-start (before advice-turn-on-auto-start activate)
-;  (set (make-local-variable 'ac-auto-start) t))
-;(defadvice ac-cleanup (after advice-turn-off-auto-start activate)
-;  (set (make-local-variable 'ac-auto-start) nil))
-
-(define-key python-mode-map "\t" 'ryan-python-tab)
+;;(define-key python-mode-map "\t" 'ryan-python-tab)
 (define-key python-mode-map (kbd "C-c C-c") 'compile-python)
 
 ;; Initialize Pymacs {{
@@ -44,6 +39,22 @@
       (compile (concat "python"
                        " " (buffer-file-name)))
     (compile (concat ysl/python-executable " " (buffer-file-name)))))
+;; }}
+
+;; Ryan's python specific tab completion {{
+(defun ryan-python-tab ()
+  ; Try the following:
+  ; 1) Do a yasnippet expansion
+  ; 2) Do a Rope code completion
+  ; 3) Do an indent
+  (interactive)
+  (if (eql (ac-start) 0)
+      (indent-for-tab-command)))
+
+;; (defadvice ac-start (before advice-turn-on-auto-start activate)
+;;   (set (make-local-variable 'ac-auto-start) t))
+;; (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
+;;   (set (make-local-variable 'ac-auto-start) nil))
 ;; }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
