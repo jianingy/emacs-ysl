@@ -2,9 +2,13 @@
 
 ;; use cperl-mode instead of perl-mode
 (fset 'perl-mode 'cperl-mode)
-;; enter python by looking at shebang
-(setq interpreter-mode-alist
-      (cons '("perl" . cperl-mode) interpreter-mode-alist))
+
+;; Use cperl-mode instead of the default perl-mode {{
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+;; }}
 
 (add-hook 'cperl-mode-hook
 	  '(lambda ()
@@ -17,13 +21,24 @@
 			))
 
 ;; flyamke {{
-(defun flymake-perl-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-     	 (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list "perl" (list "-wc " local-file))))
+;; (defun flymake-perl-init ()
+;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
+;;                      'flymake-create-temp-inplace))
+;;      	 (local-file (file-relative-name
+;;                       temp-file
+;;                       (file-name-directory buffer-file-name))))
+;;     (list "perl" (list "-wc " local-file))))
+(when (load "flymake" t)
+  (defun flymake-perl-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "perl" (list local-file))))
+
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-pyflakes-init)))
 ;; }}
 
 ;; compile perl code {{

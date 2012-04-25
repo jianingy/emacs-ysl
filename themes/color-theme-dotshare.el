@@ -109,7 +109,7 @@
      (dotshare-strong-1-face ((t (:foreground ,dotshare-yellow :weight bold))))
      (dotshare-strong-2-face ((t (:foreground ,dotshare-orange :weight bold))))
      (dotshare-warning-face ((t (:foreground ,dotshare-yellow-1 :weight bold :underline t))))
-     (dotshare-error-face ((t (:foreground ,dotshare-red-1 :weight bold :underline t))))
+     (dotshare-error-face ((t (:foreground ,dotshare-red-1 :background ,dotshare-red-3 :weight bold :underline t))))
 
      ;;; custom faces
      (linum ((t (:foreground "#505050" :background ,dotshare-bg-1))))

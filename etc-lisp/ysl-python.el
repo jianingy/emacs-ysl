@@ -5,14 +5,14 @@
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
-;(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-;(add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-(defadvice ac-start (before advice-turn-on-auto-start activate)
-  (set (make-local-variable 'ac-auto-start) t))
-(defadvice ac-cleanup (after advice-turn-off-auto-start activate)
-  (set (make-local-variable 'ac-auto-start) nil))
+;(defadvice ac-start (before advice-turn-on-auto-start activate)
+;  (set (make-local-variable 'ac-auto-start) t))
+;(defadvice ac-cleanup (after advice-turn-off-auto-start activate)
+;  (set (make-local-variable 'ac-auto-start) nil))
 
 (define-key python-mode-map "\t" 'ryan-python-tab)
 (define-key python-mode-map (kbd "C-c C-c") 'compile-python)
@@ -36,34 +36,6 @@
 ;; }}
 
 
-(add-hook 'python-mode-hook
-          '(lambda ()
-             (message "Python-Mode setup")
-             (auto-complete-mode 1)
-             (setq indent-tabs-mode nil
-			       tab-width 4
-				   python-indent 4
-                   py-indent-offset 4
-                   py-smart-indentation nil)
-             (set (make-local-variable 'virtualenv-workon-starts-python) nil
-                  (make-local-variable 'ac-sources)
-                  (append ac-sources '(ac-source-rope) '(ac-source-yasnippet))
-                  (make-local-variable 'ac-find-function) 'ac-python-find
-                  (make-local-variable 'ac-candidate-function) 'ac-python-candidate
-                  (make-local-variable 'ac-auto-start) nil)
-
-             (unless (eq buffer-file-name nil) (flymake-mode))
-             (local-set-key "\C-m" 'newline-and-indent)
-             (local-set-key "\C-d" 'py-help-at-point)
-             ;; initialize virtualenv
-             (require 'virtualenv)
-             (if ysl/python-active-virtualenv
-                 (progn
-                   (virtualenv-minor-mode-on)
-                   (virtualenv-workon ysl/python-active-virtualenv)))
-             ))
-
-
 ; compile python code {{
 (defun compile-python ()
   "Use compile to run python programs"
@@ -73,16 +45,6 @@
                        " " (buffer-file-name)))
     (compile (concat ysl/python-executable " " (buffer-file-name)))))
 ;; }}
-
-;;Ryan's python specific tab completion
-(defun ryan-python-tab ()
-  ; Try the following:
-  ; 1) Do a yasnippet expansion
-  ; 2) Do a Rope code completion
-  ; 3) Do an indent
-  (interactive)
-  (if (eql (ac-start) 0)
-      (indent-for-tab-command)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Auto-completion
@@ -135,16 +97,47 @@
     (delete-dups candidates)))
 
 ;; setup flymake {{
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list ysl/python-syntax-checker (list local-file))))
 
-(defun flymake-pyflakes-init ()
-  (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                     'flymake-create-temp-inplace))
-         (local-file (file-relative-name
-                      temp-file
-                      (file-name-directory buffer-file-name))))
-    (list ysl/python-syntax-checker  (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; }}
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            ; (auto-complete-mode 1)
+            (setq indent-tabs-mode nil
+                  tab-width 4
+                  python-indent 4
+                  py-indent-offset 4
+                  py-smart-indentation nil)
+            (set (make-local-variable 'virtualenv-workon-starts-python) nil)
+            (set (make-local-variable 'ac-sources)
+                 (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
+
+            (set (make-local-variable 'ac-find-function) 'ac-python-find)
+            (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate)
+            (set (make-local-variable 'ac-auto-start) nil)
+
+            (unless (eq buffer-file-name nil) (flymake-mode))
+            (local-set-key "\C-m" 'newline-and-indent)
+            (local-set-key "\C-d" 'py-help-at-point)
+            ;; initialize virtualenv
+            (if ysl/python-active-virtualenv
+                (progn
+                  (require 'virtualenv)
+                  (virtualenv-minor-mode-on)
+                  (virtualenv-workon ysl/python-active-virtualenv)))))
 
 (provide 'ysl-python)
