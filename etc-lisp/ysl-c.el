@@ -3,9 +3,9 @@
 (defun ysl/c-mode-linux-style ()
   (message "c-set-style: K&R")
   (c-set-style "K&R")
-  (set (make-local-variable 'c-basic-offset) 8)
-       (make-local-variable 'tab-width) 8
-       (make-local-variable 'indent-tabs-mode) t)
+  (setq c-basic-offset 8)
+        tab-width 8
+        indent-tabs-mode t)
 
 
 (defun ysl/c-mode-google-style ()

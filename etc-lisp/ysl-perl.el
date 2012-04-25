@@ -7,13 +7,14 @@
       (cons '("perl" . cperl-mode) interpreter-mode-alist))
 
 (add-hook 'cperl-mode-hook
-	  '(lambda () (progn
-			(setq indent-tabs-mode nil
-                              cperl-indent-level 4)
+	  '(lambda ()
+            (unless (eq buffer-file-name nil) (flymake-mode))
+	        (setq ndent-tabs-mode nil
+                  cperl-indent-level 4)
 			(local-set-key "\C-m" 'newline-and-indent)
 			(local-set-key (kbd "C-c C-c") 'compile-perl)
 			(set (make-local-variable 'compilation-scroll-output) nil)
-			)))
+			))
 
 ;; flyamke {{
 (defun flymake-perl-init ()
