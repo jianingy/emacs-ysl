@@ -19,6 +19,7 @@
 (require 'ysl-ess)
 (require 'ysl-org-mode)
 (require 'ysl-erc)
+(require 'ysl-easypg)
 (require 'ysl-keybindings)
 (require 'ysl-frame-size)
 (require 'ysl-mode-line)
