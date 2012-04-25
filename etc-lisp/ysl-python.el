@@ -2,20 +2,22 @@
 
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 (require 'python-mode)
 
 (defvar ysl/python-active-virtualenv "default")
 (defvar ysl/python-executable "/usr/bin/python")
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
+
 (add-hook 'python-mode-hook
           '(lambda () (progn
-;                        (unless (eq buffer-file-name nil) (flymake-mode))
+                        (unless (eq buffer-file-name nil) (flymake-mode))
                         (setq py-indent-offset 4
-                              py-smart-indentation nil
-                              indent-tabs-mode nil)
-                        (set (make-local-variable 'compilation-scroll-output) nil)
-                        (set (make-local-variable 'virtualenv-workon-starts-python) nil)
+                              py-smart-indentation nil)
+                        (set (make-local-variable 'indent-tabs-mode) nil
+                             (make-local-variable 'compilation-scroll-output) nil
+                             (make-local-variable 'virtualenv-workon-starts-python) nil)
                         (local-set-key "\C-m" 'newline-and-indent)
                         (local-set-key "\C-d" 'py-help-at-point)
 
@@ -42,7 +44,7 @@
                         (setq ropemacs-enable-autoimport t)
                         (setq ropemacs-confirm-saving 'nil)
 
-                        (ac-ropemacs-setup)
+                        ;(ac-ropemacs-setup)
 
                         (set (make-local-variable 'ac-sources)
                              (append ac-sources '(ac-source-yasnippet
