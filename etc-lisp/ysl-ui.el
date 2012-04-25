@@ -91,11 +91,6 @@
 ;; enable winner-mode
 (winner-mode t)
 
-;; require rainbow-mode for css color rendering {{
-(require 'rainbow-mode)
-(add-hook 'css-mode-hook (lambda () (rainbow-mode)))
-;; }}
-
 ;; layout-restore {{
 ;;(add-search-path "site-lisp/layout-restore")
 ;; (require 'layout-restore)
