@@ -6,7 +6,9 @@
       (package-initialize)
       ;; Add the original Emacs Lisp Package Archive
       (add-to-list 'package-archives
-                   '("elpa" . "http://tromey.com/elpa/"))
+                   '("gnu" . "http://elpa.gnu.org/packages"))
+      (add-to-list 'package-archives
+                   '("ELPA" . "http://tromey.com/elpa/"))
       ;; Add the user-contributed repository
       (add-to-list 'package-archives
                    '("marmalade" . "http://marmalade-repo.org/packages/"))))
@@ -31,11 +33,11 @@
                :url "http://www.mahalito.net/~harley/elisp/crontab-mode.el")
 
         (:name css-mode :type elpa)
-        (:name flymake-cursor :type elpa)
-        (:name flymake-jslint :type elpa)
-        (:name flymake-shell :type elpa)
-        (:name popup :type elpa)
-        (:name rainbow-mode :type elpa)
+        (:name flymake-cursor :type emacswiki)
+        (:name flymake-jslint :type emacswiki)
+        (:name flymake-shell :type emacswiki)
+        (:name hexrgb :type emacswiki)
+        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
         (:name yasnippet-bundle :type elpa)
         ))
 
@@ -66,14 +68,15 @@
                              google-c-style
                              google-maps
                              haskell-mode
+							 hexrgb
                              highlight-parentheses
                              htmlize
                              inf-ruby
+							 magit
                              nxhtml
                              org-mode
-                             pymacs
+							 pymacs
                              python-mode
-                             rainbow-mode
                              ruby-compilation
                              ruby-mode
                              session
