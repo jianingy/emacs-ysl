@@ -9,8 +9,18 @@
 (add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-;;(define-key python-mode-map "\t" 'ryan-python-tab)
 (define-key python-mode-map (kbd "C-c C-c") 'compile-python)
+;; (define-key python-mode-map "\t" 'ryan-python-tab)
+
+;;Ryan's python specific tab completion
+(defun ryan-python-tab ()
+  ; Try the following:
+  ; 1) Do a yasnippet expansion
+  ; 2) Do a Rope code completion
+  ; 3) Do an indent
+  (interactive)
+  (if (eql (ac-start) 0)
+      (indent-for-tab-command)))
 
 ;; Initialize Pymacs {{
 (autoload 'pymacs-apply "pymacs")
@@ -18,6 +28,7 @@
 (autoload 'pymacs-eval "pymacs" nil t)
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs" nil t)
 (pymacs-load "ropemacs" "rope-")
 ;; }}
 
@@ -39,22 +50,6 @@
       (compile (concat "python"
                        " " (buffer-file-name)))
     (compile (concat ysl/python-executable " " (buffer-file-name)))))
-;; }}
-
-;; Ryan's python specific tab completion {{
-(defun ryan-python-tab ()
-  ; Try the following:
-  ; 1) Do a yasnippet expansion
-  ; 2) Do a Rope code completion
-  ; 3) Do an indent
-  (interactive)
-  (if (eql (ac-start) 0)
-      (indent-for-tab-command)))
-
-;; (defadvice ac-start (before advice-turn-on-auto-start activate)
-;;   (set (make-local-variable 'ac-auto-start) t))
-;; (defadvice ac-cleanup (after advice-turn-off-auto-start activate)
-;;   (set (make-local-variable 'ac-auto-start) nil))
 ;; }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,7 +115,7 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pyflakes-init))
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
+               '("\\.rpy\\'" flymake-pyflakes-init)))
 
 ;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; }}
