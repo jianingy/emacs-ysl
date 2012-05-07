@@ -143,7 +143,8 @@ Skips capture tasks."
 
 ;; org-mime: send email using org-mode {{
 (add-search-path "site-lisp/org-mode-contrib")
-(require 'org-checklist)
+;; this one broken org-repeat
+;;(require 'org-checklist)
 (require 'org-mime)
 (add-hook 'message-mode-hook
           (lambda ()

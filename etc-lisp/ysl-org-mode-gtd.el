@@ -28,7 +28,7 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "HOLD(h!)" "|" "CANCELLED(c@/!)")
-              (sequence "OPEN(O!)" "CHECK(C)" "|" "CLOSED(C!)"))))
+              (sequence "OPEN(O!)" "CHECK(K)" "|" "CLOSED(C!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
