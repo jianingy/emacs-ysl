@@ -1,3 +1,14 @@
+;; motd {{
+(defvar ysl/motd (concat user-home-dir "/.motd.el"))
+(defun ysl/show-motd ()
+  (let ((scratch-buffer (get-buffer "*scratch*")))
+    (with-current-buffer scratch-buffer
+      (insert-file-contents ysl/motd)
+      (goto-char (point-max)))))
+(if (file-exists-p ysl/motd)
+  (add-hook 'emacs-startup-hook 'ysl/show-motd))
+;; }}
+
 ;; highlight leading and trailing whitespaces {{
 
 (defface ysl/font-lock-leading-whitespace-face
