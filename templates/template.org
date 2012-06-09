@@ -1,0 +1,4 @@
+#+TITLE: $0
+#+DATE: `(format-time-string "%c")`
+#+AUTHOR: `user-full-name` <`user-mail-address`>
+

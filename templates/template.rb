@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+# filename   : `(buffer-name)`
+# created at : `(format-time-string "%c")`
+# author     : `user-full-name` <`user-mail-address`>
+
