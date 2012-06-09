@@ -84,6 +84,7 @@
 (define-auto-insert "\\.py" "template.py")
 (define-auto-insert "\\.pl" "template.pl")
 (define-auto-insert "\\.pm" "template.pm")
+(define-auto-insert "\\.ml" "template.ml")
 
 (defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
   "expand auto-inserted content as yasnippet templete,
