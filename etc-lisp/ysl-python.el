@@ -4,6 +4,8 @@
 (defvar ysl/python-executable "/usr/bin/python")
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
 
+(setenv "PYMACS_INSTALL_DIR" (concat conf-root-dir "/el-get/python-mode"))
+
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
