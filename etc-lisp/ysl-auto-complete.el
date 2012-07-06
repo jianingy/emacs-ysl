@@ -11,4 +11,14 @@
 ;; (setq ac-dwim t) ;; Do What I Mean Mode: enabled by default
 ;; (setq ac-auto-start 3)
 
+;; enable auto complete for all buffer
+
+;; dirty fix for having AC everywhere
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+                       (if (not (minibufferp (current-buffer)))
+                           (auto-complete-mode 1))
+                       ))
+(real-global-auto-complete-mode t)
+
 (provide 'ysl-auto-complete)

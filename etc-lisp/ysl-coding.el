@@ -3,6 +3,7 @@
 
 (require 'ahg) ;; Mercurial Push & Pull support
 (require 'js) ;; require fixed js-mode
+(require 'mql-mode) ;; MetaTrader Mode
 (require 'htmlize)
 (require 'flymake)
 (require 'flymake-cursor)
