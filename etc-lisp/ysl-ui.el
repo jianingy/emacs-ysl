@@ -79,14 +79,15 @@
 ;; }}
 
 ;; Chinese Input method for linux
-(if (eq system-type 'gnu/linux)
-    (list
-     (add-search-path "site-lisp/ibus")
-     (require 'ibus)
-     (add-hook 'after-init-hook 'ibus-mode-on)
-     (setq ibus-agent-file-name (concat conf-root-dir
-                                        "/site-lisp/ibus/ibus-el-agent"))
-     ))
+;; disabled ibus
+;; (if (eq system-type 'gnu/linux)
+;;     (list
+;;      (add-search-path "site-lisp/ibus")
+;;      (require 'ibus)
+;;      (add-hook 'after-init-hook 'ibus-mode-on)
+;;      (setq ibus-agent-file-name (concat conf-root-dir
+;;                                         "/site-lisp/ibus/ibus-el-agent"))
+;;      ))
 
 ;; enable winner-mode
 (winner-mode t)
