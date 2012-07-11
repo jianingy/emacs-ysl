@@ -94,7 +94,8 @@
                           (or (eq this-command 'auto-insert)
                               (and auto-insert (bobp) (eobp))))))
     ad-do-it
-    (let ((old-point-max (point-max)))
+    (let ((old-point-max (point-max))
+          (yas/indent-line nil))
       (when is-new-file
         (goto-char old-point-max)
         (yas/expand-snippet (buffer-substring-no-properties (point-min) (point-max)))
