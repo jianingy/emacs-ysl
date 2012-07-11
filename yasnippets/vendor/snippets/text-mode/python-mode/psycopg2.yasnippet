@@ -2,15 +2,10 @@
 # name: psycopg2
 # --
 import psycopg2
-
-conn_string = "host=localhost dbname=jianingy user=jianingy password="
-
+conn_string = "${host=localhost dbname=jianingy user=jianingy password=}"
 conn = psycopg2.connect(conn_string)
 cursor = conn.cursor()
-
-cursor.execute("SELECT * FROM users")
-
+cursor.execute("${SELECT * FROM users}")
 records = cursor.fetchall()
-
 for record in records:
     print record
