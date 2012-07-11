@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: model
+# --
+
+class ${Model}(models.Model):
+
+      $0
+
+      def __unicode__(self):
+      	  return "${Model}"
+
+      class Meta:
+      	    verbose_name = _('${Model}')
+            verbose_name_plural = _('${Model}')
