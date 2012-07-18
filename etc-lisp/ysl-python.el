@@ -4,27 +4,16 @@
 (defvar ysl/python-executable "/usr/bin/python")
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
 
-(setenv "PYMACS_INSTALL_DIR" (concat conf-root-dir "/el-get/python-mode"))
-
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 (define-key python-mode-map (kbd "C-c C-c") 'compile-python)
-;; (define-key python-mode-map "\t" 'ryan-python-tab)
-
-;;Ryan's python specific tab completion
-(defun ryan-python-tab ()
-  ; Try the following:
-  ; 1) Do a yasnippet expansion
-  ; 2) Do a Rope code completion
-  ; 3) Do an indent
-  (interactive)
-  (if (eql (ac-start) 0)
-      (indent-for-tab-command)))
 
 ;; Initialize Pymacs {{
+;; use the pymacs shipped with python-mode
+(setenv "PYMACS_INSTALL_DIR" (concat conf-root-dir "/el-get/python-mode"))
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
@@ -44,7 +33,7 @@
 ;; }}
 
 
-; compile python code {{
+;; compile python code {{
 (defun compile-python ()
   "Use compile to run python programs"
   (interactive)
@@ -68,11 +57,13 @@
     (nreverse
      (dolist (element list value)
        (setq value (cons (format "%s%s" prefix element) value))))))
+
 (defvar ac-source-rope
   '((candidates
      . (lambda ()
          (prefix-list-elements (rope-completions) ac-target))))
   "Source for Rope")
+
 (defun ac-python-find ()
   "Python `ac-find-function'."
   (require 'thingatpt)
@@ -82,6 +73,7 @@
             (point)
           nil)
       symbol)))
+
 (defun ac-python-candidate ()
   "Python `ac-candidates-function'"
   (let (candidates)
@@ -119,12 +111,16 @@
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.rpy\\'" flymake-pyflakes-init)))
 
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 ;; }}
+
+;; initial hook {{
+; check if rope-completions exists
+(unless (fboundp 'rope-completions)
+  (error "rope-completions not found, try development version of ropemacs"))
 
 (add-hook 'python-mode-hook
           (lambda ()
-            ; (auto-complete-mode 1)
+;            (auto-complete-mode 1)
             (setq indent-tabs-mode nil
                   tab-width 4
                   python-indent 4
@@ -132,11 +128,11 @@
                   py-smart-indentation nil)
             (set (make-local-variable 'virtualenv-workon-starts-python) nil)
             (set (make-local-variable 'ac-sources)
-                 (append ac-sources '(ac-source-rope) '(ac-source-yasnippet)))
+                 (append ac-sources '(ac-source-ropemacs) '(ac-source-yasnippet)))
 
             (set (make-local-variable 'ac-find-function) 'ac-python-find)
             (set (make-local-variable 'ac-candidate-function) 'ac-python-candidate)
-            (set (make-local-variable 'ac-auto-start) nil)
+ ;          (set (make-local-variable 'ac-auto-start) nil)
 
             (unless (eq buffer-file-name nil) (flymake-mode))
             (local-set-key "\C-m" 'newline-and-indent)
@@ -147,5 +143,20 @@
                   (require 'virtualenv)
                   (virtualenv-minor-mode-on)
                   (virtualenv-workon ysl/python-active-virtualenv)))))
+;; }}
+
+;; remap tab key {{
+; (define-key python-mode-map "\t" 'ryan-python-tab)
+
+;;Ryan's python specific tab completion
+(defun ryan-python-tab ()
+  ; Try the following:
+  ; 1) Do a yasnippet expansion
+  ; 2) Do a Rope code completion
+  ; 3) Do an indent
+  (interactive)
+  (if (not (ac-start))
+      (indent-for-tab-command)))
+;; }}
 
 (provide 'ysl-python)
