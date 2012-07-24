@@ -335,4 +335,22 @@ as the default task."
 
 ;; }}
 
+;; punch-in/out on screensaver {{
+(require 'dbus)
+
+(defun ysl/org-check-in-out-on-screensaver (p-screen-locked)
+  (if p-screen-locked
+      (progn
+        (bh/punch-out)
+        (message "punch-out since screen is locked"))
+    (progn
+      (bh/punch-in 0)
+      (message "punch-in since screen is unlocked"))))
+
+(dbus-register-signal :session "org.gnome.ScreenSaver" "/org/gnome/ScreenSaver"
+                      "org.gnome.ScreenSaver" "ActiveChanged"
+                      'ysl/org-check-in-out-on-screensaver)
+
+;; }}
+
 (provide 'ysl-org-mode-gtd)
