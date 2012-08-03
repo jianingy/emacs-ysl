@@ -277,8 +277,6 @@ as the default task."
     (org-clock-out))
   (org-agenda-remove-restriction-lock))
 
-(defvar bh/organization-task-id "29E7D38E-0C32-4979-AECB-7C4B48BFAD5B")
-
 (defun bh/clock-in-organization-task-as-default ()
   (interactive)
   (save-restriction
