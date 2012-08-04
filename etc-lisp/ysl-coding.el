@@ -19,7 +19,7 @@
 ;; (require 'ysl-mmm)
 
 ;; other languages {{
-(add-hook 'sh-set-shell-hook 'flymake-shell-load)
+;; (add-hook 'sh-set-shell-hook 'flymake-shell-load)
 
 ;; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
