@@ -169,12 +169,12 @@ Skips capture tasks."
   (interactive)
   (load-file "~/.org-projects.el"))
 
-(defun ysl/org-publish-all ()
+(defun ysl/org-publish (project &optional force)
   "fixed conflicts between auto-insert-mode, yasnippets and sitemap publishing"
   (interactive)
   (let ((prev-insert-mode auto-insert-mode))
     (if auto-insert-mode (auto-insert-mode -1))
-    (org-publish-all)
+    (org-publish project force)
     (if prev-insert-mode (auto-insert-mode t))))
 ;; }}
 
