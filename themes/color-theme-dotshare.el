@@ -123,7 +123,7 @@
      (fringe ((t (:foreground ,dotshare-fg :background ,dotshare-bg))))
      (header-line ((t (:foreground ,dotshare-yellow :background ,dotshare-bg-1
                        :box (:line-width 5 :color ,dotshare-bg-1)))))
-     (highlight ((t (:background ,dotshare-bg+1))))
+     (highlight ((t (:background ,dotshare-bg+1 :foreground ,dotshare-blue))))
 
      ;; faces used by isearch
      (isearch ((t (:foreground ,dotshare-yellow :background ,dotshare-bg-1))))
