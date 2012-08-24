@@ -347,9 +347,10 @@ as the default task."
       (bh/punch-in 0)
       (message "punch-in since screen is unlocked"))))
 
-(dbus-register-signal :session "org.gnome.ScreenSaver" "/org/gnome/ScreenSaver"
-                      "org.gnome.ScreenSaver" "ActiveChanged"
-                      'ysl/org-check-in-out-on-screensaver)
+(if (eq system-name 'gnu/linux)
+    (dbus-register-signal :session "org.gnome.ScreenSaver" "/org/gnome/ScreenSaver"
+                          "org.gnome.ScreenSaver" "ActiveChanged"
+                          'ysl/org-check-in-out-on-screensaver))
 
 ;; }}
 
