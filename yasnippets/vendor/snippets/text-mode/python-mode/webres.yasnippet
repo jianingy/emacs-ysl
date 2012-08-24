@@ -1,0 +1,48 @@
+# -*- mode: snippet -*-
+# name: webres
+# expand-env: ((yas/indent-line 'fixed))
+# --
+from twisted.web.resource import Resource
+from twisted.internet import defer
+from twisted.web.server import NOT_DONE_YET
+from twisted.python.failure import Failure
+from twisted.python import log
+from ujson import encode as json_encode
+import logging
+
+
+class ${1:HelloResource}(Resource):
+
+    isLeaf = True
+
+    def cancel(self, err, d):
+        log.msg("Cancelling current request.", levenl=logging.DEBUG)
+        d.cancel()
+
+    def finalize(self, value, request):
+
+        request.setHeader('Content-Type', 'application/json; charset=UTF-8')
+
+        if isinstance(value, Failure):
+            request.setResponseCode(500)
+            response = dict(message=str(value),
+                            traceback=value.getTraceback())
+        else:
+            response = value
+            request.setResponseCode(200)
+
+        request.write(json_encode(response))
+        request.finish()
+
+    def render_GET(self, request):
+        d = self.async_GET(self. request)
+        request.notifyFinish().addErrback(self.cancel, d)
+        d.addBoth(self.finalize, request)
+        return NOT_DONE_YET
+
+    @defer.inlineCallbacks
+    def async_GET(self, request):
+        $0
+        return None
+
+resource = $1()

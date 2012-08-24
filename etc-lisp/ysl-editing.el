@@ -47,6 +47,7 @@
 
 ;; enable tramp: Transparent Remote Access, Multiple Protocols {{
 (require 'tramp)
+(setq tramp-default-method "rsync")
 ;; set default method to ssh if we are running on Unix-like system
 (cond ((or (eq system-type 'gnu/linux) (eq system-type 'darwin))
        (setq tramp-default-method "ssh")))

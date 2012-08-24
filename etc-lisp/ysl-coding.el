@@ -3,6 +3,7 @@
 
 (require 'ahg) ;; Mercurial Push & Pull support
 (require 'js) ;; require fixed js-mode
+(require 'mql-mode) ;; MetaTrader Mode
 (require 'htmlize)
 (require 'flymake)
 (require 'flymake-cursor)
@@ -18,7 +19,7 @@
 ;; (require 'ysl-mmm)
 
 ;; other languages {{
-(add-hook 'sh-set-shell-hook 'flymake-shell-load)
+;; (add-hook 'sh-set-shell-hook 'flymake-shell-load)
 
 ;; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
@@ -67,5 +68,37 @@
          tab-width 4
          standard-indent 4
          indent-tabs-mode nil)))
+;; }}
+
+;; auto-header {{
+(setq-default auto-insert-directory "~/.emacs.d/templates/")
+(auto-insert-mode)
+(setq auto-insert-query nil)
+
+(define-auto-insert "\\.org" "template.org")
+(define-auto-insert "\\.\\([C]\\|cc\\|cpp\\)"  "template.c")
+(define-auto-insert "\\.\\([Hh]\\|hh\\|hpp\\)" "template.h")
+(define-auto-insert "\\.tex" "template.tex")
+(define-auto-insert "\\.sh" "template.sh")
+(define-auto-insert "\\.rb" "template.rb")
+(define-auto-insert "\\.el" "template.el")
+(define-auto-insert "\\.py" "template.py")
+(define-auto-insert "\\.pl" "template.pl")
+(define-auto-insert "\\.pm" "template.pm")
+(define-auto-insert "\\.ml" "template.ml")
+
+(defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
+  "expand auto-inserted content as yasnippet templete,
+  so that we could use yasnippet in autoinsert mode"
+  (let ((is-new-file (and (not buffer-read-only)
+                          (or (eq this-command 'auto-insert)
+                              (and auto-insert (bobp) (eobp))))))
+    ad-do-it
+    (let ((old-point-max (point-max))
+          (yas/indent-line nil))
+      (when is-new-file
+        (goto-char old-point-max)
+        (yas/expand-snippet (buffer-substring-no-properties (point-min) (point-max)))
+        (delete-region (point-min) old-point-max)))))
 ;; }}
 (provide 'ysl-coding)

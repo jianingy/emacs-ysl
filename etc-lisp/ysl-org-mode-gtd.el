@@ -117,14 +117,8 @@
                             (org-agenda-view-columns-initially t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down priority-down))))
-                (tags-todo "+PERSONAL-MAYBE/-STARTED"
+                (tags-todo "+PERSONAL-MAYBE/-STARTED-HOLD"
                            ((org-agenda-overriding-header "Recently Tasks")
-                            (org-tags-match-list-sublevels t)
-                            (org-agenda-view-columns-initially t)
-                            (org-agenda-sorting-strategy
-                             '(todo-state-down priority-down))))
-                (tags-todo "+PERSONAL+MAYBE"
-                           ((org-agenda-overriding-header "Future Tasks")
                             (org-tags-match-list-sublevels t)
                             (org-agenda-view-columns-initially t)
                             (org-agenda-sorting-strategy
@@ -134,7 +128,13 @@
                             (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
-                             '(todo-state-down priority-down))))))
+                             '(todo-state-down priority-down)))
+                (tags-todo "+PERSONAL+MAYBE"
+                           ((org-agenda-overriding-header "Future Tasks")
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-view-columns-initially t)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down priority-down)))))))
               ("w" "Work Agenda"
                ((agenda ""
                         ((org-agenda-ndays 7)
@@ -190,13 +190,17 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-WAITING"
+                (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-HOLD"
                            ((org-agenda-overriding-header "Recently Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
+                (todo "HOLD"
+                      ((org-agenda-overriding-header "Postponed tasks")))
+                (todo "CLOSED"
+                      ((org-agenda-overriding-header "Recently Closed tasks")))
                 (tags-todo "+MAYBE-REFILE-CANCELLED-NOTRACK/!-NEXT-STARTED-WAITING"
                            ((org-agenda-overriding-header "Future Tasks")
                             (org-tags-match-list-sublevels 'indented)
@@ -204,8 +208,6 @@
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
-                (todo "WAITING-NOTRACK|HOLD"
-                      ((org-agenda-overriding-header "Waiting and Postponed tasks")))
                 (tags "-REFILE-PROJECT-NOTRACK/"
                       ((org-agenda-overriding-header "Tasks to Archive")
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks))))
@@ -277,8 +279,6 @@ as the default task."
     (org-clock-out))
   (org-agenda-remove-restriction-lock))
 
-(defvar bh/organization-task-id "29E7D38E-0C32-4979-AECB-7C4B48BFAD5B")
-
 (defun bh/clock-in-organization-task-as-default ()
   (interactive)
   (save-restriction
@@ -332,6 +332,24 @@ as the default task."
        (t
         (org-with-point-at pom
           (org-agenda-set-restriction-lock restriction-type)))))))
+
+;; }}
+
+;; punch-in/out on screensaver {{
+(require 'dbus)
+
+(defun ysl/org-check-in-out-on-screensaver (p-screen-locked)
+  (if p-screen-locked
+      (progn
+        (bh/punch-out)
+        (message "punch-out since screen is locked"))
+    (progn
+      (bh/punch-in 0)
+      (message "punch-in since screen is unlocked"))))
+
+(dbus-register-signal :session "org.gnome.ScreenSaver" "/org/gnome/ScreenSaver"
+                      "org.gnome.ScreenSaver" "ActiveChanged"
+                      'ysl/org-check-in-out-on-screensaver)
 
 ;; }}
 
