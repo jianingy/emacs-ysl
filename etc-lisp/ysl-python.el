@@ -11,28 +11,6 @@
 
 (define-key python-mode-map (kbd "C-c C-c") 'compile-python)
 
-;; Initialize Pymacs {{
-;; use the pymacs shipped with python-mode
-(setenv "PYMACS_INSTALL_DIR" (concat conf-root-dir "/el-get/python-mode"))
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(autoload 'pymacs-autoload "pymacs" nil t)
-(pymacs-load "ropemacs" "rope-")
-;; }}
-
-;; Ropemacs Settings {{
-(setq ropemacs-enable-shortcuts nil
-      ropemacs-local-prefix "C-c C-p"
-      ropemacs-codeassist-maxfixes 3 ;; Stops from erroring if there's a syntax err
-      ropemacs-guess-project t
-      ropemacs-enable-autoimport t
-      ropemacs-confirm-saving 'nil)
-;; }}
-
-
 ;; compile python code {{
 (defun compile-python ()
   "Use compile to run python programs"
@@ -41,6 +19,17 @@
       (compile (concat "python"
                        " " (buffer-file-name)))
     (compile (concat ysl/python-executable " " (buffer-file-name)))))
+;; }}
+
+;;Ryan's python specific tab completion
+(defun ryan-python-tab ()
+  ; Try the following:
+  ; 1) Do a yasnippet expansion
+  ; 2) Do a Rope code completion
+  ; 3) Do an indent
+  (interactive)
+  (if (not (ac-start))
+      (indent-for-tab-command)))
 ;; }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -113,11 +102,36 @@
 
 ;; }}
 
-;; initial hook {{
-; check if rope-completions exists
-(unless (fboundp 'rope-completions)
-  (error "rope-completions not found, try development version of ropemacs"))
+;; Initialize Pymacs {{
+;; use the pymacs shipped with python-mode
+(setenv "PYMACS_INSTALL_DIR" (concat conf-root-dir "/el-get/python-mode"))
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs" nil t)
+;; }}
 
+; check if rope-completions exists
+
+(if (file-exists-p ysl/python-executable)
+  (progn
+    (message "found python at %s" ysl/python-executable)
+    (pymacs-load "ropemacs" "rope-")
+    (unless (fboundp 'rope-completions)
+      (error "rope-completions not found, try development version of ropemacs"))))
+
+;; Ropemacs Settings {{
+(setq ropemacs-enable-shortcuts nil
+      ropemacs-local-prefix "C-c C-p"
+      ropemacs-codeassist-maxfixes 3 ;; Stops from erroring if there's a syntax err
+      ropemacs-guess-project t
+      ropemacs-enable-autoimport t
+      ropemacs-confirm-saving 'nil)
+;; }}
+
+;; initial hook {{
 (add-hook 'python-mode-hook
           (lambda ()
 ;            (auto-complete-mode 1)
@@ -147,16 +161,5 @@
 
 ;; remap tab key {{
 ; (define-key python-mode-map "\t" 'ryan-python-tab)
-
-;;Ryan's python specific tab completion
-(defun ryan-python-tab ()
-  ; Try the following:
-  ; 1) Do a yasnippet expansion
-  ; 2) Do a Rope code completion
-  ; 3) Do an indent
-  (interactive)
-  (if (not (ac-start))
-      (indent-for-tab-command)))
-;; }}
 
 (provide 'ysl-python)
