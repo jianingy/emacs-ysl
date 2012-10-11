@@ -179,7 +179,9 @@
                              '(category-keep))))))
 
               ("a" "Default Agenda"
-               ((agenda "" nil)
+               ((agenda ""
+                        ((org-agenda-ndays 1)
+                         (org-agenda-priority '(priority-up effort-down))))
                 (tags "LEVEL=1+REFILE-NOTRACK"
                       ((org-agenda-overriding-header "Notes and Tasks to Refile")
                        (org-agenda-overriding-header "Tasks to Refile")))

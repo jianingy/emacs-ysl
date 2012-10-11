@@ -9,7 +9,7 @@
 (define-key ac-complete-mode-map "\r" nil)
 
 ;; (setq ac-dwim t) ;; Do What I Mean Mode: enabled by default
-;; (setq ac-auto-start 3)
+(setq ac-auto-start 3)
 
 ;; enable auto complete for all buffer
 
