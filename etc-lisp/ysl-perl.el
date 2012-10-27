@@ -28,17 +28,16 @@
 ;;                       temp-file
 ;;                       (file-name-directory buffer-file-name))))
 ;;     (list "perl" (list "-wc " local-file))))
-(when (load "flymake" t)
-  (defun flymake-perl-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "perl" (list local-file))))
+(defun flymake-perl-init ()
+(let* ((temp-file (flymake-init-create-temp-buffer-copy
+				   'flymake-create-temp-inplace))
+	   (local-file (file-relative-name
+					temp-file
+					(file-name-directory buffer-file-name))))
+  (list "perl" (list local-file))))
 
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-pyflakes-init)))
+(add-to-list 'flymake-allowed-file-name-masks
+		   '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-pyflakes-init))
 ;; }}
 
 ;; compile perl code {{

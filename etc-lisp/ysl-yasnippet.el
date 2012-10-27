@@ -1,7 +1,8 @@
 (require 'ysl-init)
 (require 'yasnippet)
+(yas-global-mode 1)
 
-(yas/initialize)
+;; (yas/initialize)
 (setq yas/root-directory (list (concat conf-root-dir "/yasnippets/vendor")
                                (concat conf-root-dir "/yasnippets/ysl")))
 

@@ -134,7 +134,7 @@ Skips capture tasks."
 ;; }}
 
 ;; should be 'required' after setup {{
-(require 'org-install)
+;; (require 'org-install) ;; deprecated
 (require 'org-habit)
 (require 'ob-twopi)
 (require 'ob-pygment)

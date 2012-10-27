@@ -37,8 +37,8 @@
         (:name flymake-jslint :type emacswiki)
         (:name flymake-shell :type emacswiki)
         (:name hexrgb :type emacswiki)
-        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
-        (:name yasnippet-bundle :type elpa)
+;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
+;        (:name yasnippet-bundle :type elpa)
         ))
 
 (setq ysl-packages (append '(
@@ -65,6 +65,7 @@
                              flymake-point
                              flymake-ruby
                              flymake-shell
+							 fuzzy
                              google-c-style
                              google-maps
                              haskell-mode
@@ -88,7 +89,9 @@
                              xml-rpc-el
                              yaml-mode
                              org2blog  ;; must place after xml-rpc-el
-                          ;; yasnippet ;; use yasnippet-bundle since this one is broken
+							 o-blog
+							 popup
+                             yasnippet 
                              )(mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
