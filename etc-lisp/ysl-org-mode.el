@@ -28,10 +28,10 @@
                 (lambda ()
                   (make-variable-buffer-local 'yas/trigger-key)
                   ;; (highlight-current-line-on nil)
-                  (setq yas/trigger-key [tab])
                   (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-                  (auto-fill-mode)
-                  (define-key yas/keymap [tab] 'yas/next-field)))))
+                  ;;(setq yas/trigger-key [tab])
+                  ;;(define-key yas/keymap [tab] 'yas/next-field)
+                  (auto-fill-mode)))))
 ;; }}
 
 ;; Basic Settings {{
