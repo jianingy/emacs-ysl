@@ -76,7 +76,7 @@
 							 magit
                              nxhtml
                              org-mode
-                             ;; pymacs ;; conflicts with python-mode
+                             pymacs 
                              python-mode
                              ruby-compilation
                              ruby-mode
