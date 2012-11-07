@@ -18,7 +18,6 @@
 (add-search-path "site-lisp/el-get")
 (require 'el-get)
 ;; }}
-
 (setq el-get-sources
       '(
 ;        (:name nxhtml
@@ -51,6 +50,7 @@
                              auto-complete-emacs-lisp
                              auto-complete-ruby
                              auto-complete-yasnippet
+                             ac-python
                              color-theme
                              color-theme-ir-black
                              color-theme-tango
@@ -59,21 +59,22 @@
                              cssh
                              ecb
                              ess
+                             emacs-w3m
                              flim
                              flymake-cursor
                              flymake-jslint
                              flymake-point
                              flymake-ruby
                              flymake-shell
-							 fuzzy
+                             fuzzy
                              google-c-style
                              google-maps
                              haskell-mode
-							 hexrgb
+                             hexrgb
                              highlight-parentheses
                              htmlize
                              inf-ruby
-							 magit
+                             magit
                              nxhtml
                              org-mode
                              pymacs 
@@ -89,8 +90,8 @@
                              xml-rpc-el
                              yaml-mode
                              org2blog  ;; must place after xml-rpc-el
-							 o-blog
-							 popup
+                             o-blog
+                             popup
                              yasnippet 
                              )(mapcar 'el-get-source-name el-get-sources)))
 

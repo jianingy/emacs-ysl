@@ -12,32 +12,25 @@
 
 (add-hook 'cperl-mode-hook
 	  '(lambda ()
-            (unless (eq buffer-file-name nil) (flymake-mode))
-	        (setq ndent-tabs-mode nil
-                  cperl-indent-level 4)
-			(local-set-key "\C-m" 'newline-and-indent)
-			(local-set-key (kbd "C-c C-c") 'compile-perl)
-			(set (make-local-variable 'compilation-scroll-output) nil)
-			))
+             (unless (eq buffer-file-name nil) (flymake-mode))
+             (setq ndent-tabs-mode nil
+                   cperl-indent-level 4)
+             (local-set-key "\C-m" 'newline-and-indent)
+             (local-set-key (kbd "C-c C-c") 'compile-perl)
+             (set (make-local-variable 'compilation-scroll-output) nil)
+             ))
 
 ;; flyamke {{
-;; (defun flymake-perl-init ()
-;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;;                      'flymake-create-temp-inplace))
-;;      	 (local-file (file-relative-name
-;;                       temp-file
-;;                       (file-name-directory buffer-file-name))))
-;;     (list "perl" (list "-wc " local-file))))
 (defun flymake-perl-init ()
-(let* ((temp-file (flymake-init-create-temp-buffer-copy
-				   'flymake-create-temp-inplace))
-	   (local-file (file-relative-name
-					temp-file
-					(file-name-directory buffer-file-name))))
-  (list "perl" (list local-file))))
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list "perl" (list "-wc " local-file))))
 
 (add-to-list 'flymake-allowed-file-name-masks
-		   '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-pyflakes-init))
+             '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-perl-init))
 ;; }}
 
 ;; compile perl code {{

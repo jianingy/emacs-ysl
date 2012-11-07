@@ -35,10 +35,6 @@
 
 ;; setup flymake {{
 (setq flymake-extension-use-showtip t)
-(setq flymake-allowed-file-name-masks
-      (list
-       '("\\.py\\'" flymake-pyflakes-init)
-       '("\\.p[ml]\\'" flymake-perl-init)))
 ;; }}
 
 ;; setup whitespace detection {{
