@@ -41,7 +41,7 @@
             (local-set-key "\C-m" 'newline-and-indent))
 
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
-
 ;; }}
-
+;; do not start python shell at start
+(setq py-start-run-py-shell nil)
 (provide 'ysl-python)
