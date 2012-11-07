@@ -4,3 +4,6 @@
 [submodule "site-lisp/el-get"]
 	path = site-lisp/el-get
 	url = https://github.com/dimitri/el-get.git
+[submodule "site-lisp/pylookup"]
+	path = site-lisp/pylookup
+	url = https://github.com/tsgates/pylookup.git
