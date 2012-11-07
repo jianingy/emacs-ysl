@@ -50,7 +50,6 @@
                              auto-complete-emacs-lisp
                              auto-complete-ruby
                              auto-complete-yasnippet
-                             ac-python
                              color-theme
                              color-theme-ir-black
                              color-theme-tango
@@ -77,7 +76,7 @@
                              magit
                              nxhtml
                              org-mode
-                             pymacs 
+;                             pymacs
                              python-mode
                              ruby-compilation
                              ruby-mode
@@ -92,7 +91,8 @@
                              org2blog  ;; must place after xml-rpc-el
                              o-blog
                              popup
-                             yasnippet 
+                             tail
+                             yasnippet
                              )(mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
