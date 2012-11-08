@@ -36,10 +36,15 @@
                   py-indent-offset 4
                   py-smart-indentation nil)
             (py-smart-indentation-on)
+            (add-to-list 'ac-sources 'ac-source-pycomplete)
             (unless (eq buffer-file-name nil) (flymake-mode)))
 
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
 ;; }}
 ;; do not start python shell at start
 (setq py-start-run-py-shell nil)
+
+(add-search-path "el-get/python-mode/completion")
+(require 'auto-complete-pycomplete)
+
 (provide 'ysl-python)
