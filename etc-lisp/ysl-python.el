@@ -35,10 +35,8 @@
                   python-indent 4
                   py-indent-offset 4
                   py-smart-indentation nil)
-
-            (unless (eq buffer-file-name nil) (flymake-mode))
-
-            (local-set-key "\C-m" 'newline-and-indent))
+            (py-smart-indentation-on)
+            (unless (eq buffer-file-name nil) (flymake-mode)))
 
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
 ;; }}
