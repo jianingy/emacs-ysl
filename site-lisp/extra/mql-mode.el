@@ -24,12 +24,12 @@
 (defun compile-mql4 ()
   "compile mql4 file"
   (interactive)
-  (compile (concat mql4-compiler "\"" (buffer-file-name) "\"")))
+  (compile (concat mql4-compiler " \"" (buffer-file-name) "\"")))
 
 (defun compile-mql5 ()
   "compile mql4 file"
   (interactive)
-  (compile (concat mql5-compiler "\"" (buffer-file-name) "\"")))
+  (compile (concat mql5-compiler " \"" (buffer-file-name) "\"")))
 
 (defvar ac-source-mql
   '((candidates . mql-source-canidates)))
@@ -42,6 +42,7 @@
   (font-lock-add-keywords 'mql-mode mql-mode-keywords)
   (setq major-mode 'mql-mode)
   (set (make-local-variable 'ac-sources) (append ac-sources '(ac-source-mql)))
+  (set (make-local-variable 'compilation-scroll-output) t)
   (setq mode-name "MQL")
   (local-set-key "\C-c\C-b" 'compile-mql5)
   (local-set-key "\C-c\C-c" 'compile-mql4)

@@ -82,6 +82,7 @@
 (define-auto-insert "\\.pl" "template.pl")
 (define-auto-insert "\\.pm" "template.pm")
 (define-auto-insert "\\.ml" "template.ml")
+(define-auto-insert "\\.mq4" "template.mql")
 
 (defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
   "expand auto-inserted content as yasnippet templete,
