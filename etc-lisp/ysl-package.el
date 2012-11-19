@@ -36,6 +36,7 @@
         (:name flymake-jslint :type emacswiki)
         (:name flymake-shell :type emacswiki)
         (:name hexrgb :type emacswiki)
+        (:name layout-restore :type emacswiki)
 ;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
 ;        (:name yasnippet-bundle :type elpa)
         ))
@@ -73,6 +74,7 @@
                              highlight-parentheses
                              htmlize
                              inf-ruby
+							 ipython
                              magit
                              nxhtml
                              org-mode

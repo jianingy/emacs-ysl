@@ -7,3 +7,6 @@
 [submodule "site-lisp/pylookup"]
 	path = site-lisp/pylookup
 	url = https://github.com/tsgates/pylookup.git
+[submodule "site-lisp/golden-ratio"]
+	path = site-lisp/golden-ratio
+	url = git://github.com/roman/golden-ratio.el.git

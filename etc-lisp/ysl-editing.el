@@ -78,4 +78,11 @@
 
 (setq fill-column 79)
 
+;; layout-restore {{
+(require 'layout-restore)
+(setq layout-restore-after-switchbuffer nil)
+(setq layout-restore-after-killbuffer nil)
+(setq layout-restore-after-otherwindow nil)
+;; }}
+
 (provide 'ysl-editing)
