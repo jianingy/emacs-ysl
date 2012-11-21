@@ -85,4 +85,10 @@
 (setq layout-restore-after-otherwindow nil)
 ;; }}
 
+;; golden ratio {{
+(add-search-path "site-lisp/golden-ratio")
+(require 'golden-ratio)
+(golden-ratio-enable)
+;; }}
+
 (provide 'ysl-editing)

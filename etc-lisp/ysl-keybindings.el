@@ -12,9 +12,7 @@
 ;(global-set-key (kbd "C-.") 'tabbar-forward-group)
 
 ;; load layout key
-(global-set-key "\C-c \C-l" 'layout-restore)
-
-
+(global-set-key "\C-c\C-l" 'layout-restore)
 
 (global-set-key "\C-x\C-b" 'bs-show)
 (global-set-key "\C-x\C-a" 'ysl/switch-to-previous-buffer)
