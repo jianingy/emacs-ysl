@@ -23,7 +23,7 @@
 (require 'ysl-easypg)
 (require 'ysl-keybindings)
 (require 'ysl-frame-size)
-(require 'ysl-mode-line)
+;; (require 'ysl-mode-line)
 (require 'ysl-anything)
 
 ;; start emacs server {{

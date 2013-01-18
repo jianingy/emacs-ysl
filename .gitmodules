@@ -10,3 +10,6 @@
 [submodule "site-lisp/golden-ratio"]
 	path = site-lisp/golden-ratio
 	url = git://github.com/roman/golden-ratio.el.git
+[submodule "site-lisp/emacs-powerline"]
+	path = site-lisp/emacs-powerline
+	url = git@github.com:jianingy/emacs-powerline.git

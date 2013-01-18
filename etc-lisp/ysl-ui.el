@@ -19,6 +19,8 @@
  '(inhibit-startup-message t))             ;; disable splash screen
 
 
+(add-search-path "site-lisp/emacs-powerline")
+(require 'powerline)
 
 ;; enable iswtchb-mode
 (iswitchb-mode t)
