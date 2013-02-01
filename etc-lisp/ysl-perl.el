@@ -37,8 +37,7 @@
 (defun compile-perl ()
   "Use compile to run perl programs"
   (interactive)
-  (compile (concat "perl " (buffer-file-name)))
-  (switch-window))
+  (compile (concat "perl " (buffer-file-name))))
 ;; }}
 
 (provide 'ysl-perl)
