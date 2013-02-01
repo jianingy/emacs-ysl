@@ -98,4 +98,10 @@
         (yas-expand-snippet (buffer-substring-no-properties (point-min) (point-max)))
         (delete-region (point-min) old-point-max)))))
 ;; }}
+
+;; arduino mode {{
+(add-search-path "site-lisp/arduino-mode")
+(require 'arduino-mode)
+;; }}
+
 (provide 'ysl-coding)

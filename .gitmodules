@@ -13,3 +13,6 @@
 [submodule "site-lisp/emacs-powerline"]
 	path = site-lisp/emacs-powerline
 	url = git@github.com:jianingy/emacs-powerline.git
+[submodule "site-lisp/arduino-mode"]
+	path = site-lisp/arduino-mode
+	url = git://github.com/bookest/arduino-mode.git
