@@ -34,12 +34,16 @@
         (:name css-mode :type elpa)
         (:name flymake-cursor :type emacswiki)
         (:name flymake-jslint :type emacswiki)
-        (:name flymake-shell :type emacswiki)
         (:name hexrgb :type emacswiki)
         (:name layout-restore :type emacswiki)
 ;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
 ;        (:name yasnippet-bundle :type elpa)
-        ))
+        (:name ecb
+         :description "Emacs Code Browser"
+         :type github
+         :pkgname "alexott/ecb"
+         :build `(("make" "CEDET=" ,(car (delq nil (mapcar (lambda (x) (and (string-match "cedet" x) x)) load-path))) ,(concat "EMACS=" (shell-quote-argument el-get-emacs)))))
+))
 
 (setq ysl-packages (append '(
                              ahg
@@ -74,7 +78,7 @@
                              highlight-parentheses
                              htmlize
                              inf-ruby
-							 ipython
+                             ipython
                              magit
                              nxhtml
                              org-mode
