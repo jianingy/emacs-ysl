@@ -35,7 +35,7 @@
 ;; (when (fboundp 'fringe-mode) (fringe-mode '(0 . 7))) ;; set fringe size
 
 ;; disable menu-bar when using gnu/linux {{
-(if (eq system-type 'gnu/linux) (menu-bar-mode -1))
+;; (if (eq system-type 'gnu/linux) (menu-bar-mode -1))
 ;; }}
 
 ;; set linum format {{
