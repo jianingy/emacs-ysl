@@ -41,6 +41,7 @@
     (ysl/enable-terminal-theme)))
 
 (add-hook 'after-make-frame-functions 'ysl/select-color-theme)
+(defvar ysl/disable-default-color-theme nil)
 
 (unless ysl/disable-default-color-theme
   (if (window-system)
