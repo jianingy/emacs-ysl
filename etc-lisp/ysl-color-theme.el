@@ -42,11 +42,12 @@
 
 (add-hook 'after-make-frame-functions 'ysl/select-color-theme)
 
-(if (window-system)
-    (if (eq system-type 'darwin)
-        (ysl/enable-window-theme-alt)
-      (ysl/enable-window-theme-alt))
-  (ysl/enable-terminal-theme))
+(unless ysl/disable-default-color-theme
+  (if (window-system)
+      (if (eq system-type 'darwin)
+          (ysl/enable-window-theme-alt)
+        (ysl/enable-window-theme-alt))
+    (ysl/enable-terminal-theme)))
 
 (setq color-theme-is-global nil)
 
