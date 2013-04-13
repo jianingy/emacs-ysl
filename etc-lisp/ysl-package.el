@@ -80,6 +80,7 @@
                              inf-ruby
                              ipython
                              magit
+                             markdown-mode
                              nxhtml
                              org-mode
                              pymacs
