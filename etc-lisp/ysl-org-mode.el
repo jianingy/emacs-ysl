@@ -138,7 +138,7 @@ Skips capture tasks."
 (require 'org-habit)
 (require 'ob-twopi)
 (require 'ob-pygment)
-(require 'org-e-man)
+(require 'ox-man)
 ;; }}}
 
 
