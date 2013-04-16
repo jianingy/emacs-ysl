@@ -127,5 +127,9 @@
         (revert-buffer t t t) )))
   (message "Refreshed open files.") )
 
+;; compile & upload arscons
+(defun compile-arscons ()
+  (interactive)
+  (compile "scons ARDUINO_PORT=/dev/ttyACM0 upload"))
 
 (provide 'ysl-extra)
