@@ -22,12 +22,19 @@
     (custom-set-faces
      '(org-hide (( t (:background "#101010" :foreground "#101010")))))))
 
+(defun ysl/enable-window-theme-tomorrow ()
+  (progn
+    (add-search-path "el-get/tomorrow-theme/GNU Emacs")
+    (require 'tomorrow-night-theme)
+    (custom-set-faces
+     '(org-hide (( t (:background "#1d1f21" :foreground "#1d1f21")))))))
+
 (defun ysl/enable-terminal-theme ()
   (progn
     (require 'color-theme-ir-black)
     (color-theme-ir-black)
-    (set-face-background 'modeline "grey20")
-    (set-face-foreground 'modeline "grey70")))
+    (set-face-background 'mode-line "grey20")
+    (set-face-foreground 'mode-line "grey70")))
 
 ;; ;; INSIPRED BY http://emacs-fu.blogspot.com/2009/03/color-theming.html
 
@@ -46,8 +53,8 @@
 (unless ysl/disable-default-color-theme
   (if (window-system)
       (if (eq system-type 'darwin)
-          (ysl/enable-window-theme-alt)
-        (ysl/enable-window-theme-alt))
+          (ysl/enable-window-theme-tomorrow)
+        (ysl/enable-window-theme-tomorrow))
     (ysl/enable-terminal-theme)))
 
 (setq color-theme-is-global nil)

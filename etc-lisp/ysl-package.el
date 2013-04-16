@@ -18,6 +18,7 @@
 (add-search-path "site-lisp/el-get")
 (require 'el-get)
 ;; }}
+
 (setq el-get-sources
       '(
 ;        (:name nxhtml
@@ -30,10 +31,14 @@
                :description "Mode for editing crontab files"
                :type http
                :url "http://www.mahalito.net/~harley/elisp/crontab-mode.el")
-
+        (:name metaweblog
+               :description "an emacs library to access metaweblog based weblogs"
+               :type github
+               :load-path (".")
+               :url "https://github.com/punchagan/metaweblog.el.git")
         (:name css-mode :type elpa)
         (:name flymake-cursor :type emacswiki)
-        (:name flymake-jslint :type emacswiki)
+;        (:name flymake-jslint :type emacswiki)
         (:name hexrgb :type emacswiki)
         (:name layout-restore :type emacswiki)
 ;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
@@ -46,8 +51,15 @@
 ))
 
 (setq ysl-packages (append '(
+                             ;; some prerequisites
+							 smart-operator
+							 autopair
+                             xml-rpc-el
+                             metaweblog ;; must be placed after xml-rpc-el
+
                              ahg
                              anything
+							 auctex
                              popup
                              auto-complete
                              auto-complete-clang
@@ -66,7 +78,7 @@
                              emacs-w3m
                              flim
                              flymake-cursor
-                             flymake-jslint
+                             ;flymake-jslint
                              flymake-point
                              flymake-ruby
                              flymake-shell
@@ -83,6 +95,8 @@
                              markdown-mode
                              nxhtml
                              org-mode
+							 org-jekyll
+							 org-impress-js
                              pymacs
                              python-mode
                              ruby-compilation
@@ -93,12 +107,12 @@
                              virtualenv
                              vkill
                              xcscope
-                             xml-rpc-el
                              yaml-mode
-                             org2blog  ;; must place after xml-rpc-el
+                             ;org2blog    ;; must be placed after xml-rpc-el & metaweblog
                              o-blog
                              popup
                              tail
+                             tomorrow-theme
                              yasnippet
                              )(mapcar 'el-get-source-name el-get-sources)))
 
