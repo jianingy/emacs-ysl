@@ -31,6 +31,11 @@
                :type http
                :url "http://www.mahalito.net/~harley/elisp/crontab-mode.el")
 
+        (:name metaweblog
+               :description "an emacs library to access metaweblog based weblogs"
+               :type git
+               :url "https://github.com/punchagan/metaweblog.el.git")
+
         (:name css-mode :type elpa)
         (:name flymake-cursor :type emacswiki)
         (:name flymake-jslint :type emacswiki)
@@ -99,6 +104,7 @@
                              o-blog
                              popup
                              tail
+                             tomorrow-theme
                              yasnippet
                              )(mapcar 'el-get-source-name el-get-sources)))
 

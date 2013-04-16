@@ -11,11 +11,18 @@ First, make sure that you do not have the following files:
 
 Second, make sure that you have the following softwares:
 
-- R (remove ess if you don't want to use R)
 - slime
 - svn
 - bzr
 - git
+- autoconf
+- automake
+- mercurial
+
+If you wanna use ess, you also need to install the following prerequisites.
+
+- R
+- Tex
 
 Third, clone this repository
 
@@ -37,3 +44,5 @@ cd ~/.emacs.d
 emacs -batch -q -l init.el
 
 #+end_example
+
+Additional, copy .emacs.d/el-get/python-mode/completion/pycomplete.py to somewhere in your python path

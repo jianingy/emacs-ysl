@@ -33,8 +33,8 @@
   (progn
     (require 'color-theme-ir-black)
     (color-theme-ir-black)
-    (set-face-background 'modeline "grey20")
-    (set-face-foreground 'modeline "grey70")))
+    (set-face-background 'mode-line "grey20")
+    (set-face-foreground 'mode-line "grey70")))
 
 ;; ;; INSIPRED BY http://emacs-fu.blogspot.com/2009/03/color-theming.html
 
