@@ -27,6 +27,7 @@
     (add-search-path "el-get/tomorrow-theme/GNU Emacs")
     (require 'tomorrow-night-theme)
     (custom-set-faces
+     '(highlight (( t (:foreground "#1d1f21"))))
      '(org-hide (( t (:background "#1d1f21" :foreground "#1d1f21")))))))
 
 (defun ysl/enable-terminal-theme ()
