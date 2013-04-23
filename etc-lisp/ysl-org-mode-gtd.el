@@ -1,3 +1,5 @@
+(require 'ysl-extra)
+
 ;; Basic Settings {{
 ; Remind things those deadline are in 15 days
 (setq org-deadline-warning-days 15)
@@ -31,16 +33,16 @@
               (sequence "OPEN(O!)" "CHECK(K)" "|" "CLOSED(C!)"))))
 
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
-              ("NEXT" :foreground "orange" :weight bold)
-              ("STARTED" :foreground "steelblue" :weight bold)
-              ("DONE" :foreground "forest green" :weight bold)
-              ("WAITING" :foreground "orange" :weight bold)
-              ("HOLD" :foreground "magenta" :weight bold)
-              ("CANCELLED" :foreground "forest green" :weight bold)
-              ("OPEN" :foreground "lightblue" :weight bold)
-              ("CHECK" :foreground "yellow" :weight bold)
-              ("CLOSED" :foreground "forest green" :weight bold))))
+      (quote (("TODO" :foreground "#cc6666" :weight bold)
+              ("NEXT" :foreground "#de935f" :weight bold)
+              ("STARTED" :foreground "#8abeb7" :weight bold)
+              ("DONE" :foreground "#b5bd68" :weight bold)
+              ("WAITING" :foreground "#de935f" :weight bold)
+              ("HOLD" :foreground "#b294bb" :weight bold)
+              ("CANCELLED" :foreground "#b5bd68" :weight bold)
+              ("OPEN" :foreground "#81a2be" :weight bold)
+              ("CHECK" :foreground "#f0c674" :weight bold)
+              ("CLOSED" :foreground "#de935f" :weight bold))))
 
 ;; todo state trigger
 (setq org-todo-state-tags-triggers
@@ -81,22 +83,23 @@
 ;; }}
 
 ;;; Capture templates {{{
-(defvar ysl/default-gtd-org "~/org/gtd/default.org")
+(defvar ysl/org-base-directory "~/notes")
+(defvar ysl/org-default-schedule-file "schedule/default.org")
 (setq org-capture-templates
-      (quote (("t" "TODO" entry (file ysl/default-gtd-org)
+      (quote (("t" "TODO" entry (file (concat org-base-directory ysl/org-default-schedule-file))
                "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("n" "NEXT" entry (file "~/org/default.org")
+              ("n" "NEXT" entry (file (concat org-base-directory ysl/org-default-schedule-file))
                "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("c" "CHECK" entry (file "~/org/default.org")
+              ("c" "CHECK" entry (file (concat org-base-directory ysl/org-default-schedule-file))
                "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("s" "SOMEDAY" entry (file "~/org/default.org")
+              ("s" "SOMEDAY" entry (file (concat org-base-directory ysl/org-default-schedule-file))
                "* SOMEDAY %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("h" "HABIT" entry (file "~/org/default.org")
+              ("h" "HABIT" entry (file (concat org-base-directory ysl/org-default-schedule-file))
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
 
 ;;; Agenda Files {{{
-(defvar ysl/org-agenda-files (quote ("~/org/gtd")))
+(defvar ysl/org-agenda-files (quote ("~/notes/schedule")))
 (setq org-agenda-files ysl/org-agenda-files)
 ;;; }}}
 

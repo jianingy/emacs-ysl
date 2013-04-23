@@ -132,4 +132,9 @@
   (interactive)
   (compile "scons ARDUINO_PORT=/dev/ttyACM0 upload"))
 
+;; get color code from tomorrow theme
+(defun ysl/get-tomorrow-color (theme color)
+  (cdr (assoc color (cdr (assoc theme color-theme-tomorrow-colors)))))
+
+
 (provide 'ysl-extra)
