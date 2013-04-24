@@ -83,18 +83,18 @@
 ;; }}
 
 ;;; Capture templates {{{
-(defvar ysl/org-base-directory "~/notes")
+(defvar ysl/org-base-directory "~/notes/")
 (defvar ysl/org-default-schedule-file "schedule/default.org")
 (setq org-capture-templates
-      (quote (("t" "TODO" entry (file (concat org-base-directory ysl/org-default-schedule-file))
+      (quote (("t" "TODO" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("n" "NEXT" entry (file (concat org-base-directory ysl/org-default-schedule-file))
+              ("n" "NEXT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("c" "CHECK" entry (file (concat org-base-directory ysl/org-default-schedule-file))
+              ("c" "CHECK" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("s" "SOMEDAY" entry (file (concat org-base-directory ysl/org-default-schedule-file))
+              ("s" "SOMEDAY" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* SOMEDAY %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("h" "HABIT" entry (file (concat org-base-directory ysl/org-default-schedule-file))
+              ("h" "HABIT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
 
