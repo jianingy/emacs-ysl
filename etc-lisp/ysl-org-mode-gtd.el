@@ -33,16 +33,16 @@
               (sequence "OPEN(O!)" "CHECK(K)" "|" "CLOSED(C!)"))))
 
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "#cc6666" :weight bold)
-              ("NEXT" :foreground "#de935f" :weight bold)
-              ("STARTED" :foreground "#8abeb7" :weight bold)
-              ("DONE" :foreground "#b5bd68" :weight bold)
-              ("WAITING" :foreground "#de935f" :weight bold)
-              ("HOLD" :foreground "#b294bb" :weight bold)
-              ("CANCELLED" :foreground "#b5bd68" :weight bold)
-              ("OPEN" :foreground "#81a2be" :weight bold)
-              ("CHECK" :foreground "#f0c674" :weight bold)
-              ("CLOSED" :foreground "#de935f" :weight bold))))
+      (quote (("TODO" :foreground "#cc6666" :weight normal)
+              ("NEXT" :foreground "#de935f" :weight normal)
+              ("STARTED" :foreground "#8abeb7" :weight normal)
+              ("DONE" :foreground "#b5bd68" :weight normal)
+              ("WAITING" :foreground "#de935f" :weight normal)
+              ("HOLD" :foreground "#b294bb" :weight normal)
+              ("CANCELLED" :foreground "#b5bd68" :weight normal)
+              ("OPEN" :foreground "#81a2be" :weight normal)
+              ("CHECK" :foreground "#f0c674" :weight normal)
+              ("CLOSED" :foreground "#de935f" :weight normal))))
 
 ;; todo state trigger
 (setq org-todo-state-tags-triggers
