@@ -24,6 +24,7 @@
 (global-set-key "\C-cq" 'ysl/goto-match-paren) ;; 找到匹配的括号
 (global-set-key "\C-cww" 'ysl/insert-dict-cn)
 (global-set-key (kbd "C-z") 'switch-to-eshell)
+(global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
 ;;
 (global-set-key "\C-c\C-\\" 'winner-undo)
 ;; Org-mode Standard key bindings
