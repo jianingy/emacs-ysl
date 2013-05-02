@@ -1,5 +1,3 @@
-#name : #ifndef XXXX; #define XXXX; #endif
-# --
 /*
  * filename   : `(buffer-name)`
  * created at : `(format-time-string "%F %T")`
