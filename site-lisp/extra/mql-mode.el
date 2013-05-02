@@ -7,9 +7,11 @@
 
 
 ;;;###autoload
-
 (add-to-list 'auto-mode-alist '("\\.mq4\\'" . mql-mode))
+(add-to-list 'auto-mode-alist '("\\.mq5\\'" . mql-mode))
+(add-to-list 'auto-mode-alist '("\\.mql\\'" . mql-mode))
 (add-to-list 'auto-mode-alist '("\\.ex4\\'" . mql-mode))
+(add-to-list 'auto-mode-alist '("\\.ex5\\'" . mql-mode))
 
 (defvar mql4-compiler "c:\\bin\\metalang4.exe")
 (defvar mql5-compiler "c:\\bin\\metalang5.exe")
