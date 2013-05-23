@@ -52,14 +52,14 @@
 
 (setq ysl-packages (append '(
                              ;; some prerequisites
-							 smart-operator
-							 autopair
+                             smart-operator
+                             autopair
                              xml-rpc-el
                              metaweblog ;; must be placed after xml-rpc-el
 
                              ahg
                              anything
-							 auctex
+                             auctex
                              popup
                              auto-complete
                              auto-complete-clang
@@ -95,8 +95,9 @@
                              markdown-mode
                              nxhtml
                              org-mode
-							 org-jekyll
-							 org-impress-js
+                             org-jekyll
+                             org-impress-js
+                             puppet-mode
                              pymacs
                              python-mode
                              ruby-compilation
