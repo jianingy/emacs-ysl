@@ -19,6 +19,7 @@
                        (if (not (minibufferp (current-buffer)))
                            (auto-complete-mode 1))
                        ))
-(real-global-auto-complete-mode t)
+;; enable automatically only for modes in ac-modes
+;; (real-global-auto-complete-mode t)
 
 (provide 'ysl-auto-complete)
