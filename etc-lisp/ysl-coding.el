@@ -1,6 +1,7 @@
 (require 'ysl-init)
 (require 'ysl-extra)
 
+(require 'magit) ;; Git support
 (require 'ahg) ;; Mercurial Push & Pull support
 (require 'js) ;; require fixed js-mode
 (require 'mql-mode) ;; MetaTrader Mode
