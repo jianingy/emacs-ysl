@@ -114,6 +114,11 @@
                             (org-agenda-view-columns-initially t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down priority-down))))
+                (tags-todo "-WAITING-CANCELLED-NOTRACK/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks")
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
                 (tags-todo "+PERSONAL-MAYBE/-STARTED-HOLD"
                            ((org-agenda-overriding-header "Recently Tasks")
                             (org-tags-match-list-sublevels t)
@@ -166,13 +171,17 @@
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))))
-
               ("a" "Default Agenda"
                ((agenda ""
                         ((org-agenda-ndays 1)
                          (org-agenda-priority '(priority-up effort-down))))
                 (tags-todo "-WAITING-CANCELLED-NOTRACK/!STARTED"
                            ((org-agenda-overriding-header "Started Tasks")
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+                (tags-todo "-WAITING-CANCELLED-NOTRACK/!NEXT"
+                           ((org-agenda-overriding-header "Next Tasks")
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
