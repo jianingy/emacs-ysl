@@ -1,12 +1,11 @@
 (require 'ysl-extra)
 
-;; Patch org-mode to use vertical splitting {{
-(defadvice org-prepare-agenda (after org-fix-split)
-  (toggle-window-split))
-(ad-activate 'org-prepare-agenda)
-;; }}
-
 ;; Basic Settings {{
+; task juggler settings
+(setq org-taskjuggler-project-tag "PROJECT"
+      org-taskjuggler-resource-tag "RESOURCE"
+      org-taskjuggler-report-tag "REPORT")
+
 ; Remind things those deadline are in 15 days
 (setq org-deadline-warning-days 15)
 
