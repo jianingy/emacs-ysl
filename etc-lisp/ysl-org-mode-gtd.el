@@ -1,5 +1,11 @@
 (require 'ysl-extra)
 
+;; Patch org-mode to use vertical splitting {{
+(defadvice org-prepare-agenda (after org-fix-split)
+  (toggle-window-split))
+(ad-activate 'org-prepare-agenda)
+;; }}
+
 ;; Basic Settings {{
 ; Remind things those deadline are in 15 days
 (setq org-deadline-warning-days 15)
@@ -23,13 +29,12 @@
 ;;; STARTED: Task be working on
 ;;; DONE: Task finished
 ;;; WAITING: Pending due to some reason
-;;; HOLD:
 ;;; CANCELLED: Cancelled due to some reason
 ;;; OPEN: An issue need to be resolved
 ;;; CLOSED: An resolved issued
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d!/!)")
-              (sequence "WAITING(w@/!)" "HOLD(h!)" "|" "CANCELLED(c@/!)")
+              (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)")
               (sequence "OPEN(O!)" "CHECK(K)" "|" "CLOSED(C!)"))))
 
 (setq org-todo-keyword-faces
@@ -38,7 +43,6 @@
               ("STARTED" :foreground "#8abeb7" :weight normal)
               ("DONE" :foreground "#b5bd68" :weight normal)
               ("WAITING" :foreground "#de935f" :weight normal)
-              ("HOLD" :foreground "#b294bb" :weight normal)
               ("CANCELLED" :foreground "#b5bd68" :weight normal)
               ("OPEN" :foreground "#81a2be" :weight normal)
               ("CHECK" :foreground "#f0c674" :weight normal)
@@ -48,12 +52,11 @@
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("CANCELLED" . t))
               ("WAITING" ("WAITING" . t))
-              ("HOLD" ("WAITING" . t) ("HOLD" . t))
-              (done ("WAITING") ("HOLD"))
-              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("STARTED" ("WAITING") ("CANCELLED") ("HOLD"))
-              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+              (done ("WAITING"))
+              ("TODO" ("WAITING") ("CANCELLED"))
+              ("NEXT" ("WAITING") ("CANCELLED"))
+              ("STARTED" ("WAITING") ("CANCELLED"))
+              ("DONE" ("WAITING") ("CANCELLED")))))
 ;;; }}}
 
 ;;; Tags with fast selection keys {{{
@@ -64,20 +67,14 @@
 ;;; PHONE: things need to communicate with others
 ;;; ---
 ;;; MAYBE: things may be done on someday
-;;; IMPORTANT: an important thing
-;;; NOTE: it is a note
 (setq org-tag-alist (quote ((:startgroup)
-                            ("@OFFICE" . ?o)
                             ("@HOME" . ?h)
-                            ("@COMPUTER" . ?c)
                             ("@STADIUM" . ?s)
-                            ("@PHONE" . ?p)
                             (:endgroup)
-                            ("PERSONAL" . ?l)
-                            ("WORK" . ?w)
-                            ("MAYBE" . ?m)
-                            ("IMPORTANT" . ?i)
-                            ("NOTE" . ?n))))
+                            ("ADTIME" . ?a)
+                            ("PERSONAL" . ?p)
+                            ("TAOBAO" . ?t)
+                            ("USTACK" . ?u))))
 ;;; }}}
 
 ;; }}
@@ -92,8 +89,6 @@
                "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("c" "CHECK" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("s" "SOMEDAY" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
-               "* SOMEDAY %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("h" "HABIT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
@@ -144,14 +139,6 @@
                         (org-agenda-repeating-timestamp-show-all t)
                         (org-agenda-skip-function (ysl/org-agenda-skip-tag "WORK"))
                         (org-agenda-overriding-header "Work Agenda:")))
-                (tags-todo "+WORK-WAITING-CANCELLED/!NEXT|STARTED"
-                           ((org-agenda-overriding-header "Next Tasks")
-                            (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
-                            (org-agenda-todo-ignore-scheduled t)
-                            (org-agenda-todo-ignore-deadlines t)
-                            (org-tags-match-list-sublevels t)
-                            (org-agenda-sorting-strategy
-                             '(todo-state-down effort-up category-keep))))
                 (tags-todo "-REFILE-CANCELLED-MAYBE/!CHECK"
                            ((org-agenda-overriding-header "Checking Issues")
                             (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
@@ -185,32 +172,28 @@
                ((agenda ""
                         ((org-agenda-ndays 1)
                          (org-agenda-priority '(priority-up effort-down))))
-                (tags "LEVEL=1+REFILE-NOTRACK"
-                      ((org-agenda-overriding-header "Notes and Tasks to Refile")
-                       (org-agenda-overriding-header "Tasks to Refile")))
                 (tags-todo "-WAITING-CANCELLED-NOTRACK/!STARTED"
                            ((org-agenda-overriding-header "Started Tasks")
-                            (org-agenda-todo-ignore-scheduled t)
-                            (org-agenda-todo-ignore-deadlines t)
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
+                (todo "HOLD"
+                      ((org-agenda-overriding-header "Postponed tasks")))
                 (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-HOLD"
-                           ((org-agenda-overriding-header "Recently Tasks")
+                           ((org-agenda-overriding-header "Time Insensitive Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
                             (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
-                (todo "HOLD"
-                      ((org-agenda-overriding-header "Postponed tasks")))
+                (tags "LEVEL=1+REFILE-NOTRACK"
+                      ((org-agenda-overriding-header "Notes and Tasks to Refile")
+                       (org-agenda-overriding-header "Tasks to Refile")))
                 (todo "CLOSED"
-                      ((org-agenda-overriding-header "Recently Closed tasks")))
+                      ((org-agenda-overriding-header "Closed tasks")))
                 (tags-todo "+MAYBE-REFILE-CANCELLED-NOTRACK/!-NEXT-STARTED-WAITING"
                            ((org-agenda-overriding-header "Future Tasks")
                             (org-tags-match-list-sublevels 'indented)
-                            (org-agenda-todo-ignore-scheduled t)
-                            (org-agenda-todo-ignore-deadlines t)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
                 (tags "-REFILE-PROJECT-NOTRACK/"
@@ -358,5 +341,6 @@ as the default task."
                           'ysl/org-check-in-out-on-screensaver))
 
 ;; }}
+
 
 (provide 'ysl-org-mode-gtd)

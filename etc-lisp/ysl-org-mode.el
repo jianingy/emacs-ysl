@@ -139,6 +139,7 @@ Skips capture tasks."
 (require 'ob-twopi)
 (require 'ob-pygment)
 (require 'ox-man)
+(require 'ox-taskjuggler)
 (require 'ox-beamer)
 ;; }}}
 
