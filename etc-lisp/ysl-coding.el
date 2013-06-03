@@ -72,7 +72,8 @@
 (auto-insert-mode)
 (setq auto-insert-query nil)
 
-(define-auto-insert "\\.org" "template.org$")
+(define-auto-insert "\\.org$" "template.org")
+(define-auto-insert "\\.ino$" "template.ino")
 (define-auto-insert "\\.\\([C]\\|cc\\|cpp\\)$"  "template.c")
 (define-auto-insert "\\.\\([Hh]\\|hh\\|hpp\\)$" "template.h")
 (define-auto-insert "\\.tex$" "template.tex")
@@ -105,6 +106,10 @@
 ;; arduino mode {{
 (add-search-path "site-lisp/arduino-mode")
 (require 'arduino-mode)
+(defun ysl/arduino-mode-hook ()
+(local-set-key "\C-c\C-c" 'compile))
+(add-hook 'arduino-mode-hook 'ysl/arduino-mode-hook)
+
 ;; }}
 
 (provide 'ysl-coding)
