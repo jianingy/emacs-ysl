@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: restclass
+# --
+class ${1:name}(RestController):
+    """$2"""
+
+    $0

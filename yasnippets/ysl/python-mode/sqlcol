@@ -1,0 +1,4 @@
+# -*- mode: snippet -*-
+# name: sqlcol
+# --
+${1:name} = Column(${2:String}$0)
