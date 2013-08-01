@@ -16,7 +16,7 @@
              (setq ndent-tabs-mode nil
                    cperl-indent-level 4)
              (local-set-key "\C-m" 'newline-and-indent)
-             (local-set-key (kbd "C-c C-c") 'compile-perl)
+             (local-set-key (kbd "C-c C-c") 'eval-buffer-as-perl)
              (set (make-local-variable 'compilation-scroll-output) nil)
              ))
 
@@ -34,10 +34,11 @@
 ;; }}
 
 ;; compile perl code {{
-(defun compile-perl ()
-  "Use compile to run perl programs"
+(defun eval-buffer-as-perl ()
+  "run buffer content as perl program"
   (interactive)
-  (compile (concat "perl " (buffer-file-name))))
+  (save-buffer)
+  (shell-command (concat "perl " (buffer-file-name))))
 ;; }}
 
 (provide 'ysl-perl)

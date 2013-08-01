@@ -36,6 +36,7 @@
                   py-indent-offset 4
                   py-smart-indentation nil)
             (py-smart-indentation-on)
+            (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python)
             (add-to-list 'ac-sources 'ac-source-pycomplete)
             (unless (eq buffer-file-name nil) (flymake-mode)))
 
@@ -46,5 +47,13 @@
 
 (add-search-path "el-get/python-mode/completion")
 (require 'auto-complete-pycomplete)
+
+;; compile perl code {{
+(defun eval-buffer-as-python ()
+  "run buffer content as python program"
+  (interactive)
+  (save-buffer)
+  (shell-command (concat "python " (buffer-file-name))))
+;; }}
 
 (provide 'ysl-python)
