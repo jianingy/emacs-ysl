@@ -112,4 +112,9 @@
 
 ;; }}
 
+;; plantuml-mode {{
+(setq plantuml-jar-path org-plantuml-jar-path)
+(require 'plantuml-mode)
+;; }}
+
 (provide 'ysl-coding)

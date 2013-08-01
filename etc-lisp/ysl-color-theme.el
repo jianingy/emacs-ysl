@@ -32,10 +32,13 @@
 
 (defun ysl/enable-terminal-theme ()
   (progn
-    (require 'color-theme-ir-black)
-    (color-theme-ir-black)
-    (set-face-background 'mode-line "grey20")
-    (set-face-foreground 'mode-line "grey70")))
+    (add-search-path "el-get/tomorrow-theme/GNU Emacs")
+    (require 'tomorrow-night-theme)
+    (custom-set-faces
+     '(highlight (( t (:foreground "#1d1f21"))))
+     '(org-hide (( t (:background "#1d1f21" :foreground "#1d1f21")))))))
+    ;(set-face-background 'mode-line "grey20")
+    ;(set-face-foreground 'mode-line "grey70")))
 
 ;; ;; INSIPRED BY http://emacs-fu.blogspot.com/2009/03/color-theming.html
 

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: sqlcls
+# --
+class ${1:name}(${2:Base}):
+    """Represents a $1 object"""
+
+    __tablename__ = "$1s"
+
+    $0
