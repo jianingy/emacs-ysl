@@ -338,12 +338,12 @@ as the default task."
   (if p-screen-locked
       (progn
         (bh/punch-out)
-        (message "punch-out since screen is locked"))
+        (message "punch-out because screen is locked"))
     (progn
       (bh/punch-in 0)
-      (message "punch-in since screen is unlocked"))))
+      (message "punch-in because screen is unlocked"))))
 
-(if (eq system-name 'gnu/linux)
+(if (eq system-type 'gnu/linux)
     (dbus-register-signal :session "org.gnome.ScreenSaver" "/org/gnome/ScreenSaver"
                           "org.gnome.ScreenSaver" "ActiveChanged"
                           'ysl/org-check-in-out-on-screensaver))
@@ -351,10 +351,10 @@ as the default task."
 ;; }}
 
 ;; autosave agenda files {{
-(add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
-(defun my-org-mode-autosave-settings ()
-  (set (make-local-variable 'auto-save-visited-file-name) t)
-  (setq auto-save-interval 5))
+;(add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
+;(defun my-org-mode-autosave-settings ()
+;  (set (make-local-variable 'auto-save-visited-file-name) t)
+;  (setq auto-save-interval 5))
 ;; }}
 
 (provide 'ysl-org-mode-gtd)
