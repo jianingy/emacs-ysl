@@ -350,5 +350,11 @@ as the default task."
 
 ;; }}
 
+;; autosave agenda files {{
+(add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
+(defun my-org-mode-autosave-settings
+  (set (make-local-variable 'auto-save-visited-file-name) t)
+  (setq auto-save-interval 5))
+;; }}
 
 (provide 'ysl-org-mode-gtd)
