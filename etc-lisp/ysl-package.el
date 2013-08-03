@@ -60,6 +60,7 @@
                              ahg
                              anything
                              auctex
+                             boxquote
                              popup
                              auto-complete
                              auto-complete-clang
@@ -91,6 +92,7 @@
                              htmlize
                              inf-ruby
                              ipython
+                             lorem-ipsum
                              magit
                              markdown-mode
                              mu4e
