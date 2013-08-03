@@ -99,4 +99,10 @@
 ;; (require 'layout-restore)
 ;; }}
 
+;; golden ratio {{
+(add-search-path "site-lisp/golden-ratio")
+(require 'golden-ratio)
+(golden-ratio-enable)
+;; }}
+
 (provide 'ysl-ui)
