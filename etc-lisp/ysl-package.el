@@ -1,6 +1,6 @@
 (require 'ysl-init)
 
-;; initialize emacs24 package-management {{
+;; {{{ initialize emacs24 package-management
 (if (>= emacs-major-version 24)
     (progn
       (package-initialize)
@@ -12,12 +12,12 @@
       ;; Add the user-contributed repository
       (add-to-list 'package-archives
                    '("marmalade" . "http://marmalade-repo.org/packages/"))))
-;; }}
+;; }}}
 
-;; setup el-get {{
+;; {{{ setup el-get
 (add-search-path "site-lisp/el-get")
 (require 'el-get)
-;; }}
+;; }}}
 
 (setq el-get-sources
       '(
@@ -116,6 +116,7 @@
                              tail
                              tomorrow-theme
                              yasnippet
+                             window-numbering
                              )(mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)

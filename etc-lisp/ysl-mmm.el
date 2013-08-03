@@ -30,11 +30,11 @@
 ;;
 
 (add-to-list 'auto-mode-alist '("\\.mako\\'" . html-mode))
-;; What features should be turned on in this html-mode? {{
+;; {{{ What features should be turned on in this html-mode? 
 (mmm-add-mode-ext-class 'html-mode "\\.mako\\'" 'mako)
 (mmm-add-mode-ext-class 'html-mode nil 'ysl/fancy-html)
 (mmm-add-mode-ext-class 'html-mode nil 'ysl/html-js)
 (mmm-add-mode-ext-class 'html-mode nil 'embedded-css)
-;; }}
+;; }}}
 
 (provide 'ysl-mmm)

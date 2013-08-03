@@ -2,7 +2,7 @@
 ;; ---- BEGIN Email client ----
 ;;----------------------------------------------------------
 
-;; smtp {{
+;; {{{ smtp 
 (require 'smtpmail)
 
 ;; alternatively, for emacs-24 you can use:
@@ -17,10 +17,10 @@
        ((file-executable-p "/usr/local/bin/gnutls-cli") "/usr/local/bin/gnutls-cli")
        (t "/usr/bin/gnutls-cli")
        ))
-;; }}
+;; }}}
 
 
-;; mu4e mail client {{
+;; {{{ mu4e mail client 
 (require 'mu4e)
 
 ;; default

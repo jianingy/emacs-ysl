@@ -19,26 +19,26 @@
 (require 'ysl-ocaml)
 ;; (require 'ysl-mmm)
 
-;; other languages {{
+;; {{{ other languages 
 ;; (add-hook 'sh-set-shell-hook 'flymake-shell-load)
 
 ;; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
-;; }}
+;; }}}
 
 
-;; disabled for performance reason {{
+;; {{{ disabled for performance reason 
 ;; (add-search-path "site-lisp/rfringe")
 ;; (require 'rfringe)
-;; }}
+;; }}}
 
-;; setup flymake {{
+;; {{{ setup flymake 
 (setq flymake-extension-use-showtip t)
-;; }}
+;; }}}
 
-;; setup whitespace detection {{
+;; {{{ setup whitespace detection 
 (ysl/set-whitespace-detection-mode
  '(python-mode
    ruby-mode
@@ -51,12 +51,12 @@
    emacs-lisp-mode
    cperl-mode
    perl-mode))
-;; }}
+;; }}}
 
 ;; delete trailing whitespace, hope it's safe
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
-;; nxhtml {{
+;; {{{ nxhtml 
 (add-hook
  'nxml-mode-hook
  '(lambda ()
@@ -65,9 +65,9 @@
          tab-width 4
          standard-indent 4
          indent-tabs-mode nil)))
-;; }}
+;; }}}
 
-;; auto-header {{
+;; {{{ auto-header 
 (setq-default auto-insert-directory "~/.emacs.d/templates/")
 (auto-insert-mode)
 (setq auto-insert-query nil)
@@ -101,20 +101,20 @@
         (goto-char old-point-max)
         (yas-expand-snippet (buffer-substring-no-properties (point-min) (point-max)))
         (delete-region (point-min) old-point-max)))))
-;; }}
+;; }}}
 
-;; arduino mode {{
+;; {{{ arduino mode 
 (add-search-path "site-lisp/arduino-mode")
 (require 'arduino-mode)
 (defun ysl/arduino-mode-hook ()
 (local-set-key "\C-c\C-c" 'compile))
 (add-hook 'arduino-mode-hook 'ysl/arduino-mode-hook)
 
-;; }}
+;; }}}
 
-;; plantuml-mode {{
+;; {{{ plantuml-mode 
 (setq plantuml-jar-path org-plantuml-jar-path)
 (require 'plantuml-mode)
-;; }}
+;; }}}
 
 (provide 'ysl-coding)

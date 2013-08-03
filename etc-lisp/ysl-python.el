@@ -1,12 +1,12 @@
 (require 'ysl-init)
 
-;; pylookup {{
+;; {{{ pylookup 
 (add-search-path "site-lisp/pylookup")
 (require 'pylookup)
 (setq pylookup-program (concat conf-root-dir "/site-lisp/pylookup/pylookup.py"))
 (setq pylookup-db-file (concat conf-root-dir "/site-lisp/pylookup/pylookup.db"))
 (global-set-key "\C-ch" 'pylookup-lookup)
-;; }}
+;; }}}
 
 (defvar ysl/python-syntax-checker "/usr/bin/pychecker")
 
@@ -15,7 +15,7 @@
 (add-to-list 'auto-mode-alist '("\\.rpy\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-;; setup flymake {{
+;; {{{ setup flymake 
 (defun flymake-pyflakes-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                      'flymake-create-temp-inplace))
@@ -26,9 +26,9 @@
 
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.\\([Rr]?[pP][Yy]\\)\\'" flymake-pyflakes-init))
-;; }}
+;; }}}
 
-;; initial hook {{
+;; {{{ initial hook 
 (defun ysl/python-mode-hook ()
             (setq indent-tabs-mode nil
                   tab-width 4
@@ -41,19 +41,19 @@
             (unless (eq buffer-file-name nil) (flymake-mode)))
 
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
-;; }}
+;; }}}
 ;; do not start python shell at start
 (setq py-start-run-py-shell nil)
 
 (add-search-path "el-get/python-mode/completion")
 (require 'auto-complete-pycomplete)
 
-;; compile perl code {{
+;; {{{ compile perl code 
 (defun eval-buffer-as-python ()
   "run buffer content as python program"
   (interactive)
   (save-buffer)
   (shell-command (concat "python " (buffer-file-name))))
-;; }}
+;; }}}
 
 (provide 'ysl-python)

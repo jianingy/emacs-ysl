@@ -1,6 +1,6 @@
 (require 'ysl-init)
 (require 'org-location-google-maps nil t)
-;; set tool path {{
+;; {{{ set tool path 
 (setq user-local-lib (concat user-home-dir "/local/lib"))
 (defvar ysl/org-pygment-path
   (cond
@@ -17,9 +17,9 @@
    ))
 (defvar ysl/org-ditaa-jar-path (concat user-local-lib "/java/ditaa.jar"))
 (defvar ysl/org-plantuml-jar-path (concat user-local-lib "/java/plantuml.jar"))
-;; }}
+;; }}}
 
-;; fixed 'tab' key conflicts with yasnippet {{
+;; {{{ fixed 'tab' key conflicts with yasnippet 
 (if (featurep 'yasnippet)
     (progn
       (defun yas/org-very-safe-expand ()
@@ -32,9 +32,9 @@
                   ;;(setq yas/trigger-key [tab])
                   ;;(define-key yas/keymap [tab] 'yas/next-field)
                   (auto-fill-mode)))))
-;; }}
+;; }}}
 
-;; Basic Settings {{
+;; {{{ Basic Settings 
 (defvar ysl/default-notes-file "~/org/notes.org")
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 
@@ -80,9 +80,9 @@
 ; For tag searches ignore tasks with scheduled and deadline dates
 (setq org-agenda-tags-todo-honor-ignore-options t)
 
-;; }}
+;; }}}
 
-;; Clock Settings {{
+;; {{{ Clock Settings 
 ;; Resume clocking tasks when emacs is restarted
 (org-clock-persistence-insinuate)
 ;; Yes it's long... but more is better ;)
@@ -112,9 +112,9 @@ Skips capture tasks."
   (if (and (member (org-get-todo-state) (list "TODO" "NEXT"))
            (not (and (boundp 'org-capture-mode) org-capture-mode)))
       "STARTED"))
-;; }}
+;; }}}
 
-;;; Babel {{
+;; {{{ Babel 
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 (org-babel-do-load-languages
  'org-babel-load-languages (quote ((pygment . t)
@@ -125,15 +125,15 @@ Skips capture tasks."
                                    (R . t)
                                    (latex . t)
                                    (gnuplot . t))))
-;; ditaa generate {{{
+;; {{{ ditaa generate
 (defun djcb-ditaa-generate ()
   (interactive)
   (shell-command (concat "java -jar " ysl/org-ditaa-jar-path " " buffer-file-name)))
 ;; }}}
 (setq org-src-fontify-natively t)
-;; }}
+;; }}}
 
-;; should be 'required' after setup {{
+;; {{{ should be 'required' after setup 
 ;; (require 'org-install) ;; deprecated
 (require 'org-habit)
 (require 'ob-twopi)
@@ -144,7 +144,7 @@ Skips capture tasks."
 ;; }}}
 
 
-;; org-mime: send email using org-mode {{
+;; {{{ org-mime: send email using org-mode 
 (add-search-path "site-lisp/org-mode-contrib")
 ;; this one broken org-repeat
 ;;(require 'org-checklist)
@@ -157,12 +157,12 @@ Skips capture tasks."
           (lambda ()
             (local-set-key "\C-c\M-o" 'org-mime-org-buffer-htmlize)))
 
-;; }}
+;; }}}
 
-;; load gtd settings {{
+;; {{{ load gtd settings 
 (require 'ysl-org-mode-gtd)
-;; }}
-;; load user custom settings {{
+;; }}}
+;; {{{ load user custom settings 
 (setq ysl/org-project-file (concat user-home-dir "/.org-projects.el"))
 (if (file-exists-p ysl/org-project-file)
     (load ysl/org-project-file))
@@ -179,6 +179,6 @@ Skips capture tasks."
     (if auto-insert-mode (auto-insert-mode -1))
     (org-publish project force)
     (if prev-insert-mode (auto-insert-mode t))))
-;; }}
+;; }}}
 
 (provide 'ysl-org-mode)

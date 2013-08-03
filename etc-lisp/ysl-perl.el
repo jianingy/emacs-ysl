@@ -3,12 +3,12 @@
 ;; use cperl-mode instead of perl-mode
 (fset 'perl-mode 'cperl-mode)
 
-;; Use cperl-mode instead of the default perl-mode {{
+;; {{{ Use cperl-mode instead of the default perl-mode 
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-;; }}
+;; }}}
 
 (add-hook 'cperl-mode-hook
 	  '(lambda ()
@@ -20,7 +20,7 @@
              (set (make-local-variable 'compilation-scroll-output) nil)
              ))
 
-;; flyamke {{
+;; {{{ flyamke 
 (defun flymake-perl-init ()
   (let* ((temp-file (flymake-init-create-temp-buffer-copy
                      'flymake-create-temp-inplace))
@@ -31,14 +31,14 @@
 
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.\\([pP][Llm]\\|al\\)\\'" flymake-perl-init))
-;; }}
+;; }}}
 
-;; compile perl code {{
+;; {{{ compile perl code 
 (defun eval-buffer-as-perl ()
   "run buffer content as perl program"
   (interactive)
   (save-buffer)
   (shell-command (concat "perl " (buffer-file-name))))
-;; }}
+;; }}}
 
 (provide 'ysl-perl)

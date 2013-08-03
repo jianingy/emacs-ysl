@@ -1,6 +1,6 @@
 (require 'ysl-extra)
 
-;; Basic Settings {{
+;; {{{ Basic Settings 
 ; task juggler settings
 (setq org-taskjuggler-project-tag "PROJECT"
       org-taskjuggler-resource-tag "RESOURCE"
@@ -16,11 +16,11 @@
 (setq org-global-properties (quote (("Effort_ALL" . "0:10 0:30 1:00 1:30 2:00 4:00 8:00"))))
 
 
-;; }}
+;; }}}
 
-;; WORK FLOW SETTING {{
+;; {{{ WORK FLOW SETTING 
 
-;;; TODO KEYWORDS {{{
+;; {{{ TODO KEYWORDS
 ;;; Workflow:
 ;;; TODO: A thing need to be done
 ;;; NEXT: A dependent thing have to be done in order to
@@ -58,7 +58,7 @@
               ("DONE" ("WAITING") ("CANCELLED")))))
 ;;; }}}
 
-;;; Tags with fast selection keys {{{
+;; {{{ Tags with fast selection keys
 ;;; OFFICE: things can only be done at office
 ;;; HOME: things can only be done at homne
 ;;; COMPUTER: things can be done using a computer
@@ -76,9 +76,9 @@
                             ("USTACK" . ?u))))
 ;;; }}}
 
-;; }}
+;; }}}
 
-;;; Capture templates {{{
+;; {{{ Capture templates
 (defvar ysl/org-base-directory "~/notes/")
 (defvar ysl/org-default-schedule-file "schedule/default.org")
 (setq org-capture-templates
@@ -92,12 +92,12 @@
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
 
-;;; Agenda Files {{{
+;; {{{ Agenda Files
 (defvar ysl/org-agenda-files (quote ("~/notes/schedule")))
 (setq org-agenda-files ysl/org-agenda-files)
 ;;; }}}
 
-;;; Custom agenda command definitions {{{
+;; {{{ Custom agenda command definitions
 (setq org-agenda-custom-commands
       (quote (("r" "Tasks to Refile" tags "+REFILE"
                ((org-agenda-overriding-header "Notes and Tasks to Refile")
@@ -210,7 +210,7 @@
                nil))))
 ;;; }}}
 
-;;; functions {{{
+;; {{{ functions
 (defun bh/skip-non-archivable-tasks ()
   "Skip trees that are not available for archiving"
   (let ((next-headline (save-excursion (outline-next-heading))))
@@ -240,7 +240,7 @@
 ;;; }}}
 
 
-;; bh functions for punch in and punch out {{
+;; {{{ bh functions for punch in and punch out 
 (defvar bh/keep-clock-running nil)
 
 (defun bh/punch-in (arg)
@@ -329,9 +329,9 @@ as the default task."
         (org-with-point-at pom
           (org-agenda-set-restriction-lock restriction-type)))))))
 
-;; }}
+;; }}}
 
-;; punch-in/out on screensaver {{
+;; {{{ punch-in/out on screensaver 
 (require 'dbus)
 
 (defun ysl/org-check-in-out-on-screensaver (p-screen-locked)
@@ -352,13 +352,13 @@ as the default task."
                               'ysl/org-check-in-out-on-screensaver)
       (error nil)))
 
-;; }}
+;; }}}
 
-;; autosave agenda files {{
+;; {{{ autosave agenda files 
 ;(add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
 ;(defun my-org-mode-autosave-settings ()
 ;  (set (make-local-variable 'auto-save-visited-file-name) t)
 ;  (setq auto-save-interval 5))
-;; }}
+;; }}}
 
 (provide 'ysl-org-mode-gtd)
