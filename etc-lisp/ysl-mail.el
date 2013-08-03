@@ -46,7 +46,8 @@
          ("/[Gmail].All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
-(setq mu4e-get-mail-command "offlineimap")
+;; uncomment  if don't have offlineimap run background separatedly
+;; (setq mu4e-get-mail-command "offlineimap")
 
 ;; display inline image, use imagemagick, if available
 (setq mu4e-view-show-images t)
