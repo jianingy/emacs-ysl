@@ -29,6 +29,9 @@
       mu4e-sent-folder   "/[Gmail].Sent Mail"
       mu4e-trash-folder  "/[Gmail].Trash")
 
+;; dont ask when quit
+(setq mu4e-confirm-quit nil)
+
 ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
 (setq mu4e-sent-messages-behavior 'delete)
 
