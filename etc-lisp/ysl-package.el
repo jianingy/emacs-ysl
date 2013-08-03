@@ -93,6 +93,7 @@
                              ipython
                              magit
                              markdown-mode
+                             mu4e
                              nxhtml
                              org-mode
                              org-jekyll
