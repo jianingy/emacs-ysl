@@ -34,6 +34,7 @@
 (global-set-key "\C-xb" 'ysl/anything-switch-to)
 (global-set-key "\C-ci" 'ysl/anything-info)
 (global-set-key "\C-c\M-m" 'message-mark-inserted-region)
+(global-set-key "\C-c\M-b" 'boxquote-region)
 
 (global-set-key (kbd "C-<escape>") 'org-clock-goto)
 (global-set-key (kbd "C-M-r") 'org-capture)
