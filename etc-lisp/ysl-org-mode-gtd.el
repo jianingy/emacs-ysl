@@ -1,6 +1,6 @@
 (require 'ysl-extra)
 
-;; {{{ Basic Settings 
+;; {{{ Basic Settings
 ; task juggler settings
 (setq org-taskjuggler-project-tag "PROJECT"
       org-taskjuggler-resource-tag "RESOURCE"
@@ -18,34 +18,34 @@
 
 ;; }}}
 
-;; {{{ WORK FLOW SETTING 
+;; {{{ WORK FLOW SETTING
 
 ;; {{{ TODO KEYWORDS
 ;;; Workflow:
 ;;; TODO: A thing need to be done
-;;; NEXT: A dependent thing have to be done in order to
-;;;       make progress in a project
-;;; STARTED: Task be working on
+;;; NEXT: A thing need to be done ASAP
+;;; STARTED: Task on the go
 ;;; DONE: Task finished
 ;;; WAITING: Pending due to some reason
 ;;; CANCELLED: Cancelled due to some reason
-;;; OPEN: An issue need to be resolved
-;;; CLOSED: An resolved issued
+;;; MEETING: Interrupted Meetings
+;;; CHECK: Check the progress of someone else
+;;; VERIFIED: Well done
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "NEXT(n)" "STARTED(s)" "|" "DONE(d!/!)")
               (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)")
-              (sequence "OPEN(O!)" "CHECK(K)" "|" "CLOSED(C!)"))))
+              (sequence "CHECK(k)" "|" "VERIFIED(v!)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "#cc6666" :weight normal)
               ("NEXT" :foreground "#de935f" :weight normal)
               ("STARTED" :foreground "#8abeb7" :weight normal)
               ("DONE" :foreground "#b5bd68" :weight normal)
-              ("WAITING" :foreground "#de935f" :weight normal)
+              ("WAITING" :foreground "#de935f" :weight bold)
+              ("MEETING" :foreground "#b294bb" :weight normal)
               ("CANCELLED" :foreground "#b5bd68" :weight normal)
-              ("OPEN" :foreground "#81a2be" :weight normal)
               ("CHECK" :foreground "#f0c674" :weight normal)
-              ("CLOSED" :foreground "#de935f" :weight normal))))
+              ("VERIFIED" :foreground "#de935f" :weight normal))))
 
 ;; todo state trigger
 (setq org-todo-state-tags-triggers
@@ -88,6 +88,8 @@
                "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
               ("c" "CHECK" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
+              ("m" "MEETING" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
+               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
               ("h" "HABIT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
@@ -149,12 +151,6 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(effort-up category-keep))))
-                (tags-todo "-REFILE-CANCELLED-MAYBE/!OPEN"
-                           ((org-agenda-overriding-header "Opening Issues")
-                            (org-agenda-overriding-columns-format "%80ITEM %DEADLINE")
-                            (org-tags-match-list-sublevels t)
-                            (org-agenda-sorting-strategy
-                             '(effort-up category-keep))))
                 (todo "+WORK/WAITING|HOLD"
                       ((org-agenda-overriding-header "Waiting and Postponed tasks")))
                 (tags-todo "+WORK+allocate=\"jianingy\"-REFILE-CANCELLED/!-NEXT-STARTED-WAITING"
@@ -185,8 +181,6 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (todo "HOLD"
-                      ((org-agenda-overriding-header "Postponed tasks")))
                 (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-HOLD"
                            ((org-agenda-overriding-header "Time Insensitive Tasks")
                             (org-tags-match-list-sublevels 'indented)
@@ -240,7 +234,7 @@
 ;;; }}}
 
 
-;; {{{ bh functions for punch in and punch out 
+;; {{{ bh functions for punch in and punch out
 (defvar bh/keep-clock-running nil)
 
 (defun bh/punch-in (arg)
@@ -331,7 +325,7 @@ as the default task."
 
 ;; }}}
 
-;; {{{ punch-in/out on screensaver 
+;; {{{ punch-in/out on screensaver
 (require 'dbus)
 
 (defun ysl/org-check-in-out-on-screensaver (p-screen-locked)
@@ -354,7 +348,7 @@ as the default task."
 
 ;; }}}
 
-;; {{{ autosave agenda files 
+;; {{{ autosave agenda files
 ;(add-hook 'org-mode-hook 'my-org-mode-autosave-settings)
 ;(defun my-org-mode-autosave-settings ()
 ;  (set (make-local-variable 'auto-save-visited-file-name) t)
