@@ -181,7 +181,7 @@
                             (org-tags-match-list-sublevels t)
                             (org-agenda-sorting-strategy
                              '(todo-state-down effort-up category-keep))))
-                (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-HOLD"
+                (tags-todo "-REFILE-CANCELLED-MAYBE-NOTRACK/!-STARTED-HOLD-NEXT"
                            ((org-agenda-overriding-header "Time Insensitive Tasks")
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-todo-ignore-scheduled t)
