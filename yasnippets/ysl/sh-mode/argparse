@@ -1,0 +1,11 @@
+# -*- mode: sh-mode -*-
+# name: argparse
+# --
+until [ -z "\$1" ]; do
+    case "\$1" in
+        -arg)
+            opt_arg=1
+        ;;
+    esac
+    shift
+done

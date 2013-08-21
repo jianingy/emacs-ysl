@@ -1,4 +1,4 @@
-;; {{{ motd 
+;; {{{ motd
 (defvar ysl/motd (concat user-home-dir "/.motd.el"))
 (defun ysl/show-motd ()
   (let ((scratch-buffer (get-buffer "*scratch*")))
@@ -9,7 +9,7 @@
   (add-hook 'emacs-startup-hook 'ysl/show-motd))
 ;; }}}
 
-;; {{{ highlight leading and trailing whitespaces 
+;; {{{ highlight leading and trailing whitespaces
 
 (defface ysl/font-lock-leading-whitespace-face
   `((t (:background "#1f1f1f")))
@@ -33,7 +33,7 @@
 
 ;; }}}
 
-;; {{{ Useful functions 
+;; {{{ Useful functions
 (defun ysl/switch-to-previous-buffer ()
       (interactive)
       (switch-to-buffer (other-buffer)))
@@ -147,7 +147,7 @@ user."
       (setq file (concat "/sudo:root@localhost:" file)))
     (find-file file)))
 
-;; {{{ http://www.emacswiki.org/cgi-bin/wiki/ToggleWindowSplit 
+;; {{{ http://www.emacswiki.org/cgi-bin/wiki/ToggleWindowSplit
 (defun toggle-frame-split ()
   "If the frame is split vertically, split it horizontally or vice versa.
 Assumes that the frame is only split into two."
@@ -162,6 +162,15 @@ Assumes that the frame is only split into two."
 
 ;; I don't use the default binding of 'C-x 5', so use toggle-frame-split instead
 (global-set-key (kbd "C-x 5") 'toggle-frame-split)
+
+(defun ysl/insert-separator ()
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (open-line 1)
+    (let ((cur (point)))
+      (insert "--8<-----------------------separator------------------>8---")
+      (comment-region cur (point)))))
 
 ;; }}}
 (provide 'ysl-extra)

@@ -75,6 +75,7 @@
                              css-mode
                              cssh
                              ecb
+                             edit-server
                              ess
                              emacs-w3m
                              flim

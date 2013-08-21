@@ -107,4 +107,14 @@
 
 (require 'loccur)
 
+;; {{{ bm
+(require 'bm)
+(set-face-background bm-face "#de935f")
+;; }}}
+
+;; {{{ edit-server
+(when (require 'edit-server nil t)
+  (setq edit-server-new-frame nil)
+  (edit-server-start))
+;; }}}
 (provide 'ysl-ui)

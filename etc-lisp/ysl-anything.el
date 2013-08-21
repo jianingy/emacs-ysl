@@ -6,13 +6,15 @@
 (defun ysl/anything-switch-to () (interactive)
   (anything
    :prompt "Switch to: "
-   :candidate-number-limit 10
+   :candidate-number-limit 15
    :sources
    '(
      anything-c-source-buffers
-     anything-c-source-recentf
+     anything-c-source-bm
+     anything-c-source-fixme
      anything-c-source-bookmarks
-     )))        ;; emacs
+     anything-c-source-recentf
+     )))
 
 (defun ysl/anything-info () (interactive)
   (anything
@@ -22,7 +24,7 @@
    '(
      anything-c-source-man-pages
      anything-c-source-info-emacs
-     )))        ;; emacs
+     )))
 
 
 (provide 'ysl-anything)
