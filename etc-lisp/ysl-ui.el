@@ -25,7 +25,7 @@
 ;; enable iswtchb-mode
 (iswitchb-mode t)
 
-;; {{{ auto kill buffer with running process 
+;; {{{ auto kill buffer with running process
 ;(setq kill-buffer-query-functions
 ; (remove 'process-kill-buffer-query-function
 ;         kill-buffer-query-functions))
@@ -34,11 +34,11 @@
 ;; no need to change fringe if we don't use linum mode
 ;; (when (fboundp 'fringe-mode) (fringe-mode '(0 . 7))) ;; set fringe size
 
-;; {{{ disable menu-bar when using gnu/linux 
+;; {{{ disable menu-bar when using gnu/linux
 ;; (if (eq system-type 'gnu/linux) (menu-bar-mode -1))
 ;; }}}
 
-;; {{{ set linum format 
+;; {{{ set linum format
 ;; linum is buggy in org/erc/gnus mode and fringe, disable it completely
 ;; (setq linum-format
 ;;       (lambda (line)
@@ -56,12 +56,12 @@
 ;;       (linum-mode 1)))
 ;; }}}
 
-;; {{{ enable advanced buffer managment 
+;; {{{ enable advanced buffer managment
 (require 'bs)
 (require 'ibs)
 ;; }}}
 
-;; {{{ Highlight parentheses 
+;; {{{ Highlight parentheses
 (require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
@@ -70,7 +70,7 @@
 (global-highlight-parentheses-mode t)
 ;; }}}
 
-;; {{{ TODO: Highlight Current Line 
+;; {{{ TODO: Highlight Current Line
 ;(add-search-path "site-lisp/highlight-current-line")
 ;(require 'highlight-current-line)
 ;(highlight-current-line-on t)
@@ -94,15 +94,17 @@
 ;; enable winner-mode
 (winner-mode t)
 
-;; {{{ layout-restore 
+;; {{{ layout-restore
 ;;(add-search-path "site-lisp/layout-restore")
 ;; (require 'layout-restore)
 ;; }}}
 
-;; {{{ golden ratio 
+;; {{{ golden ratio
 (add-search-path "site-lisp/golden-ratio")
 (require 'golden-ratio)
 (golden-ratio-enable)
 ;; }}}
+
+(require 'loccur)
 
 (provide 'ysl-ui)

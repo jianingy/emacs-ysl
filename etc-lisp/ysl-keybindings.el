@@ -43,6 +43,15 @@
 
 (global-set-key [C-f5] 'ysl/revert-all-buffers) ; F5 刷新全部BUFFER
 
+;; loccur
+;; defines shortcut for loccur of the current word
+(define-key global-map [(control o)] 'loccur-current)
+;; defines shortcut for the interactive loccur command
+(define-key global-map [(control meta o)] 'loccur)
+;; defines shortcut for the loccur of the previously found word
+(define-key global-map [(control shift o)] 'loccur-previous-match)
+
+
 ;; ---- 功能键 - Dirk的按键，感受一下
 ; F1进入shell
 ;(global-set-key [C-s-escape] '(lambda ()
