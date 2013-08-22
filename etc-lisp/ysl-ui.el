@@ -4,6 +4,9 @@
 ;; tabbar is buggy so disable it
 ;; (require 'ysl-tabbar)
 
+;; bookmark
+(setq bookmark-save-flag 1)
+
 (custom-set-variables
  '(current-language-environment "UTF-8")
 

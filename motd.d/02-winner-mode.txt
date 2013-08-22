@@ -1,0 +1,2 @@
+returns to previous window layout
+C-c C-\ :: winner-undo

@@ -1,0 +1,4 @@
+many fancy separators
+- C-c M-m                  :: insert "cut here" separator
+- boxquote-region          :: quote text with left bordered box
+- message-mark-insert-file :: insert file content with separator around.

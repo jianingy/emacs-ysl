@@ -190,4 +190,35 @@ Assumes that the frame is only split into two."
               :input (current-word)
               :history 'anything-c-grep-history)))
 ;; }}}
+
+;; {{{ ysl/setup-motd
+(defun ysl/get-motd ()
+  (let* ((motds (directory-files (concat conf-root-dir "/motd.d") t ".txt"))
+         (selected (random (length motds)))
+         (motd (nth selected motds)))
+    (with-temp-buffer
+      (insert-file-contents motd)
+      (if (< (count-lines (point-min) (point-max)) 2)
+            (save-excursion
+              (goto-char (point-max))
+              (insert "\n\n")))
+      (lisp-interaction-mode)
+      (kill-line)
+      (next-line)
+      (save-excursion
+        (boxquote-region (point) (point-max)))
+      (move-end-of-line nil)
+      (insert " Tip of the day: ")
+      (yank)
+      (comment-region (point-min) (point-max))
+      (concat (buffer-string) "\n"))))
+
+(defun ysl/setup-motd ()
+  (setq initial-scratch-message (ysl/get-motd)))
+
+(defun ysl/show-motd ()
+  (interactive)
+  (message (ysl/get-motd)))
+
+;; }}}
 (provide 'ysl-extra)

@@ -1,0 +1,3 @@
+anything-occur at point
+
+- C-o :: show all occurences of current word in current buffer

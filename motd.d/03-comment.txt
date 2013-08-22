@@ -1,0 +1,8 @@
+comment-dwim
+M-; :: comment-dwim aka do what i mean comment.
+
+if you select a region of text, comment it. if the text already in
+comment, uncomment it.
+
+if you are at the beginning of a line, add a comment at the end of
+the line

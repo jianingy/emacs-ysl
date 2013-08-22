@@ -1,0 +1,3 @@
+bookmark in file
+- C-c m :: mark current line
+- C-c j :: goto next mark
