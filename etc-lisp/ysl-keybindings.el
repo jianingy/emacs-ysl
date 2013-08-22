@@ -34,6 +34,7 @@
 (global-set-key "\C-xb" 'ysl/anything-switch-to)
 (global-set-key "\C-ci" 'ysl/anything-info)
 (global-set-key "\C-cm" 'bm-toggle)
+(global-set-key "\C-cn" 'next-error)
 (global-set-key "\C-cj" 'bm-next)
 (global-set-key "\C-cs" 'ysl/insert-separator)
 (global-set-key "\C-cg" 'grep-find)
