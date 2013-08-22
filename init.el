@@ -33,4 +33,6 @@
   (server-start))
 ;; }}
 
+(ysl/setup-motd)
+
 (if (file-exists-p user-local-file) (load-file user-local-file))
