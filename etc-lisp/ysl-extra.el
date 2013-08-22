@@ -163,6 +163,10 @@ Assumes that the frame is only split into two."
 ;; I don't use the default binding of 'C-x 5', so use toggle-frame-split instead
 (global-set-key (kbd "C-x 5") 'toggle-frame-split)
 
+
+;; }}}
+
+;; {{{
 (defun ysl/insert-separator ()
   (interactive)
   (save-excursion
@@ -171,6 +175,19 @@ Assumes that the frame is only split into two."
     (let ((cur (point)))
       (insert "--8<-----------------------separator------------------>8---")
       (comment-region cur (point)))))
+;; }}}
 
+;; {{{ ysl/occurs
+(defun ysl/occurs ()
+  "run anything-occur with current word"
+  (interactive)
+  (let ((anything-compile-source-functions
+         ;; rule out anything-match-plugin because the input is one regexp.
+         (delq 'anything-compile-source--match-plugin
+               (copy-sequence anything-compile-source-functions))))
+    (anything :sources 'anything-c-source-occur
+              :buffer "*Anything Occur*"
+              :input (current-word)
+              :history 'anything-c-grep-history)))
 ;; }}}
 (provide 'ysl-extra)

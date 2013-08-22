@@ -105,8 +105,6 @@
 (golden-ratio-enable)
 ;; }}}
 
-(require 'loccur)
-
 ;; {{{ bm
 (require 'bm)
 (set-face-background bm-face "#de935f")
