@@ -1,0 +1,91 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# vim: tabstop=4 shiftwidth=4 softtabstop=4 et
+
+from oslo.config import cfg
+from jinja2 import Template
+from os.path import join as path_join, exists as file_exists, dirname
+import os
+import pkg_resources
+import sys
+
+__project__ = 'hot'
+__version__ = pkg_resources.require(__project__)[0].version
+
+hot_opts = [
+    cfg.StrOpt('template',
+               default='layout.html',
+               help='The template file'),
+
+    cfg.StrOpt('base',
+               required=True,
+               help='The path to project base directory'),
+
+    cfg.ListOpt('projects',
+                required=True,
+                help='A list of projects'),
+
+    cfg.StrOpt('dest',
+               required=True,
+               help='The directory saving published htmls'),
+
+    cfg.StrOpt('site_name',
+               default='my pages',
+               help='The name of this site'),
+
+    cfg.StrOpt('site_root',
+               default='/',
+               help='The root url of this site'),
+
+]
+
+CONF = cfg.CONF
+CONF.register_cli_opts(hot_opts)
+
+
+def ack(msg='.', newline=False):
+    sys.stderr.write(msg)
+    if newline:
+        sys.stderr.write('\n')
+
+
+def main():
+    CONF(sys.argv[1:], project=__project__, version=__version__)
+
+    with file(CONF.template, 'r') as fh:
+        content = fh.read()
+
+    tmpl = Template(content)
+
+    for project in CONF.projects:
+        project_path = path_join(CONF.base, project)
+
+        for root, folders, files in os.walk(project_path):
+
+            for name in files:
+                ack("processing %s:%s " % (project, name))
+
+                with file(path_join(root, name), 'r') as fh:
+                    content = fh.read().decode('UTF-8')
+                    ack()
+
+                output = tmpl.render(content=content,
+                                     site_root=CONF.site_root,
+                                     site_name=CONF.site_name,
+                                     projects=CONF.projects,
+                                     project=project)
+                ack()
+
+                relative_path = root[len(CONF.base):].strip('/')
+                dest_path = path_join(CONF.dest, relative_path, name)
+
+                if not file_exists(dirname(dest_path)):
+                    os.makedirs(dirname(dest_path))
+                ack()
+
+                with file(dest_path, 'w+') as fh:
+                    fh.write(output.encode('UTF-8'))
+                    ack('ok', newline=True)
+
+if __name__ == '__main__':
+    main()

@@ -1,9 +1,9 @@
-;; {{{ shell-mode 
+;; {{{ shell-mode
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq comint-prompt-read-only t)
 ;; }}}
 
-;; {{{ eshell 
+;; {{{ eshell
 (add-hook 'eshell-mode-hook
    (lambda ()
      (set (make-local-variable 'scroll-margin) 0)
@@ -22,6 +22,16 @@ Switch to last recent buffer if current buffer is eshell's"
         (eshell))
     (switch-to-buffer "*eshell*")))
 
+(defun switch-to-shell ()
+  "Switch to shell buffer,creat one if none exists
+Switch to last recent buffer if current buffer is eshell's"
+  (interactive)
+  (if (eq (current-buffer) (get-buffer "*shell*"))
+      (switch-to-buffer (other-buffer))
+    (if (eq (get-buffer "*shell*") nil)
+        (shell))
+    (switch-to-buffer "*shell*")))
+
 ;; COPIED FROM http://www.northbound-train.com/emacs/em-joc.el
 (defun eshell/clear ()
   "Clears the shell buffer ala Unix's clear or DOS' cls"
@@ -32,7 +42,7 @@ Switch to last recent buffer if current buffer is eshell's"
     (delete-region (point-min) (point-max))))
 ;; }}}
 
-;; {{{ ansi-term color 
+;; {{{ ansi-term color
 ;; ---- http://emacsworld.blogspot.com/2009/02/setting-term-mode-colours.html
 (setq ansi-color-names-vector
       ["black" "red4" "green4" "yellow4"
@@ -44,7 +54,7 @@ Switch to last recent buffer if current buffer is eshell's"
 (setq term-default-bg-color "#111")
 (setq term-default-fg-color "grey80")
 ;; }}}
-;; {{{ COPIED FROM http://www.enigmacurry.com/2008/12/26/emacs-ansi-term-tricks/ 
+;; {{{ COPIED FROM http://www.enigmacurry.com/2008/12/26/emacs-ansi-term-tricks/
 (require 'term)
 
 (defun ysl/open-terminal (term-buffer-name)
