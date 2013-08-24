@@ -61,6 +61,13 @@
 
 ;; {{{ enable advanced buffer managment
 (require 'bs)
+
+(add-to-list 'bs-configurations
+             '("terminals"
+               "^\\*shell:" nil
+               nil nil
+               bs-sort-buffer-interns-are-last))
+
 (require 'ibs)
 ;; }}}
 

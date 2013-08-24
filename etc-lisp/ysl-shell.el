@@ -32,6 +32,10 @@ Switch to last recent buffer if current buffer is eshell's"
         (shell))
     (switch-to-buffer "*shell*")))
 
+(defun ysl/new-shell ()
+  (interactive)
+  (shell (concat "*shell: " (read-from-minibuffer "Buffer name: ") "*")))
+
 ;; COPIED FROM http://www.northbound-train.com/emacs/em-joc.el
 (defun eshell/clear ()
   "Clears the shell buffer ala Unix's clear or DOS' cls"
@@ -53,6 +57,7 @@ Switch to last recent buffer if current buffer is eshell's"
 (setq ansi-color-for-comint-mode t)
 (setq term-default-bg-color "#111")
 (setq term-default-fg-color "grey80")
+
 ;; }}}
 ;; {{{ COPIED FROM http://www.enigmacurry.com/2008/12/26/emacs-ansi-term-tricks/
 (require 'term)
@@ -73,4 +78,34 @@ Switch to last recent buffer if current buffer is eshell's"
           '(lambda()
              (set (make-local-variable 'scroll-margin) 0)))
 
+
+;;; {{{ anything
+(defvar anything-c-source-terminal
+  '((name . "Terminals")
+    (candidates . ysl/shell-buffers)
+    (volatile)
+    (action . (lambda (name) (switch-to-buffer name)))
+    (type . string)))
+
+
+(defun ysl/new-shell ()
+  (interactive)
+  (shell (concat "*shell: " (read-from-minibuffer "Shell name: ") "*")))
+
+(defun ysl/shell-buffers ()
+  (remove-if-not (lambda (x) (string-match "^\\*shell:" x))
+                 (mapcar 'buffer-name (buffer-list))))
+
+(defun ysl/anything-terminals (arg)
+  (interactive "p")
+  (cond
+   ((> arg 1) (ysl/new-shell))
+   ((= (length (ysl/shell-buffers)) 0) (ysl/new-shell))
+   ((= (length (ysl/shell-buffers)) 1)
+    (switch-to-buffer (car (ysl/shell-buffers))))
+   (t (anything
+     :prompt "Terminals: "
+     :candidate-number-limit 100
+     :sources '(anything-c-source-terminal)))))
+;;; }}}
 (provide 'ysl-shell)
