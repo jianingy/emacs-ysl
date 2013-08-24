@@ -6,11 +6,12 @@ from oslo.config import cfg
 from jinja2 import Template
 from os.path import join as path_join, exists as file_exists, dirname
 import os
-import pkg_resources
+#import pkg_resources
 import sys
 
 __project__ = 'hot'
-__version__ = pkg_resources.require(__project__)[0].version
+__version__ = '1.0'
+#__version__ = pkg_resources.require(__project__)[0].version
 
 hot_opts = [
     cfg.StrOpt('template',
@@ -63,6 +64,11 @@ def main():
         for root, folders, files in os.walk(project_path):
 
             for name in files:
+
+                # skip hidden files
+                if name.startswith('.'):
+                    continue
+
                 ack("processing %s:%s " % (project, name))
 
                 with file(path_join(root, name), 'r') as fh:

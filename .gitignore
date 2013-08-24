@@ -24,3 +24,6 @@ el-get/*
 backup-lisp/*
 obsoleted-lisp/*
 mail/*
+eshell
+.*
+bookmarks
