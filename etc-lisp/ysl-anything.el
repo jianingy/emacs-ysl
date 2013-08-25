@@ -6,8 +6,17 @@
 (setq anything-c-boring-buffer-regexp
       "\\(\\` \\)\\|\\*anything\\|\\*ac-mode\\| \\*Echo Area\\| \\*Minibuf\\|\\*e?shell")
 
-
-
+(defvar ysl/anything-c-boring-bookmark-regex "^org-\\(capture\\|refile\\)-")
+(defvar ysl/anything-c-source-bookmarks
+  `((name . "Bookmarks")
+    (init . (lambda ()
+              (require 'bookmark)))
+    (candidates . (lambda ()
+                    (remove-if (lambda (x) (string-match
+                                            ysl/anything-c-boring-bookmark-regex x))
+                               (bookmark-all-names))))
+    (type . bookmark))
+  "See (info \"(emacs)Bookmarks\").")
 
 (defun ysl/anything-switch-to () (interactive)
   (anything
@@ -18,7 +27,7 @@
      anything-c-source-buffers+
      anything-c-source-bm
      anything-c-source-fixme
-     anything-c-source-bookmarks
+     ysl/anything-c-source-bookmarks
      anything-c-source-recentf
      anything-c-source-buffer-not-found
      )))
