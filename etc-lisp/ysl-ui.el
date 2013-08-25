@@ -1,8 +1,6 @@
 (require 'ysl-init)
 (require 'ysl-font)
 (require 'generic-x)
-;; tabbar is buggy so disable it
-;; (require 'ysl-tabbar)
 
 ;; bookmark
 (setq bookmark-save-flag 1)
@@ -27,37 +25,6 @@
 
 ;; enable iswtchb-mode
 (iswitchb-mode t)
-
-;; {{{ auto kill buffer with running process
-;(setq kill-buffer-query-functions
-; (remove 'process-kill-buffer-query-function
-;         kill-buffer-query-functions))
-;; }}}
-
-;; no need to change fringe if we don't use linum mode
-;; (when (fboundp 'fringe-mode) (fringe-mode '(0 . 7))) ;; set fringe size
-
-;; {{{ disable menu-bar when using gnu/linux
-;; (if (eq system-type 'gnu/linux) (menu-bar-mode -1))
-;; }}}
-
-;; {{{ set linum format
-;; linum is buggy in org/erc/gnus mode and fringe, disable it completely
-;; (setq linum-format
-;;       (lambda (line)
-;;         (propertize (format
-;;                      (let ((w (length (number-to-string
-;;                                        (count-lines (point-min) (point-max))))))
-;;                        (concat "%" (number-to-string (max w 3)) "d|"))
-;;                      line)
-;;                     'face 'linum)))
-;; (global-linum-mode nil)
-;; (setq linum-disabled-modes-list
-;;       '(term-mode eshell-mode wl-summary-mode compilation-mode erc-mode org-mode))
-;; (defun linum-on ()
-;;   (unless (or (minibufferp) (member major-mode linum-disabled-modes-list))
-;;       (linum-mode 1)))
-;; }}}
 
 ;; {{{ enable advanced buffer managment
 (require 'bs)
@@ -101,6 +68,9 @@
 ;;                                         "/site-lisp/ibus/ibus-el-agent"))
 ;;      ))
 
+;; enable window numbering mode
+(window-numbering-mode)
+
 ;; enable winner-mode
 (winner-mode t)
 
@@ -120,7 +90,10 @@
 (set-face-background bm-face "#de935f")
 ;; }}}
 
-;; {{{ edit-server
-
+;; {{{ lambda mode
+(require 'lambda-mode)
+(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
+(add-hook 'python-mode-hook (lambda () (lambda-mode 1)))
 ;; }}}
+
 (provide 'ysl-ui)
