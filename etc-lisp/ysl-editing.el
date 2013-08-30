@@ -97,7 +97,8 @@
 ;; }}}
 
 ;; {{{ autopair
-(autopair-global-mode t)
+;; disable it since it conflicts with wrap-region
+;; (autopair-global-mode t)
 ;; }}}
 
 (provide 'ysl-editing)
