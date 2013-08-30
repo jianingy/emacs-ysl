@@ -47,6 +47,17 @@
 (global-highlight-parentheses-mode t)
 ;; }}}
 
+;; {{{ highlight-tail
+(require 'highlight-tail)
+(let ((background (cdr (assoc
+                        'background
+                        (cdr (assoc 'night color-theme-tomorrow-colors))))))
+  (setq highlight-tail-colors `((,background . 0)
+                                ("#4271ae" . 25)
+                                (,background . 66))))
+(highlight-tail-mode)
+;; }}}
+
 ;; {{{ TODO: Highlight Current Line
 ;(add-search-path "site-lisp/highlight-current-line")
 ;(require 'highlight-current-line)
@@ -95,5 +106,6 @@
 (setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))
 (add-hook 'python-mode-hook (lambda () (lambda-mode 1)))
 ;; }}}
+
 
 (provide 'ysl-ui)
