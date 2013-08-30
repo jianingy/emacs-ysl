@@ -1,0 +1,3 @@
+Indent Region
+- C-c < :: Left. Equivalent to VIM's "<<"
+- C-c > :: Right. Equivalent to VIM's ">>"
