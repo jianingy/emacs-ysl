@@ -71,6 +71,25 @@ def main():
 
                 ack("processing %s:%s " % (project, name))
 
+                relative_path = root[len(CONF.base):].strip('/')
+                dest_path = path_join(CONF.dest, relative_path, name)
+
+                if not file_exists(dirname(dest_path)):
+                    os.makedirs(dirname(dest_path))
+                ack()
+
+                # skip non-html files
+                if not name.endswith('.html'):
+                    with file(path_join(root, name), 'rb') as fh:
+                        content = fh.read()
+                        ack()
+
+                    with file(dest_path, 'wb+') as fh:
+                        fh.write(content)
+                        ack('ok', newline=True)
+
+                    continue
+
                 with file(path_join(root, name), 'r') as fh:
                     content = fh.read().decode('UTF-8')
                     ack()
@@ -80,13 +99,6 @@ def main():
                                      site_name=CONF.site_name,
                                      projects=CONF.projects,
                                      project=project)
-                ack()
-
-                relative_path = root[len(CONF.base):].strip('/')
-                dest_path = path_join(CONF.dest, relative_path, name)
-
-                if not file_exists(dirname(dest_path)):
-                    os.makedirs(dirname(dest_path))
                 ack()
 
                 with file(dest_path, 'w+') as fh:
