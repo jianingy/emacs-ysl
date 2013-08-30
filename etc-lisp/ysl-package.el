@@ -74,6 +74,7 @@
                              crontab-mode
                              css-mode
                              cssh
+                             dash
                              ecb
                              edit-server
                              ess
