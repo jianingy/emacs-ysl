@@ -120,6 +120,7 @@
                              tomorrow-theme
                              yasnippet
                              window-numbering
+                             wrap-region
                              )(mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync ysl-packages)
