@@ -96,4 +96,8 @@
 (wrap-region-global-mode t)
 ;; }}}
 
+;; {{{ autopair
+(autopair-global-mode t)
+;; }}}
+
 (provide 'ysl-editing)
