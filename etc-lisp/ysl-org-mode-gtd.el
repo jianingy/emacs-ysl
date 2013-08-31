@@ -68,11 +68,13 @@
 ;;; MAYBE: things may be done on someday
 (setq org-tag-alist (quote ((:startgroup)
                             ("@HOME" . ?h)
+                            ("@WORK" . ?w)
                             ("@STADIUM" . ?s)
                             (:endgroup)
                             ("ADTIME" . ?a)
                             ("PERSONAL" . ?p)
                             ("TAOBAO" . ?t)
+                            ("MAYBE" . ?m)
                             ("USTACK" . ?u))))
 ;;; }}}
 
