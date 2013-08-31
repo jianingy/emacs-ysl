@@ -81,15 +81,20 @@
 ;; {{{ Capture templates
 (defvar ysl/org-base-directory "~/notes/")
 (defvar ysl/org-default-schedule-file "schedule/default.org")
+(defvar ysl/org-default-note-file "kb/note.org")
+(defvar ysl/org-default-solution-file "kb/solution.org")
 (setq org-capture-templates
       (quote (("t" "TODO" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
-               "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t)
-              ("n" "NEXT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
-               "* NEXT %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
+               "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t :prepend t)
               ("c" "CHECK" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
-               "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t)
+               "* CHECK %? \n%U\n%a\n  %i" :clock-in nil :clock-resume t :prepend t)
               ("m" "MEETING" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
-               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
+               "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t :prepend t)
+              ("n" "NOTE" entry (file (concat ysl/org-base-directory ysl/org-default-note-file))
+               "* %?\n%U\n%i" :clock-in nil :clock-resume t :prepend t)
+              ("s" "SOLUTION" entry (file (concat ysl/org-base-directory ysl/org-default-solution-file))
+               "* %?\n%U\n\n** description\n%x\n\n** solution\n\n** environment\n\n** analysis\n\n"
+               :clock-in nil :clock-resume t :prepend t)
               ("h" "HABIT" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* NEXT %?\n%a\nSCHEDULED: %t\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n  %i\n%U"))))
 ;;; }}}
