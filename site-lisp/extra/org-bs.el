@@ -40,8 +40,8 @@
 
     (if ad-return-value
         (setq ad-return-value (concat ""
-                                      "<div class=\"row row-offcanvas row-offcanvas-right\">"
-                                      "<div class=\"col-xs-12 col-sm-9\">"
+                                      "<div class=\"row\">"
+                                      "<div class=\"col-md-9\" role=\"main\">"
                                       header
                                       ad-return-value
                                       "</div>"
@@ -54,7 +54,7 @@
   (if ad-return-value
       (setq ad-return-value
             (replace-regexp-in-string "<uL>"
-                                      "<ul class=\"nav bs-sidenav\">"
+                                      "<ul class=\"nav\">"
                                       ad-return-value))))
 
 (defun org-html-toc (depth info &optional is-jianing-calling)
@@ -69,9 +69,11 @@
 		     "div")))
     (when is-jianing-calling
       (when toc-entries
-        (concat (format "<%s id=\"table-of-contents\" class=\"col-xs-6 col-sm-3 sidebar-offcanvas\">\n" outer-tag)
-                "<div id=\"text-table-of-contents\" class=\"well\">"
+        (concat (format "<%s id=\"table-of-contents\" class=\"col-md-3\">\n" outer-tag)
+                "<div id=\"text-table-of-contents\" class=\"bs-sidebar hidden-print affix\" role=\"complementary\">"
+                "<div class=\"bs-sidenav\">"
                 (org-html--toc-text toc-entries)
+                "</div>\n"
                 "</div>\n"
                 (format "</%s>\n" outer-tag))))))
 
