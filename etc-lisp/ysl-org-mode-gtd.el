@@ -83,6 +83,7 @@
 (defvar ysl/org-default-schedule-file "schedule/default.org")
 (defvar ysl/org-default-note-file "kb/note.org")
 (defvar ysl/org-default-solution-file "kb/solution.org")
+(setq org-reverse-note-order t)
 (setq org-capture-templates
       (quote (("t" "TODO" entry (file (concat ysl/org-base-directory ysl/org-default-schedule-file))
                "* TODO %?\n%U\n%a\n  %i" :clock-in nil :clock-resume t :prepend t)
