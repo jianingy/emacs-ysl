@@ -86,6 +86,7 @@
                              flymake-ruby
                              flymake-shell
                              fuzzy
+                             go-mode
                              google-c-style
                              google-maps
                              haskell-mode

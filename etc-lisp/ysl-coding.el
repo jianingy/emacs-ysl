@@ -18,6 +18,7 @@
 (require 'ysl-elisp)
 (require 'ysl-css)
 (require 'ysl-ocaml)
+(require 'ysl-go)
 ;; (require 'ysl-mmm)
 
 ;; {{{ other languages
