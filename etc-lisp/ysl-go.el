@@ -28,7 +28,7 @@
   "run buffer content as python program"
   (interactive)
   (save-buffer)
-  (shell-command (concat ysl/go-executable " run " (buffer-file-name))))
+  (compilation-start (concat ysl/go-executable " run " (buffer-file-name))))
 ;; }}}
 
 
