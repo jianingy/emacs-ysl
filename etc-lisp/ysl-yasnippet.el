@@ -3,7 +3,8 @@
 
 
 ;; (yas/initialize)
-(setq yas/snippet-dirs '("~/.emacs.d/yasnippets/ysl"
+(setq yas/snippet-dirs '("~/.emacs.d/yasnippets/net"
+                         "~/.emacs.d/yasnippets/ysl"
                          "~/.emacs.d/el-get/yasnippet/snippets"))
 (yas/global-mode 1)
 
