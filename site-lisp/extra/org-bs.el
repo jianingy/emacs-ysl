@@ -92,6 +92,18 @@
     (message hot-command)
     (compilation-start hot-command)))
 
+(defadvice org-publish-all (around org-publish-all-bs activate)
+  (let* ((hot-command (concat nby/hot-build-program
+                              " --template " nby/hot-template
+                              " --base " nby/org-publish-directory
+                              " --dest " nby/hot-publish-directory
+                              " --projects " (mapconcat (lambda (x) x) nby/hot-projects ",")
+                              " --site_name \"" nby/hot-site-name "\""
+                              " --site_root \"" nby/hot-site-root "\"")))
+    ad-do-it
+    (message hot-command)
+    (compilation-start hot-command)))
+
 
 (defun ysl/add-org-project (name)
   (let ((source-directory (concat nby/org-base-directory "/" name "/"))
