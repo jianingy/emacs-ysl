@@ -6,8 +6,7 @@
 (require 'js) ;; require fixed js-mode
 (require 'mql-mode) ;; MetaTrader Mode
 (require 'htmlize)
-(require 'flymake)
-(require 'flymake-cursor)
+(require 'flycheck)
 (require 'plantuml-mode)
 
 (require 'ysl-ecb)
@@ -21,8 +20,9 @@
 (require 'ysl-go)
 ;; (require 'ysl-mmm)
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; {{{ other languages
-;; (add-hook 'sh-set-shell-hook 'flymake-shell-load)
 
 ;; YAML
 (autoload 'yaml-mode "yaml-mode" nil t)
@@ -36,9 +36,6 @@
 ;; (require 'rfringe)
 ;; }}}
 
-;; {{{ setup flymake
-(setq flymake-extension-use-showtip t)
-;; }}}
 
 ;; {{{ setup whitespace detection
 (ysl/set-whitespace-detection-mode

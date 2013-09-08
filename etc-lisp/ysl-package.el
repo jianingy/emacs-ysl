@@ -37,8 +37,6 @@
                :load-path (".")
                :url "https://github.com/punchagan/metaweblog.el.git")
         (:name css-mode :type elpa)
-        (:name flymake-cursor :type emacswiki)
-;        (:name flymake-jslint :type emacswiki)
         (:name hexrgb :type emacswiki)
         (:name layout-restore :type emacswiki)
 ;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
@@ -80,11 +78,7 @@
                              ess
                              emacs-w3m
                              flim
-                             flymake-cursor
-                             ;flymake-jslint
-                             flymake-point
-                             flymake-ruby
-                             flymake-shell
+                             flycheck
                              fuzzy
                              go-mode
                              google-c-style
