@@ -338,12 +338,16 @@ as the default task."
 
 (defun ysl/org-check-in-out-on-screensaver (p-screen-locked)
   (if p-screen-locked
+      (if org-clock-current-task
+        (progn
+          (setq ysl/org-clock-last-task org-clock-current-task)
+          (bh/punch-out)
+          (message "punch-out because screen is locked"))
+        (setq ysl/org-clock-last-task nil))
+    (if ysl/org-clock-last-task
       (progn
-        (bh/punch-out)
-        (message "punch-out because screen is locked"))
-    (progn
-      (bh/punch-in 0)
-      (message "punch-in because screen is unlocked"))))
+        (bh/punch-in 0)
+        (message "punch-in because screen is unlocked")))))
 
 (if (eq system-type 'gnu/linux)
     (condition-case nil
