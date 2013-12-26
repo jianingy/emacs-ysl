@@ -88,11 +88,11 @@
                              highlight-parentheses
                              htmlize
                              inf-ruby
-                             ipython
+                             jedi
                              lorem-ipsum
                              magit
                              markdown-mode
-                             mu4e
+                             ;mu4e
                              nxhtml
                              org-mode
                              org-jekyll
