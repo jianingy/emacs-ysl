@@ -1,3 +1,9 @@
+;;; ysl-python.el --- python configuration
+;;; created at : 2013-09-02 15:40:08
+;;; author     : Jianing Yang <jianingy@unitedstack.com>
+;;; Commentary:
+;;; Code:
+
 (require 'ysl-init)
 
 ;; {{{ pylookup
@@ -17,6 +23,7 @@
 
 ;; {{{ initial hook
 (defun ysl/python-mode-hook ()
+  "Set python mode preference."
             (setq indent-tabs-mode nil
                   tab-width 4
                   python-indent 4
@@ -27,6 +34,7 @@
             (add-to-list 'ac-sources 'ac-source-pycomplete))
 
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
+(add-hook 'python-mode-hook 'jedi:setup)
 ;; }}}
 ;; do not start python shell at start
 (setq py-start-run-py-shell nil)
@@ -36,10 +44,11 @@
 
 ;; {{{ compile perl code
 (defun eval-buffer-as-python ()
-  "run buffer content as python program"
+  "Run buffer content as python program."
   (interactive)
   (save-buffer)
   (shell-command (concat "python " (buffer-file-name))))
 ;; }}}
 
 (provide 'ysl-python)
+;;; ysl-python ends here

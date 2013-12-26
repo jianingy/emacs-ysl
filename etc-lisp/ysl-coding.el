@@ -1,3 +1,9 @@
+;;; ysl-coding.el --- coding related configuration
+;;; created at : 2013-09-02 15:40:08
+;;; author     : Jianing Yang <jianingy@unitedstack.com>
+;;; Commentary:
+;;; Code:
+
 (require 'ysl-init)
 (require 'ysl-extra)
 
@@ -80,7 +86,7 @@
 (define-auto-insert "\\.sh$" "template.sh")
 (define-auto-insert "\\.rb$" "template.rb")
 (define-auto-insert "\\.el$" "template.el")
-(define-auto-insert "\\.py$" "template.py")
+;(define-auto-insert "\\.py$" "template.py")
 (define-auto-insert "\\.pl$" "template.pl")
 (define-auto-insert "\\.pm$" "template.pm")
 (define-auto-insert "\\.ml$" "template.ml")
@@ -89,8 +95,8 @@
 (define-auto-insert "\\.mql$" "template.mql")
 
 (defadvice auto-insert  (around yasnippet-expand-after-auto-insert activate)
-  "expand auto-inserted content as yasnippet templete,
-  so that we could use yasnippet in autoinsert mode"
+  "Expand auto-inserted content as yasnippet templete,
+so that we could use yasnippet in autoinsert mode"
   (let ((is-new-file (and (not buffer-read-only)
                           (or (eq this-command 'auto-insert)
                               (and auto-insert (bobp) (eobp))))))
@@ -107,7 +113,7 @@
 (add-search-path "site-lisp/arduino-mode")
 (require 'arduino-mode)
 (defun ysl/arduino-mode-hook ()
-(local-set-key "\C-c\C-c" 'compile))
+  (local-set-key "\C-c\C-c" 'compile))
 (add-hook 'arduino-mode-hook 'ysl/arduino-mode-hook)
 
 ;; }}}
@@ -118,3 +124,4 @@
 ;; }}}
 
 (provide 'ysl-coding)
+;;; ysl-coding ends here
