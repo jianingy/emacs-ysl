@@ -48,14 +48,14 @@
 ;; }}}
 
 ;; {{{ highlight-tail
-(require 'highlight-tail)
-(let ((background (cdr (assoc
-                        'background
-                        (cdr (assoc 'night color-theme-tomorrow-colors))))))
-  (setq highlight-tail-colors `((,background . 0)
-                                ("#4271ae" . 25)
-                                (,background . 66))))
-(highlight-tail-mode)
+;; (require 'highlight-tail)
+;; (let ((background (cdr (assoc
+;;                         'background
+;;                         (cdr (assoc 'night color-theme-tomorrow-colors))))))
+;;   (setq highlight-tail-colors `((,background . 0)
+;;                                 ("#4271ae" . 25)
+;;                                 (,background . 66))))
+;; (highlight-tail-mode)
 ;; }}}
 
 ;; {{{ TODO: Highlight Current Line
