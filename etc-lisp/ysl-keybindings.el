@@ -17,12 +17,13 @@
 (global-set-key "\C-x\C-b" 'bs-show)
 (global-set-key "\C-x\C-a" 'ysl/switch-to-previous-buffer)
 (global-set-key "\M-g" 'goto-line) ;; goto line
-(global-set-key "\C-cd" 'ysl/star-dict-collins) ;; 查字典
+(global-set-key "\C-cd" 'ysl/ydcv) ;; 查字典
 (global-set-key "\C-c\C-x\C-c" 'comment-region)
 (global-set-key "\C-c\C-x\C-d" 'uncomment-region)
 (global-set-key "\C-c\C-d" 'ysl/clone-last-line) ;; 复制上一行内容
 (global-set-key "\C-cq" 'ysl/goto-match-paren) ;; 找到匹配的括号
 (global-set-key "\C-cww" 'ysl/insert-dict-cn)
+(global-set-key "\C-cv" 'mu4e)
 (global-set-key (kbd "C-z") 'ysl/anything-terminals)
 (global-set-key (kbd "C-x F") 'djcb-find-file-as-root)
 ;;
