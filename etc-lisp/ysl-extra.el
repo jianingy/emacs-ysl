@@ -81,6 +81,16 @@
        (w3m-buffer)
        (minibuffer-message (buffer-string)))))
 
+(defun ysl/ydcv-dict ()
+  (interactive)
+  (let ((my-current-word (current-word))
+        (minibuffer-message-timeout nil))
+    (with-current-buffer (get-buffer-create "*youdao*")
+       (erase-buffer)
+       (insert (shell-command-to-string
+                (concat user-home-dir "/local/bin/ydcv '" my-current-word "'")))
+       (minibuffer-message (buffer-string)))))
+
 (defun ysl/clone-last-line()
 "duplicate last line in current line"
   (interactive)
