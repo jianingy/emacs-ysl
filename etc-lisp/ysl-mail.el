@@ -35,6 +35,7 @@
 
 
 ;; choose account when composing
+(defvar ysl/mu4e-account-alist '())
 (defun ysl/mu4e-set-account ()
   "Set the account for composing a message."
   (let* ((account
@@ -65,21 +66,6 @@
       smtpmail-stream-type 'starttls
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
-
-;; account setting list
-(defvar ysl/mu4e-account-alist
-  '(("main"
-     (mu4e-sent-folder "/main/sent")
-     (mu4e-drafts-folder "/main/drafts")
-     (smtpmail-smtp-user "jianingy.yang@gmail.com")
-     (message-signature "")
-     (user-mail-address "jianingy.yang@gmail.com"))
-    ("unitedstack"
-     (mu4e-sent-folder "/unitedstack/sent")
-     (mu4e-drafts-folder "/unitedstack/drafts")
-     (smtpmail-smtp-user "jianingy@unitedstack.com")
-     (message-signature unitedstack-message-signature)
-     (user-mail-address "jianingy@unitedstack.com"))))
 
 ;; display inline image, use imagemagick, if available
 (setq mu4e-view-show-images t)
