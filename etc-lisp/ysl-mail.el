@@ -71,17 +71,6 @@
 (setq mu4e-view-show-images t)
 (when (fboundp 'imagemagick-register-types) (imagemagick-register-types))
 
-;; setup some handy shortcuts
-;; you can quickly switch to your Inbox -- press ``ji''
-;; then, when you want archive some messages, move them to
-;; the 'All Mail' folder by pressing ``ma''.
-(setq mu4e-maildir-shortcuts
-      '(("/main/INBOX"               . ?i)
-        ("/main/flagged"             . ?f)
-        ("/unitedstack/INBOX"        . ?u)
-        ("/unitedstack/flagged"      . ?g)
-        ))
-
 ;; allow for updating mail using 'U' in the main view:
 ;; uncomment  if don't have offlineimap run background separatedly
 ;; (setq mu4e-get-mail-command "offlineimap")
