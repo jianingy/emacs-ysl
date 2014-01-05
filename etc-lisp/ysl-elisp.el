@@ -6,7 +6,7 @@
             (setq indent-tabs-mode nil)))
 
 ;; {{{ slime for common-lisp editing 
-(require 'slime-autoloads)
+;(require 'slime-autoloads)
 (slime-setup '(slime-fancy))
 
 (add-hook 'slime-mode-hook

@@ -1,17 +1,9 @@
 (require 'ysl-init)
 
 ;; {{{ initialize emacs24 package-management
-(if (>= emacs-major-version 24)
-    (progn
-      (package-initialize)
-      ;; Add the original Emacs Lisp Package Archive
-      (add-to-list 'package-archives
-                   '("gnu" . "http://elpa.gnu.org/packages"))
-      (add-to-list 'package-archives
-                   '("ELPA" . "http://tromey.com/elpa/"))
-      ;; Add the user-contributed repository
-      (add-to-list 'package-archives
-                   '("marmalade" . "http://marmalade-repo.org/packages/"))))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 ;; }}}
 
 ;; {{{ setup el-get
@@ -21,26 +13,9 @@
 
 (setq el-get-sources
       '(
-;        (:name nxhtml
-;               :type emacsmirror
-;               :description "An addon for Emacs mainly for web development."
-;               :build
-;               (list (concat el-get-emacs " -batch -q -no-site-file -L . -l nxhtmlmaint.el -f nxhtmlmaint-start-byte-compilation"))
-;               :load "autostart.el")
-        (:name crontab-mode
-               :description "Mode for editing crontab files"
-               :type http
-               :url "http://www.mahalito.net/~harley/elisp/crontab-mode.el")
-        (:name metaweblog
-               :description "an emacs library to access metaweblog based weblogs"
-               :type github
-               :load-path (".")
-               :url "https://github.com/punchagan/metaweblog.el.git")
-        (:name css-mode :type elpa)
+        (:name css-mode :type emacswiki)
         (:name hexrgb :type emacswiki)
         (:name layout-restore :type emacswiki)
-;        (:name popup :type git :url "git://github.com/m2ym/popup-el.git")
-;        (:name yasnippet-bundle :type elpa)
         (:name ecb
          :description "Emacs Code Browser"
          :type github
@@ -109,12 +84,13 @@
                              vkill
                              xcscope
                              yaml-mode
-                             ;org2blog    ;; must be placed after xml-rpc-el & metaweblog
+                             org2blog    ;; must be placed after xml-rpc-el & metaweblog
                              o-blog
                              popup
                              tail
                              tomorrow-theme
                              yasnippet
+                             weblogger-el
                              window-numbering
                              wrap-region
                              )(mapcar 'el-get-source-name el-get-sources)))
