@@ -6,8 +6,8 @@
       org-taskjuggler-resource-tag "RESOURCE"
       org-taskjuggler-report-tag "REPORT")
 
-; Remind things those deadline are in 15 days
-(setq org-deadline-warning-days 15)
+; Remind things those deadline are in 5 days
+(setq org-deadline-warning-days 5)
 
 ; Set default column view headings: Task Effort Clock_Summary
 (setq org-columns-default-format "%65ITEM(Task) %20TAGS %Effort(Effort){:} %CLOCKSUM")
