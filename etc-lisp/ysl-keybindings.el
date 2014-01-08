@@ -37,6 +37,7 @@
 (global-set-key "\C-cm" 'bm-toggle)
 (global-set-key "\C-cn" 'next-error)
 (global-set-key "\C-cj" 'bm-next)
+(global-set-key "\C-c\C-j" 'dirtree)
 (global-set-key "\C-cs" 'ysl/insert-separator)
 (global-set-key "\C-cg" 'grep-find)
 (global-set-key "\C-c\M-m" 'message-mark-inserted-region)

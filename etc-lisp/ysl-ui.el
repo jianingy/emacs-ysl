@@ -109,4 +109,10 @@
 ;; }}}
 
 
+;; {{{ dirtree
+(require 'windata)
+(require 'tree-mode)
+(require 'dirtree)
+;; }}}
+
 (provide 'ysl-ui)
