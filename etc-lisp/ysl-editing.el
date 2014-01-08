@@ -85,12 +85,6 @@
 ;(setq layout-restore-after-otherwindow nil)
 ;; }}}
 
-;; {{{ golden ratio
-(add-search-path "site-lisp/golden-ratio")
-(require 'golden-ratio)
-(golden-ratio-enable)
-;; }}}
-
 ;; {{{ wrap-region
 (require 'wrap-region)
 (wrap-region-global-mode t)
