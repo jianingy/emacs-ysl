@@ -80,6 +80,7 @@
 ;;      ))
 
 ;; enable window numbering mode
+(require 'window-numbering)
 (window-numbering-mode)
 
 ;; enable winner-mode
