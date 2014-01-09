@@ -33,8 +33,12 @@
             (local-set-key (kbd "C-c C-c") 'eval-buffer-as-python)
             (add-to-list 'ac-sources 'ac-source-pycomplete))
 
+(autoload 'jedi:setup "jedi" nil t)
 (add-hook 'python-mode-hook 'ysl/python-mode-hook)
 (add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+
 ;; }}}
 ;; do not start python shell at start
 (setq py-start-run-py-shell nil)
