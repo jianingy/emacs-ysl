@@ -1,3 +1,5 @@
+THIS REPO IS DEPRECATED! PLEASE SEE https://github.com/jianingy/dotemacs
+
 This is my emacs configurations. Here are some screenshots:
 
 - [[http://img.ly/c9WQ]]
